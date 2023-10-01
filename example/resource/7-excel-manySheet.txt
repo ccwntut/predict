@@ -1,0 +1,71 @@
+﻿#--------------------------------------
+#1.練習1：讀取學生成績檔案
+#import pandas as pd
+#df = pd.read_excel("https://acupun.site/lecture/pandas/example/resource/scoreChi-date.xlsx","經管3A")
+#--------------------------------------
+print()
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/pandas/example/resource/scoreChi-date.xlsx","經管3A")
+print("1-1.顯示全部df =\n")
+
+#--------------------------------------
+#2.練習2：輸出第1個【英文成績】(sheet表格)，到excel檔案的6步驟：
+#【1】先安裝xlsxwriter套件
+#【2】建立連線excel檔案的物件writer
+#......(重複3～5)
+#【3】把2個欄位的dataframe，存入excel檔案
+#【4】workboo代表這個excel物件（book代表資料庫）
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['bs3a']）
+#.....
+#【6】writer.close()
+#--------------------------------------
+
+#【1】先安裝xlsxwriter套件
+! pip install xlsxwriter
+import pandas as pd
+
+#【2】建立連線excel檔案的物件writer
+writer = pd.ExcelWriter('score-manySheets.xlsx', engine='xlsxwriter')
+
+#【3】把2個欄位【姓名，英文】的dataframe，存入excel檔案
+#錯誤寫法：df2.to_excel('score2.xlsx','英文成績')
+#正確寫法：
+df[['姓名','英文']].to_excel(writer,'英文成績')
+
+#【4】workboo代表這個excel物件（book代表資料庫）
+workbook = writer.book
+
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['bs3a']）
+worksheet = writer.sheets["英文成績"]
+
+#--------------------------------------
+#3.練習3：輸出第2個【數學成績】(sheet表格)，到excel檔案：只要步驟3～5：
+#--------------------------------------
+#【3】把2個欄位【姓名，數學】的dataframe，存入excel檔案
+df[['姓名','數學']].to_excel(writer,'數學成績')
+
+#【4】workboo代表這個excel物件（book代表資料庫）
+workbook = writer.book
+
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['bs3a']）
+worksheet = writer.sheets["數學成績"]
+
+
+#--------------------------------------
+#4.練習4：輸出第3個【中文成績】(sheet表格)，到excel檔案：只要步驟3～5：
+#--------------------------------------
+#【3】把2個欄位【姓名，中文】的dataframe，存入excel檔案
+df[['姓名','中文']].to_excel(writer,'中文成績')
+
+#【4】workboo代表這個excel物件（book代表資料庫）
+workbook = writer.book
+
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['中文']）
+worksheet = writer.sheets["中文成績"]
+
+
+#--------------------------------------
+#5.練習5：步驟6：關閉連線：
+#--------------------------------------
+#【6】writer.close()
+writer.close()

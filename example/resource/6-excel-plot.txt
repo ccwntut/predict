@@ -1,0 +1,76 @@
+﻿#--------------------------------------
+#1.練習1：讀取學生成績檔案
+#--------------------------------------
+print()
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/pandas/example/resource/scoreChi-date.xlsx","經管3A")
+print("1-1.顯示全部df =\n")
+
+#--------------------------------------
+#2.練習2：把2個欄位【姓名，數學】dataframe存入excel檔案(單一資料表)，並且畫圖
+# 輸出+繪圖的綱要
+#【1】先安裝xlsxwriter套件
+#【2】建立連線excel檔案的物件writer
+#【3】把2個欄位的dataframe，存入excel檔案
+#【4】workboo代表這個excel物件（book代表資料庫）
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['bs3a']）
+#【6-1】在資料庫workbook，加入圖形的類型（柱狀圖column，水平柱狀圖bar（chart = workbook.add_chart()）
+#【6-1】在資料庫workbook，加入圖形的類型（柱狀圖column，水平柱狀圖barchart = workbook.add_chart({'type': 'column'})
+#柱狀圖：column
+#堆疊柱狀圖：column--stacked：{'type': 'column', 'subtype': 'stacked'}
+#水平柱狀圖：bar
+#折線圖：line
+#面積圖：area
+#堆疊面積圖：area---stacked：{'type': 'area', 'subtype': 'stacked'}
+#餅狀圖：pie
+#散佈圖scatter
+#【6-2】設定繪圖的資料來源 => 設定資料工作表的區域（chart.add_series({'values':['sheet名稱',1,1,maxrow,1})
+#【6-3】設定圖形要放在sheet的位置 = E5 （或是4,4)（因為0～5】（worksheet.insert_chart('E5',chart)）
+#【7】設定xy軸的標記label:chart.set_x_axis({'name': ''})
+#【8】設定圖例legend放置到位置（標示各種顏色代表的label）:chart.set_legend({'position': 'top'})
+#【9】writer.close()
+#--------------------------------------
+print()
+
+print('3-1.輸出excel檔案+單一資料表 =\n')
+df2 = df[['姓名','中文','英文','數學']]
+print(df2)
+
+#若沒有畫圖，只是輸出excel檔案的做法
+#df2.to_excel("score-3a.xlsx", sheet_name='經管3A')
+print('3-2.並且畫圖 =\n')
+
+#【1】先安裝xlsxwriter套件
+! pip install xlsxwriter
+import pandas as pd
+#【2】建立連線excel檔案的物件writer
+writer = pd.ExcelWriter('score2.xlsx', engine='xlsxwriter')
+#【3】把dataframe，存入excel檔案
+#錯誤寫法：df2.to_excel('score2.xlsx','經管3a')
+#正確寫法：
+df2.to_excel(writer,'經管3a')
+#【4】workboo代表這個excel物件（book代表資料庫）
+workbook = writer.book
+#【5】設定excel連線物件的資料表的名稱（worksheet=writer.sheets['bs3a']）
+worksheet = writer.sheets["經管3a"]
+#【6-1】在資料庫workbook，加入圖形的類型（柱狀圖column，水平柱狀圖bar（chart = workbook.add_chart()）
+chart = workbook.add_chart({'type':'column'})
+#【6-2】設定繪圖的資料來源 => 設定資料工作表的區域（chart.add_series({'values':['sheet名稱',1,1,maxrow,1})
+#categories = x軸
+#values = y軸
+chart.add_series({'name':'中文', 'categories':'=經管3a!b1:b8', 'values':'=經管3a!c2:c8'})
+chart.add_series({'name':'英文', 'categories':'=經管3a!b1:b8', 'values':'=經管3a!d2:d8'})
+chart.add_series({'name':'數學', 'categories':'=經管3a!b1:b8', 'values':'=經管3a!e2:e8'})
+
+#【6-3】設定圖形要放在sheet的位置 = E5 （或是4,4)（因為0～5】（worksheet.insert_chart('E5',chart)）
+worksheet.insert_chart('E5',chart)
+
+#【7】設定xy軸的標記label:chart.set_x_axis({'name': ''})
+chart.set_x_axis({'name': '學生姓名'})
+chart.set_y_axis({'name': '成績', 'major_gridlines': {'visible': False}})
+
+#【8】設定圖例legend放置到位置（標示各種顏色代表的label）:chart.set_legend({'position': 'top'})
+chart.set_legend({'position': 'top'})
+
+#【9】writer.close()
+writer.close()

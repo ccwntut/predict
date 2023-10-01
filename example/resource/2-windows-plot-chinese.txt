@@ -1,0 +1,6 @@
+﻿#在windows 10 的spyder，繪圖如何顯示中文
+#使用微軟正黑體（Microsoft JhengHei）
+plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']
+
+#有些中文字體在碰到負號時，會無法正常顯示，尤其是內建的字體，加入以下語法就可以解決『負號無法顯示』問題
+plt.rcParams['axes.unicode_minus'] = False

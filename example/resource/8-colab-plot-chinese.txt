@@ -1,0 +1,14 @@
+﻿#--------------------------------------
+# 課本的中文處理
+#--------------------------------------
+import matplotlib as mpl
+import matplotlib.font_manager as fm
+
+!wget "https://www.wfonts.com/download/data/2014/06/01/simhei/simhei.zip"
+!unzip "simhei.zip"
+!rm "simhei.zip"
+
+fm.fontManager.addfont('SimHei.ttf')
+mpl.rc('font', family='SimHei')
+# 這一行能讓字體變得清晰
+%config InlineBackend.figure_format = 'retina'

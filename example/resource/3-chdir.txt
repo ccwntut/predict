@@ -1,0 +1,3 @@
+﻿import os
+os.chdir("/content/drive/MyDrive/Colab Notebooks")
+!ls

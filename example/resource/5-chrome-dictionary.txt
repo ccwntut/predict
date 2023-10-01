@@ -1,0 +1,11 @@
+☎如何安裝google chrome的網頁線上英文字典工具：
+
+->google chrome的右上角工具->更多工具->擴充功能
+->左上角主選單->開啟chrome線上應用程式商店
+->勾選：google製作，免費
+->搜尋：google dictionary->安裝
+->到chrome右上擴充功能->點按google dictionary的『詳細資料』->擴充功能選項
+->my language=chinese
+->打勾2個：Pop-up definitions:
+（1）反白單字翻譯：Display pop-up when I double-click a word
+（2）ctrl+拖曵整段翻譯： Display pop-up when I select a word or phrase
