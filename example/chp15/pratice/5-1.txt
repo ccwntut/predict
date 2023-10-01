@@ -1,0 +1,65 @@
+﻿#範例5-1:由腰圍身高預測體重，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測（用sylearn模組建立）
+# 題目：請做預測，當腰圍=66，身高=164，預測學生的體重=？
+
+#參考：https://www.books.com.tw/products/0010789569，第15-3章
+
+#重點1：建立2組數據的線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sylearn模組(sci-kit learn)
+
+#重點3：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）
+#步驟1：先建立數學模型
+#import sklearn.linear_model as lm
+#model = lm.LinearRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY) 
+# 注意重點：若是多個變數(x1,x2...)，則要把多個變數(x1,x2...)合併成1個變數dataframeX（a1)
+# 範例：model.fit(a1, df['體重'].to_frame())
+
+# 合併的語法：pd.concat([df['腰圍'],df['身高']], axis=1)
+# 資料結構：df['腰圍'] => series
+# 資料結構：df['腰圍'].to_frame() => dataframe
+
+#步驟3：進行預測（當腰圍=66，身高=164，預測學生的體重）
+# 預測指令：model.predict(dataframe)
+# 腰圍=66，身高=164的dataframe =》 [[66, 164]]
+# 範例：print('當腰圍=66，身高=164，預測學生的體重=', model.predict([[66, 164]]))
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp5/waistline-height-weight.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp5/waistline-height-weight.xlsx", "身高體重")
+print(df.head(3))
+
+#--------------------------------------
+#（2）建立線性迴歸的模型sklearn model方法：（3步驟）
+#--------------------------------------
+#步驟1：先建立數學模型
+import sklearn.linear_model as lm
+model = lm.LinearRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY) 
+# 注意重點：若是多個變數(x1,x2...)，則要把多個變數(x1,x2...)合併成1個變數dataframeX（a1)
+# 合併的語法：pd.concat([df['腰圍'],df['身高']], axis=1)
+# 資料結構：df['腰圍'] => series
+# 資料結構：df['腰圍'].to_frame() => dataframe
+a1 = pd.concat([df['腰圍'],df['身高']], axis=1)
+print(a1)
+model.fit(a1, df['體重'].to_frame())
+
+#步驟3：進行預測（當腰圍=66，身高=164，預測學生的體重）
+# 預測指令：model.predict(dataframe)
+# 腰圍=66，身高=164的dataframe =》 [[66, 164]]
+print('當腰圍=66，身高=164，預測學生的體重=', model.predict([[66, 164]]))
+
+#--------------------------------------
+#（3）繪圖：數據散佈圖 + 迴歸線圖
+#--------------------------------------
+# 重要觀念：多元變數模型y=f(x1,x2...)，無法畫出散佈圖，因為x變數有多個
+# 所以必須採用其它方式來評估，預測結果的示意圖
+

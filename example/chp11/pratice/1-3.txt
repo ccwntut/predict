@@ -1,0 +1,124 @@
+﻿#範例1-3：線性迴歸模型的視覺化（用numpy建立）
+# 題目：已經知道這段期間，美元與黃金的關係數據，請進行預測：當美元=29.75，黃金的價位=?
+
+#參考：https://www.books.com.tw/products/0010876198，第8-2章
+
+#重點1：建立2組數據的非線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sylearn模組(sci-kit learn)
+
+#重點3：用numpy建立線性迴歸數學模型（3步驟）
+# import numpy as np
+#步驟1：先計算(y=ax+b)多項式的參數(a,b)=> coef
+# 指令：coef = np.polyfit(x, y, 1)
+#步驟2：再建立數學模型=> model = np.poly1d(coef)
+#步驟3：進行預測(當美元=29.75，請問黃金的價位=?) => model(29.75)
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx")
+print(df.head(3))
+
+#--------------------------------------
+#（2）建立線性迴歸的model方法1：使用手動法，y=ax+b，計算參數a,b
+#--------------------------------------
+import numpy as np
+# Numpy polyfit()方法：將我們的數據擬合到多項式函數中
+# poly = 多項式 = polynomial
+#語法 a,b = np.polyfit(x陣列, y陣列, 幾次方的多項式)
+a, b = np.polyfit(df['美元'], df['黃金'], 1)
+print()
+print('a=', a, 'b=', b)
+print()
+print("線性迴歸的數學模型 ==> y=", a, "*x + ", b)
+
+#--------------------------------------
+#（3）建立線性迴歸的model方法2：使用自動法（自動印出數學模型：不需要手動計算a,b）
+# 推薦：方法2最好，可以輕易拿來預測，可以不管參數，直接印出模型公式
+#--------------------------------------
+# 先計算數學模型的參數Coefab
+Coef = np.polyfit(df['美元'], df['黃金'], 1)
+# 再建立數學模型
+model = np.poly1d(Coef)
+# 印出數學模型
+print()
+print("印出數學模型 = ", model)
+
+#--------------------------------------
+#（4）做預測（當美元=29.75，請問黃金的價位=？）
+#--------------------------------------
+print()
+print("做預測，當美元=29.75，請問黃金的價位 = ", model(29.75))
+
+#--------------------------------------
+#（5）定性看關聯：視覺化畫圖，散佈圖scatter
+#--------------------------------------
+import matplotlib.pyplot as plt
+#df.plot(kind='scatter', x='美元', y='黃金')
+
+#--------------------------------------
+#（6）畫直線：線性迴歸線型，方法1：用plt.plot()來畫圖
+#方法：plt.plot(series1, series2)
+#方法：plt.plot(array1, array2)
+#--------------------------------------
+#plt.plot(df['美元'], model(df['美元']), color='red')
+#plt.show()
+
+#--------------------------------------
+#（7）畫直線：線性迴歸線型，方法2：用pandas的df.plot()來畫圖
+#方法：df.plot(x=欄位1, y=欄位2)
+#重點：要先新增1個欄位=預測
+#--------------------------------------
+df['預測'] = model(df['美元'])
+#print(df['預測'])
+
+#--------------------------------------
+#（8）如何把2個圖形，疊加（overlay)
+#方法：
+# ax1 = df.plot(...)
+# df.plot(....,ax=ax1)
+#--------------------------------------
+ax1 = df.plot(kind='line', x='美元', y='預測', color='red')
+df.plot(kind='scatter', x='美元', y='黃金', ax=ax1, figsize=(10,8), xlabel='usd', ylabel='gold', title='usd-gold relation')
+plt.grid(True)
+plt.legend()
+plt.rcParams.update({'font.size': 52})
+plt.show()
+
+#--------------------------------------
+#（9）如何放大圖形
+# 語法：figsize=(width, height)
+# 範例：df.plot(figsize=(12,8))
+# 圖形大小figsize，預設為 6 x 4
+
+#（10）如何加上title，xlabel，ylabel
+# 範例：df.plot(xlabel='usd', ylabel='gold', title='usd-gold relation')
+
+#（11）如何加上格線
+# 範例：plt.grid(True)
+
+#（12）如何顯示圖例legend
+# 範例：plt.legend()
+
+#（13）如何把圖形內的文字放大
+# 範例：plt.rcParams.update({'font.size': 52})
+
+#（14）cola如何顯示中文
+# 範例：
+'''
+import matplotlib as mpl
+import matplotlib.font_manager as fm
+
+!wget "https://www.wfonts.com/download/data/2014/06/01/simhei/simhei.zip"
+!unzip "simhei.zip"
+!rm "simhei.zip"
+
+fm.fontManager.addfont('SimHei.ttf')
+mpl.rc('font', family='SimHei')
+# 這一行能讓字體變得清晰
+%config InlineBackend.figure_format = 'retina'
+'''

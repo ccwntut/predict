@@ -1,0 +1,80 @@
+﻿#範例2-1：建立非線性迴歸模型來預測（用numpy建立）
+# 題目：請做預測，當美元=29.75，黃金的價位=？
+
+#參考：https://www.books.com.tw/products/0010876198，第8-3章
+
+#重點1：觀念：最簡單的非線性迴歸模型 = 多項式模型
+#舉例：3次方多項式 y = ax^3 + bx^2 + cx + d
+#特色：越高次方的多項式，越可以逼近任意的曲線
+
+#重點2：建立2組數據的非線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sylearn模組(sci-kit learn)
+
+#重點3：用numpy建立非線性迴歸數學模型（3步驟）
+# import numpy as np
+#步驟1：先計算n次方多項式的參數(a,b,c....)=coef
+# 指令：coef = np.polyfit(x, y, n)
+#步驟2：再建立數學模型=> model = np.poly1d(coef)
+#步驟3：進行預測(當美元=29.75，請問黃金的價位=?) => model(29.75)
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx","美元黃金對應")
+print(df.head(3))
+
+#--------------------------------------
+#（2）建立3次方線性迴歸的模型model方法：使用自動法（自動印出數學模型：不需要手動計算a,b）
+#--------------------------------------
+# 先計算數學模型的參數Coefab（多項式的次方，設定為3次方
+import numpy as np
+Coef = np.polyfit(df['美元'], df['黃金'], 3)
+# 再建立數學模型
+model = np.poly1d(Coef)
+# 印出數學模型
+print()
+print("印出數學模型 = ", model)
+
+#--------------------------------------
+#（3）建立7次方線性迴歸的模型model方法：使用自動法（自動印出數學模型：不需要手動計算a,b）
+#--------------------------------------
+import numpy as np
+Coef2 = np.polyfit(df['美元'], df['黃金'], 7)
+model2 = np.poly1d(Coef2)
+print()
+print("印出數學模型2 = ", model2)
+
+#--------------------------------------
+#（4）做預測（當美元=29.75，請問黃金的價位=？）
+#--------------------------------------
+print()
+print("做預測，當美元=29.75，請問黃金的價位 = ", model(29.75))
+
+#--------------------------------------
+#（5）定性看關聯：視覺化畫圖，散佈圖scatter
+#--------------------------------------
+import matplotlib.pyplot as plt
+
+#--------------------------------------
+#（6）畫直線：線性迴歸線型，方法2：用pandas的df.plot()來畫圖
+#方法：df.plot(x=欄位1, y=欄位2)
+#重點：要先新增1個欄位=預測
+#--------------------------------------
+df['預測'] = model2(df['美元'])
+#print(df['預測'])
+
+#--------------------------------------
+#（7）如何把2個圖形，疊加（overlay)
+#方法：
+# ax1 = df.plot(...)
+# df.plot(....,ax=ax1)
+#--------------------------------------
+ax1 = df.plot(kind='line', x='美元', y='預測', color='red')
+df.plot(kind='scatter', x='美元', y='黃金', ax=ax1, figsize=(10,8), xlabel='usd', ylabel='gold', title='usd-gold relation')
+plt.grid(True)
+plt.rcParams.update({'font.size': 12})
+plt.show()

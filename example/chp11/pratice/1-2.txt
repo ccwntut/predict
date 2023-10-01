@@ -1,0 +1,55 @@
+﻿#範例1-2：用numpy建立線性迴歸模型，建立2組數據的數學model
+# 題目：已經知道這段期間，美元與黃金的關係數據，請進行預測：當美元=29.75，黃金的價位=?
+
+#參考：https://www.books.com.tw/products/0010876198，第8-1章
+
+#重點1：建立2組數據的線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sci-kit learn模組
+
+#重點3：用numpy建立線性迴歸數學模型（3步驟）
+# import numpy as np
+#步驟1：先計算(y=ax+b)多項式的參數(a,b)=> coef
+# 指令：coef = np.polyfit(x, y, 1)
+#步驟2：再建立數學模型=> model = np.poly1d(coef)
+#步驟3：進行預測(當美元=29.75，請問黃金的價位=?) => model(29.75)
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx")
+print(df.head(3))
+
+#--------------------------------------
+#（2）建立線性迴歸的model方法1：使用手動法，y=ax+b，計算參數a,b
+#--------------------------------------
+import numpy as np
+# Numpy polyfit()方法：將我們的數據擬合到多項式函數中
+# poly = 多項式 = polynomial
+#語法 a,b = np.polyfit(x陣列, y陣列, 幾次方的多項式)
+a, b = np.polyfit(df['美元'], df['黃金'], 1)
+print()
+print('a=', a, 'b=', b)
+print()
+print("線性迴歸的數學模型 ==> y=", a, "*x + ", b)
+
+#--------------------------------------
+#（3）建立線性迴歸的model方法2：使用自動法（自動印出數學模型：不需要手動計算a,b）
+#--------------------------------------
+# 先計算數學模型的參數Coefab
+Coefab = np.polyfit(df['美元'], df['黃金'], 1)
+# 再建立數學模型
+model = np.poly1d(Coefab)
+# 印出數學模型
+print()
+print("印出數學模型 = ", model)
+
+#--------------------------------------
+#（4）做預測（當美元=29.75，請問黃金的價位=？）
+#--------------------------------------
+print()
+print("做預測，當美元為29.75時，黃金的價位 = ", model(29.75))
+

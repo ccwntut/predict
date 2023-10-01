@@ -1,0 +1,220 @@
+﻿#範例6-1:邏輯斯模型(logistic regression model，羅吉斯):分類，二分法類器
+# 題目：預測3種意大利紅酒，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（決定係數R2，MAE，殘差圖）
+
+#參考：https://www.books.com.tw/products/0010876198，第12-2章
+
+#重點1：邏輯斯模型的應用性：
+#羅吉斯迴歸現在已經被大量使用，因為它非常有效率，也不需要大量運算資源，所以受到廣泛利用。它很容易解讀，不需要調整輸入特徵，也易於正規化，而且它所提供的輸出結果是經過良好校正的預測機率。
+#應用1：衛生保健：例如預測受傷患者的死亡率。預測糖尿病和心臟病等疾病的發病率。
+#應用2：政治:可用於預測選舉。這些預測是根據年齡、性別、居住地、社會地位、過往投票模式等變數，產生投票結果預測。
+#應用3：產品測試：預測測試中系統或產品的成敗。
+#應用4：行銷：可用於預測客戶詢價轉化為銷售的機率、訂閱開始或終止的機率，甚至是客戶對新產品系列的潛在興趣。
+#應用5：金融業：可預測客戶未來遲繳的可能性，可以看出某位客戶是否會「違約」或「不違約」
+#應用6：電子商務：電子商務公司大量投資於跨媒體廣告和促銷活動，很希望了解哪些活動最有效，以及最可能獲得潛在目標受眾響應的選項。此模型集將客戶分類為「反應者」或「非反應者」，所以此模型稱為「反應傾向模型」。
+
+#重點2：邏輯斯模型的預測數字：
+#結果：0～1
+#判別：0為否，1為是
+
+#重點3：讀取skylearn的dataset，有2種做法：
+'''
+#（1）方法1：
+data, target = ds.load_wine(return_X_y=True)
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(data, target, test_size=0.2)
+
+#（2）方法2：
+wine = ds.load_wine()
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(wine.data, wine.target, test_size=0.2)
+'''
+
+#重點4：建立邏輯斯模型（3步驟）
+#步驟1：先建立數學模型
+#import sklearn.linear_model as lm
+#model = lm.LogisticRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(train_x, train_y)
+
+#步驟3：進行預測
+# 預測指令：pred_y = model.predict(test_x)
+
+#重點5：評估模型績效，方法1：決定係數R2
+# model.score(test_x, test_y)
+# 若r2值越大，就表示模型model越好
+
+#重點6：評估模型績效，方法2：MAE,平均絕對誤差(MAE，Mean Absolute Error)
+# import sklearn.metrics as mt
+# mt.mean_absolute_error(test_y, pred_y)
+# 若MAE值越小，就表示模型model越好（MAE=0，表示誤差接近於0）
+
+#重點7：評估模型績效，方法3：MAE,平均絕對誤差(MAE，Mean Absolute Error)
+# 殘差圖上面的點，越靠近y=0的水平線，就表示模型的預測效果越好（若距離遠的點，表示預測錯誤點）
+'''
+res_y = pred_y - test_y
+# x軸
+num = pred_y.size
+import numpy as np
+numArray = np.arange(num)
+import matplotlib.pyplot as plt
+# 點散佈圖
+plt.scatter(numArray, res_y)
+# y=0水平線
+plt.plot(numArray, numArray*0, color='red')
+plt.show()
+'''
+#----------------------------------------
+#資料集檔案：import sklearn.datasets as ds
+#wine = ds.load_wine()
+
+#----------------------------------------
+#（1）讀入葡萄酒品種分類資料集
+#1-1.觀念：葡萄酒品種分類資料集
+#----------------------------------------
+import sklearn.datasets as ds
+#----------------------------------------
+# 2種讀取資料的方法，
+# 方法1：簡單法
+#----------------------------------------
+'''
+data, target = ds.load_wine(return_X_y=True)
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(data, target, test_size=0.2)
+
+'''
+#----------------------------------------
+# 方法2：詳細法
+#----------------------------------------
+wine = ds.load_wine()
+
+#1-2.sklearn的資料集，載入後可以看到這個資料集像json格式，可以先看資料集的keys:
+print('1-2.看wine資料集的keys：')
+print(wine.keys())
+
+#1-3.分析各種keys說明：dict_keys(['data', 'target', 'frame', 'target_names', 'DESCR', 'feature_names'])
+
+#1-4.看看總共幾筆？資料集的size
+print("1-4.總共幾筆 = ")
+# 178筆，13個欄位
+print(wine.data.shape)
+
+#1-5.看看各種變數名稱（欄位名稱）
+print("1-5.各種x變數名稱 = ")
+print(wine.feature_names)
+
+#wine.data: 有13種特徵，而每個特徵的意義分別為
+['alcohol', 'malic_acid', 'ash', 'alcalinity_of_ash', 'magnesium', 'total_phenols', 'flavanoids', 'nonflavanoid_phenols', 'proanthocyanins', 'color_intensity', 'hue', 'od280/od315_of_diluted_wines', 'proline']
+#winde.target，有三種酒類
+#值：0：代表Barolo酒
+#值：1：代表Grignolino酒
+#值：2：代表Barbera酒
+
+#----------------------------------------
+#（2）資料集分為訓練train與測試test，train拿來學習，test拿來測試與預測
+# 模組：sklearn.model_selection
+# 函數：train_test_split()
+# 範例：train_x,test_x, train_y,test_y = ms.train_test_split(df_x, df_y, test_size=0.33)
+# 先x再y=> x1,x2,  y1,y2 = ms.train_test_split()  
+# 注意：每次的分割split的結果，都不會一樣，會隨機採樣
+#----------------------------------------
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(wine.data, wine.target, test_size=0.2)
+
+#----------------------------------------
+#（3）建立線性迴歸的模型sklearn model方法：（3步驟）
+#3-1.先建立數學模型
+#----------------------------------------
+import sklearn.linear_model as lm
+model = lm.LogisticRegression()
+#----------------------------------------
+#3-2.讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY) 
+#----------------------------------------
+model.fit(train_x, train_y)
+
+#----------------------------------------
+#3-3.讓模型model進行預測
+# 使用test_x進行預測=pred_y
+# 然後比較實際數值test_y, 與pred_y的差異
+# 指令：model.fit(dataframeX, dataframeY) 
+#----------------------------------------
+#注意：sklearn計算的結果變數，型態是n-array陣列，不是dataframe，還要轉換才能印出
+print('3-3.預測pred_y = ')
+pred_y = model.predict(test_x)
+print(pred_y)
+print(test_y.T)
+#結果：發現有2個預測錯誤
+#----------------------------------------
+#（4）定量比較pred_y的預測好壞
+# 3種方法：：R-squared，MSE，殘差圖
+#----------------------------------------
+
+#----------------------------------------
+# 如何評估模型model的好壞：方法1：r2
+# 4-1.使用決定係數(Coefficient of determination，記為R2或r2
+# 決定係數R2或r2: 是一種衡量迴歸模型表現的指標，代表從獨立變數X可以解釋依變數Y變異的比例
+# 決定係數R2或r2: 是指在線性迴歸中，迴歸平方和與總離差平方和之比值，其數值等於相關係數的平方
+# 數值範圍：0～1
+# **如何使用：若r2值越大，就表示模型model越好
+# **計算函數：model.score(df_x, df_y)
+#----------------------------------------
+print()
+print("4-1.學習數據train的決定係數r2 = ")
+print(model.score(train_x, train_y))
+
+print("測試數據test的決定係數r2 = ")
+print(model.score(test_x, test_y))
+
+# r2的值有超過0.95，表示模型預測準確率高
+
+#----------------------------------------
+# 如何評估模型model的好壞：方法2：MAE
+# 4-2.平均絕對誤差(MAE，Mean Absolute Error)
+# MAE: 所有單個觀測值與算術平均值的偏差的絕對值的平均。 
+# MAE: 與平均誤差相比，平均絕對誤差由於離差被絕對值化，不會出現正負相抵消的情況，因而，平均絕對誤差能更好地反映預測值誤差的實際情況
+# **如何使用：若MAE值越小，就表示模型model越好（MAE=0，表示誤差接近於0）
+# **計算函數：model.mean_absolute_error(df_y1, df_y2)
+# 注意：2個輸入的值，都是y值，一個是實際值，一個是預測值
+#----------------------------------------
+print()
+print("4-2.測試數據test的實際值test_y，與預測值pred_y的MAE = ")
+import sklearn.metrics as mt
+print(mt.mean_absolute_error(test_y, pred_y))
+print("平均絕對誤差(MAE)=", mt.mean_absolute_error(test_y, pred_y))
+
+
+#----------------------------------------
+# 如何評估模型model的好壞：方法3：殘差圖
+# 4-3.殘差圖(Residual Plot)
+# 殘差圖: 從視覺化的方法，來看模型的預測能力
+# 殘差: 預測值pred_y，與實際值test_y的差距
+# **如何使用：殘差圖上面的點，越靠近y=0的水平線，就表示模型的預測效果越好
+# **計算函數：model.mean_absolute_error(df_y1, df_y2)
+# **注意：x軸的數據，是sample的個數，不是x變數值
+#----------------------------------------
+print()
+print("4-3.殘差圖(Residual Plot) = ")
+#殘差 = pred_y - test_y
+res_y = pred_y - test_y
+
+#計算 x變數的個數，2種方法：
+num = pred_y.size
+print(num)
+
+#建立1,2,.....36的陣列
+import numpy as np
+numArray = np.arange(num)
+#print(numArray)
+
+#畫圖
+import matplotlib.pyplot as plt
+#殘差 = pred_y - test_y
+#殘差的散佈圖
+plt.scatter(numArray, res_y)
+#畫y=0的水平線
+plt.plot(numArray, numArray*0, color='red')
+plt.show()
+
+#結果：可以發現，有3個預測點，計算錯誤
+

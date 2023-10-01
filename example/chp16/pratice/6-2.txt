@@ -1,0 +1,115 @@
+﻿#範例6-2:使用預測成效報表report的『準確率，精確率，召回率』指標，來評估邏輯斯模型的分類分析效果
+# 題目：預測3種意大利紅酒，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（準確率，精確率，召回率, f-score）
+
+#參考：https://www.books.com.tw/products/0010876198，第12-2章
+
+#重點1：邏輯斯模型的應用性：
+#羅吉斯迴歸現在已經被大量使用，因為它非常有效率，也不需要大量運算資源，所以受到廣泛利用。它很容易解讀，不需要調整輸入特徵，也易於正規化，而且它所提供的輸出結果是經過良好校正的預測機率。
+#應用1：衛生保健：例如預測受傷患者的死亡率。預測糖尿病和心臟病等疾病的發病率。
+#應用2：政治:可用於預測選舉。這些預測是根據年齡、性別、居住地、社會地位、過往投票模式等變數，產生投票結果預測。
+#應用3：產品測試：預測測試中系統或產品的成敗。
+#應用4：行銷：可用於預測客戶詢價轉化為銷售的機率、訂閱開始或終止的機率，甚至是客戶對新產品系列的潛在興趣。
+#應用5：金融業：可預測客戶未來遲繳的可能性，可以看出某位客戶是否會「違約」或「不違約」
+#應用6：電子商務：電子商務公司大量投資於跨媒體廣告和促銷活動，很希望了解哪些活動最有效，以及最可能獲得潛在目標受眾響應的選項。此模型集將客戶分類為「反應者」或「非反應者」，所以此模型稱為「反應傾向模型」。
+
+#重點2：邏輯斯模型的預測數字：
+#結果：0～1
+#判別：0為否，1為是
+
+#重點3：讀取skylearn的dataset，有2種做法：
+'''
+#（1）方法1：
+data, target = ds.load_wine(return_X_y=True)
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(data, target, test_size=0.2)
+
+#（2）方法2：
+wine = ds.load_wine()
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(wine.data, wine.target, test_size=0.2)
+'''
+
+#重點4：建立邏輯斯模型（3步驟）
+#步驟1：先建立數學模型
+# import sklearn.linear_model as lm
+# model = lm.LogisticRegression()
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(train_x, train_y)
+#步驟3：進行預測
+# 預測指令：pred_y = model.predict(test_x)
+#重點5：評估模型績效，方法1：決定係數R2
+# model.score(test_x, test_y)
+# 若r2值越大，就表示模型model越好
+
+#重點5：預測分類的評估報告：4個指標
+#（1）指令：
+# import sklearn.metrics as mt
+# report = mt.classification_report(test_y, pred_y)
+#（2）分析報告的3個參數：
+#（2-1）整體的指標：準確率accuracy：1.0（f1-score) ==> 100%
+# 舉例：全部36筆資料，預測錯誤8筆，正確28筆，準確率accuracy=28/36 = 0.80
+#（2-2）看個別類別的指標：==> 有3種酒品，哪一種的預測最準？ ==> 看精確率precision，召回率recall
+#定義：
+# 你猜對的準確率 ==> 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）
+# 實際該樣品被猜對的準確率 ==> 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）
+#舉例：
+# 實際第0類Barolo酒有14個(test_y)，但模型預測是Barolo酒有15個，只有13個猜對
+# 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）
+# 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）
+#（2-3）看個別類別的指標：==> f-score調和平均參數 ==> 複合2個參數(精確率precision，與召回率recall)
+
+#----------------------------------------
+#資料集檔案：import sklearn.datasets as ds
+#wine = ds.load_wine()
+
+#----------------------------------------
+#（1）讀入葡萄酒品種分類資料集
+#1-1.觀念：葡萄酒品種分類資料集
+#----------------------------------------
+import sklearn.datasets as ds
+wine = ds.load_wine()
+
+#----------------------------------------
+#（2）資料集分為訓練train與測試test，train拿來學習，test拿來測試與預測
+# 模組：sklearn.model_selection
+# 函數：train_test_split()
+#----------------------------------------
+import sklearn.model_selection as ms
+train_x, test_x, train_y, test_y = ms.train_test_split(wine.data, wine.target, test_size=0.33)
+
+#----------------------------------------
+#（3）3步驟建立模型，學習，預測
+#----------------------------------------
+import sklearn.linear_model as lm
+model = lm.LogisticRegression()
+model.fit(train_x, train_y)
+pred_y = model.predict(test_x)
+
+#----------------------------------------
+#（4）印出報表，看3個指標：準確率，精確率，召回率
+#（4-1）指令：
+# import sklearn.metrics as mt
+# report = mt.classification_report(test_y, pred_y)
+#（4-1）整體的指標：準確率accuracy：0.97 ==> 97%
+# 舉例：全部36筆資料，預測錯誤8筆，正確28筆，準確率accuracy=28/36 = 0.80
+#（4-2）看個別類別的指標：==> 有3種酒品，哪一種的預測最準？ ==> 看精確率precision，召回率recall
+# 舉例：實際第0類Barolo酒有14個(test_y)，但模型預測是Barolo酒有15個，只有13個猜對
+# 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）
+# 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）
+# f-score調和平均參數 ==> 複合2個參數(精確率precision，與召回率recall)
+#（4-3）定義：
+# 你猜對的準確率 ==> 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）
+# 實際該樣品被猜對的準確率 ==> 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）
+#----------------------------------------
+import sklearn.metrics as mt
+report = mt.classification_report(test_y, pred_y)
+print(report)
+
+#值：0：代表Barolo酒
+#值：1：代表Grignolino酒
+#值：2：代表Barbera酒
+
+#結果：每次執行的結果不同（隨機）
+
+
+

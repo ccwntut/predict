@@ -1,0 +1,182 @@
+﻿#因為倫理問題，從sklearn 1.2版本開始，不再支援boston資料集
+#若要讀取boston dataset，可以先解除安裝sklearn，然後再安裝sklearn 1.1版本
+#注意：pin uninstall...要寫在獨立的儲存格，否則無法執行
+
+pip uninstall scikit-learn  
+
+
+
+#安裝sklearn 1.1版本
+#注意：pin install...要寫在獨立的儲存格，否則無法執行
+
+pip install scikit-learn==1.1.1 -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+
+#範例5-3:波士頓資料集預測房價，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測（用sylearn模組建立）
+# 題目：請做預測，先學習波士頓資料集，然後看13個變數哪些是影響最大的？
+# Boston housing 波士頓，將資料區分為測試和訓練的資料堆，從訓練的資料中定義特徵變數的欄位作為x，房價欄位作為y，找出x和y之間的關係，並把這個關係用測試的資料做驗證，確認我們找出的房子特徵是否能夠準確預測房價。
+
+#參考：https://www.books.com.tw/products/0010789569，第15-3章
+
+#重點1：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）
+#步驟1：先建立數學模型
+#import sklearn.linear_model as lm
+#model = lm.LinearRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY) 
+# 範例：model.fit(a1, df['營業額'])
+
+#步驟3：進行預測（當店面面積為10坪，與車站距離100公尺，預測請預測單月營業額(萬)=）
+# 預測指令：model.predict(dataframe)
+# 當店面面積為10坪，與車站距離100公尺的dataframe =》 [[66, 164]]
+# 範例：# model.predict([[10,100]]))
+
+#----------------------------------------
+#資料集檔案：import sklearn.datasets as ds
+# df = ds.load_boston().data
+#參考：https://ithelp.ithome.com.tw/articles/10235449
+#參考：https://medium.com/li-ting-liao-tiffany/python-%E5%BF%AB%E9%80%9F%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-boston-housing%E6%B3%A2%E5%A3%AB%E9%A0%93%E6%88%BF%E5%83%B9-9c535fb7ceb7
+
+#----------------------------------------
+#（1）讀入波士頓資料集
+#1-1.觀念：boston波士頓房價資料集，不在seaborn裡面，而在sklearn裡面
+#----------------------------------------
+import sklearn.datasets as ds
+boston = ds.load_boston()
+
+#----------------------------------------
+#1-2.sklearn的資料集，載入後可以看到這個資料集像json格式，可以先看資料集的keys:
+#----------------------------------------
+print('1-2.看boston資料集的keys：', boston.keys())
+
+#----------------------------------------
+#1-3.分析各種keys說明：dict_keys(['data', 'target', 'feature_names', 'DESCR', 'filename', 'data_module'])
+#(A)data：房屋特徵資料（各種變數x1,x2,x3....）
+#(B)target：房價
+#(C)feature_names：特徵名稱
+#(D)DESCR：資料集描述
+#----------------------------------------
+
+#----------------------------------------
+#1-4.看看總共幾筆？資料集的size
+#----------------------------------------
+print("1-4.總共幾筆 = ", boston.data.shape)
+# 506筆，13個欄位
+
+#----------------------------------------
+#1-5.看看各種變數名稱（欄位名稱）
+#----------------------------------------
+print("1-5.各種x變數名稱 = ", boston.feature_names)
+'''
+有13種特徵，而每個特徵的意義分別為
+CRIM :每個城鎮的人均犯罪率 (per capita crime rate by town)
+ZN : 佔地25,000平方英尺以上的住宅區域比例(proportion of residential land zoned for lots over 25,000 sq.ft.)
+INDUS : 每個城鎮非零售業的營業面積比例(proportion of non-retail business acres per town)
+CHAS : 是否靠近河邊(Charles River dummy variable (= 1 if tract bounds river; 0 otherwise))
+NOX : 一氧化氮濃度（ppm)(nitric oxides concentration (parts per 10 million))
+RM : 每個住宅的平均房間數(average number of rooms per dwelling)
+AGE : 1940年前私有住宅的住房比率(proportion of owner-occupied units built prior to 1940)
+DIS : 與五個波士頓工做地區的加權距離(weighted distances to five Boston employment centres)
+RAD : 徑向公路的通達指數(index of accessibility to radial highways)
+TAX : 每10,000美元的所需繳的財產稅(full-value property-tax rate per $10,000)
+PTRATIO : 每個城鎮的師生比例(pupil-teacher ratio by town)
+B : 黑人比例(值為$1000\times(Bk-0.63)^2$)(1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town)
+LSTAT : 中下階級的比率(% lower status of the population)
+'''
+#----------------------------------------
+#1-6.把data資料轉成pandas格式（變數x）
+#----------------------------------------
+import pandas as pd
+df_x = pd.DataFrame(boston.data, columns=boston.feature_names)
+print("1-6.把資料讀入pandas格式 = ", df_x.head(3))
+df_x.head(3)
+
+#----------------------------------------
+#1-7.把target資料讀入pandas格式（房價y）
+#----------------------------------------
+df_y = pd.DataFrame(boston.target, columns=['price'])
+df_y
+
+#----------------------------------------
+#（2）建立線性迴歸的模型sklearn model方法：（3步驟）
+#2-1.先建立數學模型
+#----------------------------------------
+import sklearn.linear_model as lm
+model = lm.LinearRegression()
+
+#----------------------------------------
+#2-2.讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY) 
+#----------------------------------------
+model.fit(df_x, df_y)
+
+#----------------------------------------
+#2-3.觀察13個變數，的影響權重，看誰的權重大
+# y= wx + b
+# 建立df_coef，包括2個欄位：x變數，權重值
+#----------------------------------------
+w13 = model.coef_
+print('13個變數的權重值 =\n ', w13)
+# 新增欄位『x變數』
+df_coef = pd.DataFrame(boston.feature_names, columns=['x變數'])
+
+# 新增欄位『權重值』
+# 注意：w13是水平佈置的矩陣 ==> 要轉置矩陣 ==> w13.T
+df_coef['權重值'] = w13.T
+
+# 印出df_coef
+print()
+print('13個變數名稱，對應13個變數權重值=\n', df_coef)
+
+#發現影響最大的因素有2個：
+# NOX -17.766611
+# RM   3.809865
+
+#----------------------------------------
+#3-1.繪圖：RM每個住宅的平均房間數 vs price房價
+#----------------------------------------
+print()
+print('繪圖，RM每個住宅的平均房間數 vs price房價=\n')
+
+import matplotlib.pyplot as plt
+plt.scatter(x=df_x.RM, y=df_y.price)
+plt.xlabel('RM')
+plt.ylabel('price')
+plt.show()
+#結果：有線性關係，代表RM會明顯影響房價
+
+#----------------------------------------
+#3-2.繪圖：NOX一氧化氮濃度 vs price房價
+#----------------------------------------
+print()
+print('繪圖，NOX一氧化氮濃度 vs price房價=\n')
+import matplotlib.pyplot as plt
+plt.scatter(x=df_x.NOX, y=df_y.price)
+plt.xlabel('NOX')
+plt.ylabel('price')
+plt.show()
+#結果：沒有線性關係，代表NOX不會明顯影響房價
+#疑問：為什麼係數-17，影響係數高，但卻沒有趨勢圖出現呢？
+#原因：這是因為資料沒有見過標準化，所以數值大小不平等
+
+#----------------------------------------
+#4-1.進行預測（用原本的df_x數據，進行預測）
+# 預測指令：model.predict(dataframe)
+#----------------------------------------
+df_y_pred = model.predict(df_x)
+
+#----------------------------------------
+#5-2.繪圖：數據散佈圖（predicted price vs real pric)
+#----------------------------------------
+import matplotlib.pyplot as plt
+plt.scatter(x=df_y, y=df_y_pred)
+plt.xlabel('real price')
+plt.ylabel('predicted price')
+plt.show()
+
+#結果：發現有一些錯誤：
+#錯誤1：在價格50處，預測房價呈現垂直線條
+#找出錯誤區的方法：使用殘差圖outlier來找出異常資料
+

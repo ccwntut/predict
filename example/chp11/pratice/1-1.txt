@@ -1,0 +1,43 @@
+﻿#範例1-1：看2組數據的關聯性（用定量的關聯係數corrcoef來表示）
+# 題目：已經知道這段期間，美元與黃金的關係數據，請美元與黃金數據之間的關聯性大不大?
+
+#參考：https://www.books.com.tw/products/0010876198，第8-0章
+
+#重點1：看2組數據的關聯性，最簡單的方法：
+#方法：使用numpy模組的一個函數：np.corrcoef(x,y)
+#功能：可以看出定量的關聯：
+# 例如1：若兩筆數據的關聯係數: c1 =0 ==> 表示2者無關聯，
+# 例如1：若兩筆數據的關聯係數: c1 =1 ==> 表示2者關聯性大
+# 指令：
+# import numpy as np
+# c1 = np.corrcoef(x, y)
+# （用定量的關聯函數corrcoef()來計算定量關係）
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx")
+print(df.head(3))
+
+#--------------------------------------
+#（2）定性看關聯：視覺化畫圖，散佈圖scatter
+#--------------------------------------
+import matplotlib.pyplot as plt
+df.plot(kind='scatter', x='美元', y='黃金')
+plt.show()
+
+#--------------------------------------
+#（3）定量關聯：兩筆數據的關聯係數corrcoef=0無關聯，corrcoef=1關聯性大）
+#方法：使用numpy模組的corrcoef函數
+#--------------------------------------
+import numpy as np
+print(np.corrcoef(df['美元'], df['黃金']))
+
+#--------------------------------------
+#（4）關聯係數的意義：
+#1美元 = -0.70533216* 黃金
+#-0.70533216美元 = 1黃金
+#--------------------------------------

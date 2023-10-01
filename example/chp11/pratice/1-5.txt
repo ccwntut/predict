@@ -1,0 +1,50 @@
+﻿#範例1-5：線性迴歸模型的預測與視覺化（用numpy建立）
+# 題目：某高中男同學的身高與體重數據，請做預測，當身高=150，160，170，的體重為多少？
+
+#參考：https://www.books.com.tw/products/0010789569，第15-2章
+
+#重點1：建立2組數據的非線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sylearn模組(sci-kit learn)
+
+#重點3：用numpy建立線性迴歸數學模型（3步驟）
+# import numpy as np
+#步驟1：先計算(y=ax+b)多項式的參數(a,b)=> coef
+# 指令：coef = np.polyfit(x, y, 1)
+#步驟2：再建立數學模型=> model = np.poly1d(coef)
+#步驟3：進行預測num => model(num)
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/height-weight.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/height-weight.xlsx", "身高體重")
+df.head(3)
+
+#--------------------------------------
+#（2）建立線性迴歸模型model：（3步驟）
+#--------------------------------------
+#步驟1：先計算(y=ax+b)多項式的參數(a,b)=> coef
+import numpy as np
+coef = np.polyfit(df['身高'], df['體重'], 1)
+#步驟2：再建立數學模型=> model
+model = np.poly1d(coef)
+
+#步驟3：進行預測（當身高=150，160，170，的體重為多少？）
+print('當身高=150，體重=',model(150))
+print('當身高=160，體重=',model(160))
+print('當身高=170，體重=',model(170))
+
+#--------------------------------------
+#（3）繪圖：數據散佈圖 + 迴歸線圖
+#--------------------------------------
+import matplotlib.pyplot as plt
+
+ax1 = df.plot(kind='scatter', x='身高', y='體重')
+df['預測'] = model(df['身高'])
+df.plot(kind='line', x='身高', y ='預測', color='red', ax=ax1)
+plt.show()
+
+

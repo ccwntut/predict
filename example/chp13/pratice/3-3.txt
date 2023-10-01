@@ -1,0 +1,63 @@
+﻿#範例3-3：建立線性迴歸模型來預測（用sklearn建立）
+# 題目：請做預測，當美元=29.75，黃金的價位=？
+
+#參考：https://www.books.com.tw/products/0010876198，第8-1章
+
+#重點1：建立2組數據的非線性迴歸數學模型，有2種方法
+#（1）用numpy模組：最簡單
+#（2）用sylearn模組(sci-kit learn)
+
+#重點3：建立線性迴歸的模型sklearn model方法：（3步驟）
+#步驟1：先建立數學模型
+#第一種方法：
+#import sklearn.linear_model as lm
+#model = lm.LinearRegression()
+#或第二種方法：
+#from sklearn.linear_model import LinearRegression
+#model = LinearRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY)
+# 範例：model.fit(df['美元'].to_frame(), df['黃金'].to_frame())
+# 資料結構：df['美元'] => series
+# 資料結構：df['美元'].to_frame() => dataframe
+
+#步驟3：進行預測（當美元=29.75，黃金的價位=？）
+# 預測指令：model.predict(dataframe)
+# 氣溫=26的dataframe =》 [[29.75]]
+
+#excel檔案：https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx
+
+#--------------------------------------
+#（1）讀入檔案
+#--------------------------------------
+import pandas as pd
+df = pd.read_excel("https://acupun.site/lecture/predict/example/chp1/usd-gold.xlsx", "美元黃金對應")
+print(df.head(3))
+
+#--------------------------------------
+#（2）建立線性迴歸的模型sklearn model方法：（3步驟）
+#--------------------------------------
+#步驟1：先建立數學模型
+import sklearn.linear_model as lm
+model = lm.LinearRegression()
+
+#步驟2：讓模型model學習歷史數據
+# 學習指令：model.fit(dataframeX, dataframeY)
+# 資料結構：df['美元'] => series
+# 資料結構：df['美元'].to_frame() => dataframe
+model.fit(df['美元'].to_frame(), df['黃金'].to_frame())
+
+#步驟3：進行預測（當美元=29.75，黃金的價位=？）
+# 預測指令：model.predict(dataframe)
+# 美元=29.75的dataframe =》 [[29.75]]
+print('當美元=29.75，黃金的價位 = ', model.predict([[29.75]]))
+
+#--------------------------------------
+#（3）繪圖：數據散佈圖 + 迴歸線圖
+#--------------------------------------
+import matplotlib.pyplot as plt
+ax1 = df.plot(kind='scatter', x='美元', y='黃金')
+df['預測'] = model.predict(df['美元'].to_frame())
+df.plot(kind='line', x='美元', y='預測', color='red', ax=ax1)
+plt.show()
