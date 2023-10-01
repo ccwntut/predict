@@ -1,0 +1,3657 @@
+<!DOCTYPE html>
+<html lang=" zh-cmn-Hant">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>陳擎文教學網：python人工智慧在商情預測之應用
+      </title>
+      
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!-- jscript src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script-->
+<!-- jscript src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAp8hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script-->
+<!-- jscript src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script-->
+
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+
+<style>
+BODY
+{
+SCROLLBAR-FACE-COLOR: #CCFFCC; SCROLLBAR-HIGHLIGHT-COLOR: #C8DCFF; SCROLLBAR-SHADOW-COLOR: #434e78; COLOR: #000000; SCROLLBAR-3DLIGHT-COLOR: #C8DCFF; SCROLLBAR-ARROW-COLOR: #cccccc; SCROLLBAR-TRACK-COLOR: #CCFFCC; FONT-STYLE: normal; SCROLLBAR-DARKSHADOW-COLOR: #20253a;font-size: 24px;
+}
+.purple{
+	color:#F09;	
+}
+.darkpurple{
+	color:#909;	
+}
+.red
+{  
+  font-weight: 900;
+  color: red;
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+</style>     
+
+<script>
+  function show01()
+   {
+     var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+     var collapseList = collapseElementList.map(function (collapseEl) 
+     {
+       return new bootstrap.Collapse(collapseEl)
+     })
+   }
+ </script>
+
+  </head>
+
+
+<body style="background-color:rgb(217, 234, 235)">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">教學網站</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+
+                    
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              一般程式類
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="../vb_net/vb_net.htm">vb.net</a></li>
+                <li><a class="dropdown-item" href="../cpp/index.htm"">c++</a></li>
+                <li><a class="dropdown-item" href="../csharp/index.htm"">c#</a></li>
+                <li><a class="dropdown-item" href="../java/java.htm">java</a></li>
+                <li><a class="dropdown-item" href="../python/index.htm">python基礎</a></li>
+                <li><a class="dropdown-item" href="../django/index.htm">python網頁django</a></li>                    
+            </ul>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              手機程式類
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li> <a class="dropdown-item" href="../appinventor/index.htm">appInventor</a></li>
+              <li> <a class="dropdown-item" href="../jquery_phoneGap/jquery_phoneGap.htm">jquery Mobile手機程式</a></li>
+              <li> <a class="dropdown-item" href="../ionic/ionic.htm">ionic＋angularJS</a></li>
+              <li> <a class="dropdown-item" href="../Bootstrap4/">Bootstrap</a></li>                
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              網頁程式類
+              </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li> <a class="dropdown-item" href="../web2010/webFlash.htm">基礎網頁設計</a></li>
+                  <li> <a class="dropdown-item" href="../html5_CSS_javascript/html5_CSS_javascript.htm">html5+CSS+javascrip</a></li>        
+                  <li> <a class="dropdown-item" href="../Bootstrap4/">Bootstrap</a></li>                    
+                  <li> <a class="dropdown-item" href="../aspnet/aspnet.htm">互動網頁程式</a></li>   
+                  <li> <a class="dropdown-item" href="../php/">PHP</a></li> 
+                  <li> <a class="dropdown-item" href="../cmedia/">商用多媒體設計</a></li>   
+                  <li> <a class="dropdown-item" href="../django/index.htm">python網頁django</a></li>          
+                  <li> <a class="dropdown-item" href="../jquery_phoneGap/jquery_phoneGap.htm">jquery Mobile手機程式</a></li>
+                  <li> <a class="dropdown-item" href="../ionic/ionic.htm">ionic＋angularJS</a></li>              
+                  <li> <a class="dropdown-item" href="../digitalArchives/digitalArchives.htm">數位典藏</a></li>
+                </ul>
+          </li> 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              資料庫程式
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li> <a class="dropdown-item" href="../sql/index.htm">SQL資料分析</a></li> 
+              <li> <a class="dropdown-item" href="../database/database.htm">資料庫</a></li>  
+              <li> <a class="dropdown-item" href="../aspnet/aspnet.htm">互動網頁程式</a></li>    
+              <li> <a class="dropdown-item" href="../php/index.htm">PHP</a></li>
+              <li> <a class="dropdown-item" href="../django/index.htm">python網頁django</a></li>
+              <li> <a class="dropdown-item" href="../jquery_phoneGap/jquery_phoneGap.htm">jquery Mobile手機程式</a></li>                  
+              <li> <a class="dropdown-item" href="../digitalArchives/digitalArchives.htm">數位典藏</a></li>
+            </ul>
+          </li> 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              AI人工智慧
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li> <a class="dropdown-item" href="../python/index.htm">python基礎</a></li>
+              <li> <a class="dropdown-item" href="../pandas/index.htm">pandas商業數據程式分析</a></li> 
+              <li> <a class="dropdown-item" href="../sql/index.htm">SQL資料分析</a></li> 
+              <li> <a class="dropdown-item" href="../scipy/">scipy統計數據分析</a></li> 
+              <li> <a class="dropdown-item" href="../predict/">python人工智慧在商情預測之應用</a></li> 
+              <li> <a class="dropdown-item" href="../python_data/index.htm">python網絡大數據分析與爬取</a></li>               
+              <li> <a class="dropdown-item" href="../linearAlgebra/index.htm">python解線性代數</a></li>
+              <li> <a class="dropdown-item" href="../python_math/index.htm">python求解數學：高中大學數學，工程數學，微積分</a></li>  
+              <li> <a class="dropdown-item" href="../AI_Intro/index.htm">人工智慧概論(通識)</a></li>
+              <li> <a class="dropdown-item" href="../ai/index.htm">人工智慧</a></li>
+
+            </ul>
+          </li> 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              遊戲動畫程式
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li> <a class="dropdown-item" href="../unity/">Unity 3D遊戲引擎</a></li>                
+              <li> <a class="dropdown-item" href="../UnityCode/">Unity互動程式模組化設計</a></li> 
+              <li> <a class="dropdown-item" href="../Unity2D/">Unity2D遊戲</a></li> 
+              <li> <a class="dropdown-item" href="../CocosCreator/">Cocos Creator 2D遊戲</a></li>
+              <li> <a class="dropdown-item" href="../appinventor/">手機遊戲：App Inventor</a></li>
+              <li> <a class="dropdown-item" href="../Solar2D/">手機遊戲引擎：Solar2D</a></li>
+              <li> <a class="dropdown-item" href="../book1/book1.htm">3D Flash Script</a></li>
+              <li> <a class="dropdown-item" href="../scratch/">網頁遊戲：Scratch</a></li>
+              <li> <a class="dropdown-item" href="../construct/">網頁遊戲引擎：Construct</a></li>
+            </ul>
+          </li> 
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              其它類
+            </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li> <a class="dropdown-item" href="../busEthics/">企業倫理</a></li> 
+                <li> <a class="dropdown-item" href="../digitalArchives/digitalArchives.htm">數位典藏</a></li>
+                <li> <a class="dropdown-item" href="../multimedia/multimedia.htm">多媒體概論</a></li>
+              </ul>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+
+
+<div class="container" style="margin-top:50px;" id="mainIndex">
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">
+
+            <tr bgcolor="#f0f0f0">
+              <td colspan="6"><div align="right"></div></td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+              <td colspan="6"><div align="center">
+                  <div align="center">陳擎文教學網：python人工智慧在商情預測之應用<br>
+                    <div align="left" class="purple">
+                    1.重要性：是商業數據分析領域的高級篇章(進階)<br>
+                    2.對應工作職缺：資料科學家/Data Scientist<br>
+                    3.使用技術：機器學習，深度學習<br>
+                    4.使用模組：機器學習(numpy, sklearn模組)，深度學習(keras模組)<br>
+                    5.學習次第：<br>
+                    (1).先學數據截取，數據分析，數據視覺化的技術：(pandas模組)<br>
+                    (2).再學迴歸分析的技術：機器學習(numpy，sklearn模組)<br>
+                    (3).再學人工智慧的技術：深度學習(keras模組)<br>
+                    
+                    </div>
+              </div></td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+              <td colspan="6"><div align="left"></div></td>
+            </tr>
+            <tr bgcolor="#f0f0f0">
+              <td colspan="6"><div align="center">
+<div align="left">
+  <p><br/>
+
+    <p class="text-center">
+      <button onclick="show01()" class="btn btn-danger">關閉/打開 全部章節</button>
+    </p>  
+
+  <p><a href="#chp0">資源（Resource）</a></p>
+  <p style="text-indent: 50px;">
+    <a class="text-danger" href="chp0-introduction.pptx" target="_blank" role="button" >
+      chp0.課程簡介
+    </a>
+  </p>
+
+  <p><a class="font-weight-bold" >【一，基礎概念】</a></p>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-1" role="button" aria-expanded="false" aria-controls="collapseExample-1">
+      chp1.數據分析的內容包括哪些？
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-1">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="#chp1-1">範例1-1.前言</a></p>
+      <p style="text-indent: 60px;"><a href="#chp1-2">範例1-2.數據分析3部曲，與對應的工作職缺</a></p>
+      <p style="text-indent: 60px;"><a href="#chp1-3">範例1-3.數據分析常用工具</a></p>
+      <p style="text-indent: 60px;"><a href="#chp1-4">範例1-4.數據相關的證照</a></p>
+      <p style="text-indent: 60px;"><a href="#chp1-5">範例1-5.數據分析的內容是什麼？</a></p>
+      <p style="text-indent: 60px;"><a href="https://www.cerps.org.tw/zh-TW/article/2022-03-07%2009:48:08/220307_030044" target="_blank">範例1-6.商用數據應用師證照：報名網站與相關說明</a></p>
+      <p style="text-indent: 60px;"><a href="https://acupun.site/lecture/predict/certificate/%E5%95%86%E7%94%A8%E6%95%B8%E6%93%9A%E6%87%89%E7%94%A8%E5%B8%AB_%E7%84%A1%E6%A8%A1%E7%B5%84_%E4%B8%AD%E8%8F%AF%E4%BC%81%E6%A5%AD%E8%B3%87%E6%BA%90%E8%A6%8F%E5%8A%83%E5%AD%B8%E6%9C%83%20(%E5%BE%9E%E4%B8%AD%E7%B4%84%E6%8A%BD70%E9%A1%8C)_.pdf" target="_blank">範例1-7.商用數據應用師證照：題庫100題(單選題，每題1分，70分及格)</a></p>
+      <p style="text-indent: 60px;"><a href="https://www.opentech.com.tw/#/bookInfo?ISBN=9786263282872" target="_blank">範例1-8.商用數據應用師證照：指定用書</a></p>
+    
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-2" role="button" aria-expanded="false" aria-controls="collapseExample-2">
+      chp2.數據處理基礎練習，及數據的3種格式：DataFrame，array矩陣，list串列數組
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-2">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1hINweDxrIoF7pqZBS-Nh6NGUAzQ-Z5Hh?usp=sharing" target="_blank">範例2-1.讀取excel/csv資料表</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1z-xEY31VlPGO7iXS30Cn9kboSN4LodrU?usp=sharing" target="_blank">範例2-2.讀取數據後畫圖，來觀察可以行銷的點</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1cRg8Zvk5kv7w4Ow55Os3QiLimqk00GPf?usp=sharing" target="_blank">範例2-3.條件查詢你要的資料</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1DPu47MrVjPAwzlS7-ZFGHn-FnenK9z7F?usp=sharing" target="_blank">範例2-4.刪除一個欄位，刪除一列，df.drop(欄位,axis="columns",inplace=True)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1LQrG3BgxTMcxyjG_bjcbrKcbKPWa4PGL?usp=sharing" target="_blank">範例2-5.新增一個欄位，新增一列(1筆學生)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1BcGnXnN4Q1F-Ni-zvF9DzIKKMXemHDpS?usp=sharing" target="_blank">範例2-6.自行建立dataFrame（以欄位角度建立df，以串列list建立df，以矩陣array建立df）</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1FKbAzUJgtTvihfzxiTCG8TjbBet8_2Aj?usp=sharing" target="_blank">範例2-7.三種定點取值法：欄位取值，列取值（df[欄位]，df.iloc[]，df.loc[]）</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1VFr-XronUpzAG0MzO8KhfLH8wCDcJwIZ?usp=sharing" target="_blank">範例2-8.三種視覺化畫圖方式(pandas，matplotlib，seaborn)</a></p>
+
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ku2XMHttynWPJT1yZb0f3sKnFiyX3_xj?usp=sharing" target="_blank">範例2-9.三種資料格式（DataFrame，array矩陣，list串列數組）</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/11jpIHPBjw3Ava2MUslGKudIZQh7m_y61?usp=sharing" target="_blank">範例2-10.資料的取代replace</a></p>
+
+
+    </div>
+  </div>
+
+  
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-3" role="button" aria-expanded="false" aria-controls="collapseExample-3">
+      chp3.人工智慧的基礎與數學理論      
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-3">
+    <div class="card card-body">
+ 
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-5" role="button" aria-expanded="false" aria-controls="collapseExample-5">
+      chp5.ptyhon人工智慧『簡易3步驟』程式寫法(簡易基礎13題)      
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-5">
+    <div class="card card-body">
+      【二，機器學習，Machine Learning】<br>
+      【二.一，監督式學習：Supervised learning】<br>
+      【二.一.一，迴歸預測：Regression Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1TfxQP11jaBGWEA4NeCezxlMImRwlHWLk?usp=sharing" target="_blank">範例5-1.用sklearn模組，『簡易3步驟』建立『線性迴歸模型』來預測『美元-黃金關係』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1mxJsc-Ri-tkjutLeiDtq5p3gvOdAKxHq?usp=sharing" target="_blank">範例5-2.用『numpy模組』，『簡易3步驟』建立『線性迴歸』模型來預測『美元-黃金關係』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1pfZuTZabja4utzAWgF8HRVBgssXK1GCU?usp=sharing" target="_blank">範例5-13.用『sklearn模組』，『5步驟』建立『非線性迴歸多項式』模型來預測『美元-黃金關係』</a></p>
+      【二.一.二，分類預測：Classification Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r2uThw9psGFXMBuh6zBItwIkTVnZSr-F?usp=sharing" target="_blank">範例5-3.用sklearn模組，『簡易3步驟』建立『KNN，K鄰近』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1qOL9qTQZR-nEqMiXJ2cH1xuzYunvxy9u?usp=sharing" target="_blank">範例5-4.用sklearn模組，『簡易3步驟』建立『邏輯迴歸』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1mqvr_AEj409bk41_uB7lRi-d2GhNgNaB?usp=sharing" target="_blank">範例5-5.用sklearn模組，『簡易3步驟』建立『決策樹tree』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1_G4TamfU2tHnoF-48j-ec_3SSrlNsnNA?usp=sharing" target="_blank">範例5-6.用sklearn模組，『簡易3步驟』建立『隨機森林法』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1LSnLEgK3wNzq3xoBzogzSh5GmfNpSlyg?usp=sharing" target="_blank">範例5-7.用sklearn模組，『簡易3步驟』建立『支持向量機算法SVM』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <br>
+      【二.二，非監督式學習：Un-Supervised learning】<br>
+      【二.二.一，集群分析，分群分析：clustering】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1XJZZSWFGZqHUbrAU6PvGnTex1eVQWxu9?usp=sharing" target="_blank">範例5-8.用sklearn模組，『簡易3步驟』建立『K-means分群』模型來把『動物園的動物數據自動分群』</a></p>
+      【二.二.二，降維簡化：dimension reductoin】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aFa3pq9dGMBqbOM152kbVOq0e0DzNB9R?usp=sharing" target="_blank">範例5-9.用sklearn模組，『簡易3步驟』建立『主成份分析PCA』降維模型，來把『二維數據』壓縮降維成『一維數據』</a></p>
+
+      <br>
+      【三，深度學習，Deep Learning】<br>
+      【三.一，迴歸預測：Regression Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1Ui1YvG126w2F_UcR8827iAxopbdmRem4?usp=sharing" target="_blank">範例5-10.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『一顆神經元』『線性迴歸模型』，輸入x值，預測y</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/13yGjsxcpOgIy_3xykZcAVrOv5Izitz7h?usp=sharing" target="_blank">範例5-11.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『多顆神經元』『非線性迴歸模型』，輸入x值，預測y</a></p>
+      【三.二，分類預測：Classification Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1rNX1p2RkY4tJ3Uu4bfSMfc87I8hZyDos?usp=sharing" target="_blank">範例5-12.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『多顆神經元』『非線性分類模型』，由『面紙的耐酸度，強度』來預測『客戶評估面紙的好壞』</a></p>
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-6" role="button" aria-expanded="false" aria-controls="collapseExample-6">
+      chp6.ptyhon人工智慧『入門6步驟』程式寫法(入門13題，加上:評估model好壞，驗證overfitting，關聯度)      
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-6">
+    <div class="card card-body">
+      【二，機器學習，Machine Learning】<br>
+      【二.一，監督式學習：Supervised learning】<br>
+      【二.一.一，迴歸預測：Regression Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1K079iz6-ujDcMYPpKJ8HXvm85RMFuL99?usp=sharing" target="_blank">範例6-1.用sklearn模組，『入門5步驟』建立『線性迴歸模型』來預測『美元-黃金關係』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/11Hl_6o4wkmbwTY_ko6QiN0ptFfLoC6h5?usp=sharing" target="_blank">範例6-2.用『numpy模組』，『入門5步驟』建立『線性迴歸』模型來預測『美元-黃金關係』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1pfZuTZabja4utzAWgF8HRVBgssXK1GCU?usp=sharing" target="_blank">範例6-13.用『sklearn模組』，『入門5步驟』建立『非線性迴歸多項式』模型來預測『美元-黃金關係』</a></p>
+      【二.一.二，分類預測：Classification Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1hGTHsXGjoTyqiUKqOZ9P02Ul6cbzX5Kt?usp=sharing" target="_blank">範例6-3.用sklearn模組，『入門5步驟』建立『KNN，K鄰近』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ji4EnaNoHCgXxkRw4GFhUcuWcubCETHk?usp=sharing" target="_blank">範例6-4.用sklearn模組，『入門5步驟』建立『邏輯迴歸』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1YeQY9Gk6PrsJK2tvixTgFEVFUxodMcbc?usp=sharing" target="_blank">範例6-5.用sklearn模組，『入門6步驟』建立『決策樹tree』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1RTQ_7z6fMQ3XCfeXUodo_LKAUjAPyUEm?usp=sharing" target="_blank">範例6-6.用sklearn模組，『入門6步驟』建立『隨機森林法』模型來預測『屬於鳶尾花朵的品種』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1sxRF-DyCPIvvn4an9Y15xQuxWZC2vtIG?usp=sharing" target="_blank">範例6-7.用sklearn模組，『入門6步驟』建立『支持向量機算法SVM』模型來預測『鐵達尼號乘客是否生存』</a></p>
+      <br>
+      【二.二，非監督式學習：Un-Supervised learning】<br>
+      【二.二.一，集群分析，分群分析：clustering（K-means）】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/12pAoOvTgf5D4yN_u64PljHdUX7HvYbTH?usp=sharing" target="_blank">範例6-8.用sklearn模組，『入門7步驟』建立『K-means分群』模型來把『動物園的動物數據自動分群』</a></p>
+
+      【二.二.二，降維簡化：dimension reductoin】<br>
+      <p style="text-indent: 60px;"><a href=https://colab.research.google.com/drive/1VJb7A5HKSGrCrRhx729mqHiUzs1Ii6cr?usp=sharing" target="_blank">範例6-9.用sklearn模組，『簡易3步驟』建立『主成份分析PCA』降維模型，來把『影響紅酒的13種特種參數』簡化降維</a></p>
+      <br>
+      【三，深度學習，Deep Learning】<br>
+      【三.一，迴歸預測：Regression Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1GHufVi5o5kL0mtWPMVSHNug7obZuNKeW?usp=sharing" target="_blank">範例6-10.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『一顆神經元』『線性迴歸模型』，輸入x值，預測y</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1BYXVPct_UvAOVzUt6ivWMw83A0qHXKrH?usp=sharing" target="_blank">範例6-11.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『多顆神經元』『非線性迴歸模型』，輸入x值，預測y</a></p>
+      【三.二，分類預測：Classification Prediction】<br>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1CApMuuWDDj5dvhbhgZFphUA4gSEy9VH4?usp=sharing" target="_blank">範例6-12.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『多顆神經元』『非線性分類模型』，預測患者是否患有糖尿病</a></p>
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-7" role="button" aria-expanded="false" aria-controls="collapseExample-7">
+      chp7.資料集的視覺化(3種方法)
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-7">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1OA5RY5QL8lt0FlAxcGM3tfnhP0BKew8I?usp=sharing" target="_blank">範例7-1.用seaborn模組顯示『鳶尾花資料集』的各種特徵值之豪華視覺化</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1jBfq2A3tcGjLTjqW_Zv72M5eStciQmFY?usp=sharing" target="_blank">範例7-2.用pandas/matplotlib模組顯示『鳶尾花資料集』的單純x-y圖形視覺化</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1tin1NkVeV6G0owFqjUML0UvR-EhJa_mc?usp=sharing" target="_blank">範例7-3.用seaborn模組顯示『糖尿病資料集』的各種特徵值圖形視覺化</a></p>
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-8" role="button" aria-expanded="false" aria-controls="collapseExample-8">
+      chp8.解決問題1：輸入變數刻度差距很大，造成計算誤差與準確率低➜資料要先預處理<br>
+      改善方法：標準化(Standardization)➜特徵縮放scaler
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-8">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1RNuXbqN7iI9sRPskplAmqV7EViAYIdJV?usp=sharing" target="_blank">範例8-1.用標準化類別函數StandardScaler()，把『波士頓房價資料集』先標準化處理，再用『sklearn線性迴歸模型』預測趨勢線</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ralHtqYK58TZ2S8KmZtoGQOStjshmO3l?usp=sharing" target="_blank">範例8-2.用標準化類別函數StandardScaler()，把『客戶關係管理的客戶價值度RFM資料集』先標準化處理，再用『sklearn邏輯迴歸模型』預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1bPgIk_TQ762FvdQqTAjs3rdTgENnakTv?usp=sharing" target="_blank">範例8-3.用標準化類別函數StandardScaler()，把『客戶關係管理的客戶價值度RFM資料集』先標準化處理，再用『keras類神經網絡模型』預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1WhvTGxZmIJoMZlZWe1xiAvtX7-CVjbp5?usp=sharing" target="_blank">範例8-4.用標準化類別函數StandardScaler()，把『波士頓房價資料集』先標準化處理，再用『keras類神經網絡模型』預測趨勢線</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1iD8UnR6PB1j1YDriC0tREugSRSV1I-oN?usp=sharing" target="_blank">範例8-5.model.fit使用validation_data同時來做train與test迭代數據計算loss_train,loss_test，評估是否overfitting，處理『客戶價值度RFM資料集』並用『keras類神經網絡模型』預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1Z4a0-sAXzfSiczDVL7swf5THU7UH_lTH?usp=sharing" target="_blank">範例8-6.model.fit使用validation_data同時來做train與test迭代數據計算loss_train,loss_test，評估是否overfitting，處理『波士頓房價資料集』並用『keras類神經網絡模型』預測趨勢線</a></p>
+
+    </div>
+  </div>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-9" role="button" aria-expanded="false" aria-controls="collapseExample-9">
+      chp9.解決問題2：數據要經過多種預處理，還有各種model的運算，造成繁雜易出錯，而且測試或預測時該用什麼型態/格式的數據，都容易搞錯<br>
+      改善方法：用管道器封裝中間的全部流程：(x➜【管道器pipeline】➜y)
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-9">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/145m2gSmpTvFnKVAlUzM6lQv5usYB20Zo?usp=sharing" target="_blank">範例9-1.用『管道器pipeline』封裝『sklearn線性迴歸模型』，處理『波士頓房價資料集』並預測趨勢線</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aKXkykqRZF8bkgeK6e-2UsKlLJ3n_1Mg?usp=sharing" target="_blank">範例9-2.用『管道器pipeline』封裝『sklearn的KNN，邏輯迴歸模型』，處理『鳶尾花資料集』並預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1rSEfhL74ieSOxXxSHJ97WIdDb1-tVERK?usp=sharing" target="_blank">範例9-3.用『管道器pipeline』封裝『keras類神經網絡模型』，處理『客戶關係管理的客戶價值度RFM資料』並預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1OLCBCaAQwSbPiY8nhZcyvgPoUHepDM2G?usp=sharing" target="_blank">範例9-4.用『管道器pipeline』封裝『keras類神經網絡模型』，處理『波士頓房價資料集』並預測趨勢線</a></p>
+    </div>
+  </div>
+
+
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-10" role="button" aria-expanded="false" aria-controls="collapseExample-10">
+      chp10.解決問題3：有些欄位是類別格式object(無順序，且非二元)，是不能夠直接轉成數值0,1,2的，例如：部門欄位(業務，人事，工程)<br>
+      改善方法：轉成獨熱編碼OneHotEncoder，變成獨立的多個向量欄位(1,0,0),(0,1,0)
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-10">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1I1xhxbD-_UkGsVl8g2EE7J_GN1aUi710?usp=sharing" target="_blank">範例10-1.用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並用『sklearn的SVC支持向量機模型』來預測存亡</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aa7rLpIki0qXuCahhy-neLIgSgPfNlEd?usp=sharing" target="_blank">範例10-2.用『管道器pipeline』封裝『sklearn的SVC支持向量機模型』，並用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1kcwKF1zuJvYUWw6hqV5WOdujRU2VUdiV?usp=sharing" target="_blank">範例10-3.用『管道器pipeline』封裝『sklearn的4種模型』，處理『由症狀用藥資料集』並預測用藥</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r7Zg4uoDZp9Wxdgv9lW6nJwNTmAwyJJe?usp=sharing" target="_blank">範例10-4.用『管道器pipeline』封裝『sklearn的5種模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1V3OMPkaccYJqmxXDD5Ys5KKRca4MwbOw?usp=sharing" target="_blank">範例10-5.用『管道器pipeline』封裝『sklearn的5種模型』，處理『IBM電信的客戶流失率資料集』並預測A客戶是否會流失</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1a0ik0XQDONem_kfd_OhMktlXHlIJlZVf?usp=sharing" target="_blank">範例10-6.用『管道器pipeline』封裝『sklearn的5種模型』，處理『歐洲信用卡公司盜刷資料集』並預測A客戶是否會盜刷</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1HvssRE1T9VngsVdLD3Xt5Z7Kjx8mU1Ny?usp=sharing" target="_blank">範例10-7.用『管道器pipeline』封裝『sklearn裡面的類神經函數+5種機器模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+    </div>
+  </div>  
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-31" role="button" aria-expanded="false" aria-controls="collapseExample-31">
+      chp31.解決問題4：有些欄位有缺值，如何還能夠用管道器pipeline自動串流<br>
+      改善方法：使用SimpleImputer轉換器
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-31">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1y9x8n0ch0V3OKVfwOnsuVbjkIgYIrM2t?usp=sharing" target="_blank">範例31-1.用『管道器pipeline』封裝『sklearn的5種模型』，用『SimpleImputer轉換器』處理缺值，並預測『鐵達尼號資料集』存亡</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r5AFzRT9H-UNAcmDOAlXwaimJmJtLoTi?usp=sharing" target="_blank">範例31-2.用『管道器pipeline』封裝『sklearn裡面的類神經函數+5種機器模型』，用『SimpleImputer轉換器』處理缺值，並預測『員工是否離職資料集』分類</a></p>
+    </div>
+  </div>  
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-32" role="button" aria-expanded="false" aria-controls="collapseExample-32">
+      chp32.解決問題5：特徵欄位太多，如何挑出影響力最重要的10個拿來學習，減少無關的雜訊干擾，提高準確率<br>
+      解決方法：8種特徵選取feature selection方法<br>
+      4種方法可以：列表顯示較重要的特徵importance指數排行<br>
+      4種方法可以：挑出n個較重要特徵欄位<br>
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-32">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1rb6A-d-Naf8Ymqh1ammMz57so_5iRV7I?usp=sharing" target="_blank">範例32-1.練習『8種特徵選取』的方法，找出『由症狀預測用藥資料集』最重要的5個特徵值</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1m8LE0qLPlIOF-7SnVmiabsvUjOKuH6Mq?usp=sharing" target="_blank">範例31-2.(全部數值欄位)特徵選取FeatureSelection，列表排序importance，4種最常用方法(鳶尾花iris)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/19frwtM344bR0GraSY4c5p7SySUNI9Tju?usp=sharing" target="_blank">範例31-3.(全部數值欄位)特徵選取FeatureSelection，挑出n個較重要特徵欄位，3種最常用方法(糖尿病資料集)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1YyvM2GA1Ihfenzkv2p-2uXBo94xIq9ci?usp=sharing" target="_blank">範例31-4.(有文字類別欄位)是複雜處理方式：用管道線data_pl(OneHotEncoder)處理類別欄位，用決策樹模型列表排序importance(鐵達尼有缺值資料集)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1KTKOpyHkiC6a8g1tvyDgW1C_CaPx1Ttb?usp=sharing" target="_blank">範例31-5.(有文字類別欄位)的較簡單處理方式：用LabelEncdoer處理類別欄位(不用pipeline)，用決策樹模型列表排序importance(鐵達尼有缺值資料集)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1I8mKLgvhGkPOeYtfg3LlM_d8Po9-yz2L?usp=sharing" target="_blank">範例31-6.(有文字類別欄位)的較簡單處理方式：用LabelEncdoer處理類別欄位(不用pipeline)，用決策樹模型列表排序importance(汽車價格預測沒有缺值資料集)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1Tp8mQvwLmksMfVRlFqFEu6Utkz-N6u1R?usp=sharing" target="_blank">範例31-7.(有文字類別欄位)的較簡單處理方式：用LabelEncdoer處理類別欄位(不用pipeline)，用『chi2卡方檢定，任意模型算permutation_importance』列表排序(汽車價格預測沒有缺值資料集)</a></p>
+
+    </div>
+  </div>  
+
+  <br>
+  <hr>
+  <p><a class="font-weight-bold" >【二，機器學習，Machine Learning】</a></p>
+  <hr>
+  <p><a class="font-weight-bold" >【二.一，監督式學習：Supervised learning】</a></p>
+  <p><a class="font-weight-bold" >【二.一.一，迴歸預測：Regression Analysis Prediction】</a></p>
+
+  <p><a class="font-weight-bold">【用numpy模組做數據預測】</a></p>
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-11" role="button" aria-expanded="false" aria-controls="collapseExample-11">
+      chp11.numpy建立線性迴歸模型
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-11">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="#chp11-1">範例11-1.看2組數據的關聯性：用定量的關聯係數corrcoef來表示(看美元與黃金的關聯係數)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp11-2">範例11-2.用numpy建立線性迴歸模型，建立2組數據的數學model(當美元=29.75，預測黃金價位)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp11-3">範例11-3.線性迴歸模型的視覺化(當美元=29.75，預測黃金價位)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp11-4">範例11-4.線性迴歸模型的預測與視覺化(當氣溫=26度，預測營業額)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp11-5">範例11-5.線性迴歸模型的預測與視覺化(當身高=150，預測體重)</a></p>
+    </div>
+  </div>
+
+
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-12" role="button" aria-expanded="false" aria-controls="collapseExample-12">
+      chp12.numpy建立非線性迴歸模型來預測
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-12">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="#chp12-1">範例12-1.numpy建立非線性迴歸模型來預測(當美元=29.75，預測黃金價位)</a></p>
+    </div>
+  </div>
+
+
+  <p><a class="font-weight-bold">【用sklearn模組做數據預測】</a></p>
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-13" role="button" aria-expanded="false" aria-controls="collapseExample-13">
+      chp13.sklearn建立線性迴歸模型
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-13">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="#chp13-1">範例13-1：線性迴歸模型的預測與視覺化(當氣溫=26度，預測營業額)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp13-2">範例13-2：線性迴歸模型的預測與視覺化(當身高=150，預測體重)</a></p>
+      <p style="text-indent: 60px;"><a href="#chp13-3">範例13-3：線性迴歸模型的預測與視覺化(當美元=29.75，預測黃金價位)</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1RNuXbqN7iI9sRPskplAmqV7EViAYIdJV?usp=sharing" target="_blank">範例8-1.用標準化類別函數StandardScaler()，把『波士頓房價資料集』先標準化處理，再用『sklearn線性迴歸模型』預測趨勢線</a></p>
+
+    </div>
+  </div>
+
+
+<p style="text-indent: 50px;">
+  <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-14" role="button" aria-expanded="false" aria-controls="collapseExample-14">
+    chp14.sklearn建立非線性迴歸模型來預測（複雜）
+  </a>
+</p>
+<div class="collapse" id="collapseExample-14">
+  <div class="card card-body">
+    <p style="text-indent: 60px;"><a href="#chp14-1">範例14-1.sklearn建立非線性迴歸模型來預測(當美元=29.75，預測黃金價位)</a></p>
+
+  </div>
+</div>
+
+
+<p style="text-indent: 50px;">
+  <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-15" role="button" aria-expanded="false" aria-controls="collapseExample-15">
+    chp15.sklearn建立多元線性迴歸模型y=f(x1,x2,x3...)來預測（複雜）
+  </a>
+</p>
+<div class="collapse" id="collapseExample-15">
+  <div class="card card-body">
+    <p style="text-indent: 60px;"><a href="#chp15-1">範例15-1:由腰圍身高預測體重，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-2">範例15-2:由店面面積與距車站距離預測月營業額，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-3">範例15-3:以『dataframe』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-4">範例15-4:以『array矩陣』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-5">範例15-5:以『list串列數組』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）</a></p>
+    
+    <p style="text-indent: 60px;"><a href="#chp15-6">範例15-6:先學習波士頓資料集，然後看13個變數哪些是影響最大的(但要先標準化/正規化後的評估權重才有意義)</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-7">範例15-7:資料集分為訓練train與測試test，train拿來學習，test拿來測試與預測（波士頓資料集預測房價）</a></p>
+    <p style="text-indent: 60px;"><a href="#chp15-8">範例15-8:如何定量評估預測值的好壞？有3種定量方法：MSE，R-squared，殘差圖（波士頓資料集預測房價）</a></p>
+    <!--p style="text-indent: 60px;"><a href="#chp15-7">範例15-7:如何定量評估預測值的好壞？有3種定量方法：MSE，R-squared，殘差圖（波士頓資料集預測房價）</a></p-->
+    <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/145m2gSmpTvFnKVAlUzM6lQv5usYB20Zo?usp=sharing" target="_blank">範例9-1.用『管道器pipeline』封裝『sklearn線性迴歸模型』，處理『波士頓房價資料集』並預測趨勢線</a></p>
+
+  </div>
+</div>
+
+
+
+  <p><a class="font-weight-bold" >【二.一.二，分類預測：Classification Prediction】</a></p>
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-16" role="button" aria-expanded="false" aria-controls="collapseExample-16">
+      chp16.建立邏輯斯模型(logistic regression model)來預測二元分類問題
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-16">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="#chp16-1">範例16-1:用邏輯斯模型(logistic regression model，羅吉斯)預測分類，預測3種意大利紅酒</a></p>
+      <p style="text-indent: 60px;"><a href="#chp16-2">範例16-2:用邏輯斯模型(logistic regression model，羅吉斯)預測分類，預測3種意大利紅酒</a></p>    
+      <p style="text-indent: 60px;"><a href="#chp16-3">範例16-3:使用預測成效報表report的『準確率，精確率，召回率』指標，來評估邏輯斯模型的分類分析效果</a></p>
+      <p style="text-indent: 60px;"><a href="#chp16-4">範例16-4：改善預測的準確率的第1種方法：增加迭代次數</a></p>
+      <p style="text-indent: 60px;"><a href="#chp16-5">範例16-5：改善預測的準確率的第2種方法：將資料標準化standardization</a></p>    
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ralHtqYK58TZ2S8KmZtoGQOStjshmO3l?usp=sharing" target="_blank">範例8-2.用標準化類別函數StandardScaler()，把『客戶關係管理的客戶價值度RFM資料集』先標準化處理，再用『sklearn邏輯迴歸模型』預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aKXkykqRZF8bkgeK6e-2UsKlLJ3n_1Mg?usp=sharing" target="_blank">範例9-2.用『管道器pipeline』封裝『sklearn的KNN，邏輯迴歸模型』，處理『鳶尾花資料集』並預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1kcwKF1zuJvYUWw6hqV5WOdujRU2VUdiV?usp=sharing" target="_blank">範例10-3.用『管道器pipeline』封裝『sklearn的4種模型』，處理『由症狀用藥資料集』並預測用藥</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r7Zg4uoDZp9Wxdgv9lW6nJwNTmAwyJJe?usp=sharing" target="_blank">範例10-4.用『管道器pipeline』封裝『sklearn的5種模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1V3OMPkaccYJqmxXDD5Ys5KKRca4MwbOw?usp=sharing" target="_blank">範例10-5.用『管道器pipeline』封裝『sklearn的5種模型』，處理『IBM電信的客戶流失率資料集』並預測A客戶是否會流失</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1a0ik0XQDONem_kfd_OhMktlXHlIJlZVf?usp=sharing" target="_blank">範例10-6.用『管道器pipeline』封裝『sklearn的5種模型』，處理『歐洲信用卡公司盜刷資料集』並預測A客戶是否會盜刷</a></p>
+    </div>
+  </div>
+
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-17" role="button" aria-expanded="false" aria-controls="collapseExample-17">
+      chp17.建立『KNN，K鄰近，K Nearest Neighbor』模型來預測分類問題
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-17">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r2uThw9psGFXMBuh6zBItwIkTVnZSr-F?usp=sharing" target="_blank">範例17-1.用sklearn模組，『簡易3步驟』建立『KNN，K鄰近』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>     
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1hGTHsXGjoTyqiUKqOZ9P02Ul6cbzX5Kt?usp=sharing" target="_blank">範例6-3.用sklearn模組，『入門5步驟』建立『KNN，K鄰近』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1kcwKF1zuJvYUWw6hqV5WOdujRU2VUdiV?usp=sharing" target="_blank">範例10-3.用『管道器pipeline』封裝『sklearn的4種模型』，處理『由症狀用藥資料集』並預測用藥</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r7Zg4uoDZp9Wxdgv9lW6nJwNTmAwyJJe?usp=sharing" target="_blank">範例10-4.用『管道器pipeline』封裝『sklearn的5種模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1V3OMPkaccYJqmxXDD5Ys5KKRca4MwbOw?usp=sharing" target="_blank">範例10-5.用『管道器pipeline』封裝『sklearn的5種模型』，處理『IBM電信的客戶流失率資料集』並預測A客戶是否會流失</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1a0ik0XQDONem_kfd_OhMktlXHlIJlZVf?usp=sharing" target="_blank">範例10-6.用『管道器pipeline』封裝『sklearn的5種模型』，處理『歐洲信用卡公司盜刷資料集』並預測A客戶是否會盜刷</a></p>
+    </div>
+  </div>
+
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-18" role="button" aria-expanded="false" aria-controls="collapseExample-18">
+      chp18.建立『決策樹，Decision Tree』模型來預測分類問題
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-18">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1mqvr_AEj409bk41_uB7lRi-d2GhNgNaB?usp=sharing" target="_blank">範例5-5.用sklearn模組，『簡易3步驟』建立『決策樹tree』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1YeQY9Gk6PrsJK2tvixTgFEVFUxodMcbc?usp=sharing" target="_blank">範例6-5.用sklearn模組，『入門6步驟』建立『決策樹tree』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1kcwKF1zuJvYUWw6hqV5WOdujRU2VUdiV?usp=sharing" target="_blank">範例10-3.用『管道器pipeline』封裝『sklearn的4種模型』，處理『由症狀用藥資料集』並預測用藥</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r7Zg4uoDZp9Wxdgv9lW6nJwNTmAwyJJe?usp=sharing" target="_blank">範例10-4.用『管道器pipeline』封裝『sklearn的5種模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1V3OMPkaccYJqmxXDD5Ys5KKRca4MwbOw?usp=sharing" target="_blank">範例10-5.用『管道器pipeline』封裝『sklearn的5種模型』，處理『IBM電信的客戶流失率資料集』並預測A客戶是否會流失</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1a0ik0XQDONem_kfd_OhMktlXHlIJlZVf?usp=sharing" target="_blank">範例10-6.用『管道器pipeline』封裝『sklearn的5種模型』，處理『歐洲信用卡公司盜刷資料集』並預測A客戶是否會盜刷</a></p>
+    </div>
+  </div>
+  
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-19" role="button" aria-expanded="false" aria-controls="collapseExample-19">
+      chp19.建立『隨機森林，Random Forest』模型來預測分類問題
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-19">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1_G4TamfU2tHnoF-48j-ec_3SSrlNsnNA?usp=sharing" target="_blank">範例19-1.用sklearn模組，『簡易3步驟』建立『隨機森林法』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1RTQ_7z6fMQ3XCfeXUodo_LKAUjAPyUEm?usp=sharing" target="_blank">範例6-6.用sklearn模組，『入門6步驟』建立『隨機森林法』模型來預測『屬於鳶尾花朵的品種』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1kcwKF1zuJvYUWw6hqV5WOdujRU2VUdiV?usp=sharing" target="_blank">範例10-3.用『管道器pipeline』封裝『sklearn的4種模型』，處理『由症狀用藥資料集』並預測用藥</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1r7Zg4uoDZp9Wxdgv9lW6nJwNTmAwyJJe?usp=sharing" target="_blank">範例10-4.用『管道器pipeline』封裝『sklearn的5種模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1V3OMPkaccYJqmxXDD5Ys5KKRca4MwbOw?usp=sharing" target="_blank">範例10-5.用『管道器pipeline』封裝『sklearn的5種模型』，處理『IBM電信的客戶流失率資料集』並預測A客戶是否會流失</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1a0ik0XQDONem_kfd_OhMktlXHlIJlZVf?usp=sharing" target="_blank">範例10-6.用『管道器pipeline』封裝『sklearn的5種模型』，處理『歐洲信用卡公司盜刷資料集』並預測A客戶是否會盜刷</a></p>
+    </div>
+  </div>
+
+    
+
+  <p style="text-indent: 50px;">
+    <a class="text-danger" data-bs-toggle="collapse" href="#collapseExample-20" role="button" aria-expanded="false" aria-controls="collapseExample-20">
+      chp20.建立『支持向量機算法，SVM，Support Vector Machine』模型來預測分類問題
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample-20">
+    <div class="card card-body">
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1LSnLEgK3wNzq3xoBzogzSh5GmfNpSlyg?usp=sharing" target="_blank">範例20-1.用sklearn模組，『簡易3步驟』建立『支持向量機算法SVM)』模型來預測『客戶關係管理裡面的客戶價值度』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1sxRF-DyCPIvvn4an9Y15xQuxWZC2vtIG?usp=sharing" target="_blank">範例6-7.用sklearn模組，『入門6步驟』建立『支持向量機算法SVM』模型來預測『鐵達尼號乘客是否生存』</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1I1xhxbD-_UkGsVl8g2EE7J_GN1aUi710?usp=sharing" target="_blank">範例10-1.用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並用『sklearn的SVC支持向量機模型』來預測存亡</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aa7rLpIki0qXuCahhy-neLIgSgPfNlEd?usp=sharing" target="_blank">範例10-2.用『管道器pipeline』封裝『sklearn的SVC支持向量機模型』，並用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並預測分類</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1I1xhxbD-_UkGsVl8g2EE7J_GN1aUi710?usp=sharing" target="_blank">範例10-1.用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並用『sklearn的SVC支持向量機模型』來預測存亡</a></p>
+      <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aa7rLpIki0qXuCahhy-neLIgSgPfNlEd?usp=sharing" target="_blank">範例10-2.用『管道器pipeline』封裝『sklearn的SVC支持向量機模型』，並用『獨熱編碼OneHotEncoder』處理『鐵達尼號資料集』，並預測分類</a></p>
+    
+    </div>
+  </div>
+
+
+
+  <br>
+  <p><a class="font-weight-bold" ></a>【二.二，非監督式學習：Un-Supervised learning】</a></p>
+  【二.二.一，集群分析，分群分析：clustering】<br>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1XJZZSWFGZqHUbrAU6PvGnTex1eVQWxu9?usp=sharing" target="_blank">範例5-8.用sklearn模組，『簡易3步驟』建立『K-means分群』模型來把『動物園的動物數據自動分群』</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/12pAoOvTgf5D4yN_u64PljHdUX7HvYbTH?usp=sharing" target="_blank">範例6-8.用sklearn模組，『入門7步驟』建立『K-means分群』模型來把『動物園的動物數據自動分群』</a></p>
+
+  【二.二.二，降維簡化：dimension reductoin】<br>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1aFa3pq9dGMBqbOM152kbVOq0e0DzNB9R?usp=sharing" target="_blank">範例5-9.用sklearn模組，『簡易3步驟』建立『主成份分析PCA』降維模型，來把『二維數據』壓縮降維成『一維數據』</a></p>
+  <p style="text-indent: 60px;"><a href=https://colab.research.google.com/drive/1VJb7A5HKSGrCrRhx729mqHiUzs1Ii6cr?usp=sharing" target="_blank">範例6-9.用sklearn模組，『簡易3步驟』建立『主成份分析PCA』降維模型，來把『影響紅酒的13種特種參數』簡化降維</a></p>
+
+  <br>
+  <hr>
+  <p><a class="font-weight-bold">【三，深度學習，Deep Learning】</a></p>
+  <hr>
+  <p><a class="font-weight-bold">【用keras模組建立類神經網絡系統，做數據預測】</a></p>
+  【三.一，迴歸預測：Regression Prediction】<br>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1Ui1YvG126w2F_UcR8827iAxopbdmRem4?usp=sharing" target="_blank">範例5-10.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『一顆神經元』『線性迴歸模型』，輸入x值，預測y</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/13yGjsxcpOgIy_3xykZcAVrOv5Izitz7h?usp=sharing" target="_blank">範例5-11.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『多顆神經元』『非線性迴歸模型』，輸入x值，預測y</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1GHufVi5o5kL0mtWPMVSHNug7obZuNKeW?usp=sharing" target="_blank">範例6-10.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『一顆神經元』『線性迴歸模型』，輸入x值，預測y</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1BYXVPct_UvAOVzUt6ivWMw83A0qHXKrH?usp=sharing" target="_blank">範例6-11.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『多顆神經元』『非線性迴歸模型』，輸入x值，預測y</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1WhvTGxZmIJoMZlZWe1xiAvtX7-CVjbp5?usp=sharing" target="_blank">範例8-4.用標準化類別函數StandardScaler()，把『波士頓房價資料集』先標準化處理，再用『keras類神經網絡模型』預測趨勢線</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1OLCBCaAQwSbPiY8nhZcyvgPoUHepDM2G?usp=sharing" target="_blank">範例9-4.用『管道器pipeline』封裝『keras類神經網絡模型』，處理『波士頓房價資料集』並預測趨勢線</a></p>
+
+
+  【三.二，分類預測：Classification Prediction】<br>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1rNX1p2RkY4tJ3Uu4bfSMfc87I8hZyDos?usp=sharing" target="_blank">範例5-12.用『深度學習的keras』模組，『簡易4步驟』建立『類神經網路』的『多顆神經元』『非線性分類模型』，由『面紙的耐酸度，強度』來預測『客戶評估面紙的好壞』</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1CApMuuWDDj5dvhbhgZFphUA4gSEy9VH4?usp=sharing" target="_blank">範例6-12.用『深度學習的keras』模組，『入門6步驟』建立『類神經網路』的『多顆神經元』『非線性分類模型』，預測患者是否患有糖尿病</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1bPgIk_TQ762FvdQqTAjs3rdTgENnakTv?usp=sharing" target="_blank">範例8-3.用標準化類別函數StandardScaler()，把『客戶關係管理的客戶價值度RFM資料集』先標準化處理，再用『keras類神經網絡模型』預測分類</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1rSEfhL74ieSOxXxSHJ97WIdDb1-tVERK?usp=sharing" target="_blank">範例9-3.用『管道器pipeline』封裝『keras類神經網絡模型』，處理『客戶關係管理的客戶價值度RFM資料』並預測分類</a></p>
+  <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1HvssRE1T9VngsVdLD3Xt5Z7Kjx8mU1Ny?usp=sharing" target="_blank">範例10-7.用『管道器pipeline』封裝『sklearn裡面的類神經函數+5種機器模型』，處理『員工流失率資料集』並預測A員工是否會離職</a></p>
+
+
+
+
+  <br>
+  <p><br/></p> 
+                    
+                </div>
+              </div></td>
+            </tr>
+
+</table>
+<p id="chp0"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">   
+  <tr bgcolor="#f0f0f0">
+    <td colspan="6">資源</td>
+  </tr>
+  <tr bgcolor="#f0f0f0">
+    <td bgcolor="#FFFFFF">上課工具</td>
+    <td class="style11"><a href="https://docs.google.com/document/d/1CJdyI_QvL7xi40Qppek-Rh9KWvgCps94/edit?usp=sharing&ouid=112989736218524454297&rtpof=true&sd=true" target="_blank">線上黑板(
+        Online blackboard)</a></td>
+    <td><a href="https://www.zuvio.com.tw/" target="_blank">Zuvio</a></td>
+    <td><a href="https://drive.google.com/file/d/1BfTA4ETiDDXP-J3rxHuHGS3aVbLLJRFs/view?usp=sharing" target="_blank">Goole輸入法(Input:exe)</a></td>
+    
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">證照考試：商用數據應用師</td>
+  <td><a href="certificate/商用數據應用師_無模組_中華企業資源規劃學會 (從中約抽70題)_.pdf" target="_blank">考試題庫 (從中約抽70題)</a></td>
+  <td><a href="https://www.cerps.org.tw/zh-TW/article/2022-03-07%2009:48:08/220307_030044" target="_blank">報名證照相關說明與方法</a></td>
+  <td><a href="">考試方式：100題單選題，每題1分，70分及格</a></td>
+  <td><a href="https://www.opentech.com.tw/#/bookInfo?ISBN=9786263282872" target="_blank">考試指定用書</a></td>
+  <td></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">證照考試：SAS 機器學習國際認證</td>
+  <td><a href="https://www.sas.com/content/dam/SAS/documents/technical/certification/exam-content/machine-learning-specialist.pdf" target="_blank">考試題庫</a></td>
+  <td><a href="https://www.sas.com/zh_tw/events/2022/academic22/ML_re.html" target="_blank">報名證照相關說明與方法</a></td>
+  <td><a href="">先上課再考試。考試方式：50~55 題選擇題與填充題，考試語言：英文，通過標準：65%答對即通過</a></td>
+  <td><a href="https://blogs.sas.com/content/sastaiwan/sas-viya/sas-viya-%e6%a0%a1%e5%9c%92%e7%89%88%e4%bb%8b%e7%b4%b9/" target="_blank">考試指定軟體：SAS Viya Virtual Lab</a></td>
+  <td></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">數據集，資料集，dataset</td>
+  <td><a href="https://archive.ics.uci.edu/" target="_blank">UCI的各種資料集</a></td>
+  <td><a href="https://www.kaggle.com/datasets?fileType=csv" target="_blank">Kaggle的各種資料集</a></td>
+  <td><a href="">考試方式：100題單選題，每題1分，70分及格</a></td>
+  <td><a href="https://www.opentech.com.tw/#/bookInfo?ISBN=9786263282872" target="_blank">考試指定用書</a></td>
+  <td></td>
+</tr>
+
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">上課參考教材</td>
+  <td><a href="https://www.books.com.tw/products/0010876198" target="_blank">書籍：跨領域學 Python：資料科學基礎養成</a></td>
+  <td><a href="https://www.books.com.tw/products/0010789569" target="_blank">書籍：Python 資料科學與人工智慧應用實務</a></td>
+  <td><a href="https://www.books.com.tw/products/0010872905" target="_blank">書籍：一行指令學Python：用機器學習掌握人工智慧</a></td>
+  <td></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="https://www.books.com.tw/products/0010921275?loc=M_br_r0vq68ygz_D_2aabd0_B_1" target="_blank">書籍：用Pandas掌握商務大數據分析</a></td>
+  <td><a href="https://www.books.com.tw/products/CN11723157" target="_blank">進階書籍：Python商業數據分析：零售和電子商務案例</a></td>
+  <td><a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html" target="_blank">pandas官網(英文)</a></td>
+  <td><a href="https://www.w3schools.com/python/pandas/default.asp" target="_blank">w3schools的pandas教學(英文)</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas參考教材</td>
+  <td><a href="https://www.w3cschool.cn/hyspo/" target="_blank">w3Cschool的pandas教學(中文)</a></td>
+  <td><a href="https://steam.oxxostudio.tw/category/python/index.html" target="_blank">Steam教學網-python</a></td>
+  <td><a href="https://www.gairuo.com/p/pandas-tutorial" target="_blank">蓋若pandas 教程</a></td>
+  <td><a href="https://ithelp.ithome.com.tw/articles/10193421" target="_blank">pandas的df的操作函數</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">colab繪圖如何顯示中文，方法1</td>
+  <td colspan="4">    
+    ☎#colab顯示繁體中文，方法1
+    問題：matplotlib繪圖，會發生中文無法顯示的問題<br> 
+    參考：<a href="https://puerdon.github.io/%E5%9C%A8Colab%E4%B8%8A%E8%AE%93matplotlib%E9%A1%AF%E7%A4%BA%E4%B8%AD%E6%96%87-2020-12%E6%9B%B4%E6%96%B0/" target="_blank">colab繪圖如何顯示中文</a><br>
+    ☎<a href="example/resource/1-colab-plot-chinese.txt" target="_blank">程式碼</a>：<br> 
+
+#--------------------------------<br>
+# colab繪圖顯示繁體中文<br>
+#--------------------------------<br>
+import matplotlib<br>
+    # 先下載台北黑體字型<br> 
+    !wget -O taipei_sans_tc_beta.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&export=download
+    import matplotlib<br> 
+    # 新增字體<br> 
+    matplotlib.font_manager.fontManager.addfont('taipei_sans_tc_beta.ttf')<br> 
+    # 將 font-family 設為 Taipei Sans TC Beta<br> 
+    # 設定完後，之後的圖表都可以顯示中文了<br> 
+    matplotlib.rc('font', family='Taipei Sans TC Beta')<br>    
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">colab繪圖如何顯示中文，方法2</td>
+  <td colspan="4">    
+    ☎#colab顯示繁體中文，方法2
+    ☎<a href="example/resource/8-colab-plot-chinese.txt" target="_blank">程式碼</a>：<br> 
+
+    #--------------------------------------<br> 
+    # 課本的中文處理<br> 
+    #--------------------------------------<br> 
+    import matplotlib as mpl<br> 
+    import matplotlib.font_manager as fm<br> 
+    <br> 
+    !wget "https://www.wfonts.com/download/data/2014/06/01/simhei/simhei.zip"<br> 
+    !unzip "simhei.zip"<br> 
+    !rm "simhei.zip"<br> 
+    <br> 
+    fm.fontManager.addfont('SimHei.ttf')<br> 
+    mpl.rc('font', family='SimHei')<br> 
+    # 這一行能讓字體變得清晰<br> 
+    %config InlineBackend.figure_format = 'retina'<br>    
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">windows的spyder繪圖如何顯示中文</td>
+  <td colspan="4">
+    ☎解決：windows的spyder，會發生中文無法顯示的問題<br> 
+    參考：<a href="https://ithelp.ithome.com.tw/questions/10193102" target="_blank">windows繪圖如何顯示中文</a><br>
+    ☎<a href="example/resource/2-windows-plot-chinese.txt" target="_blank">程式碼</a>：<br> 
+    
+    #在windows 10 的spyder，繪圖如何顯示中文<br> 
+    #使用微軟正黑體（Microsoft JhengHei）<br> 
+    plt.rcParams['font.sans-serif'] = ['Microsoft JhengHei']<br> 
+    <br> 
+    #有些中文字體在碰到負號時，會無法正常顯示，尤其是內建的字體，加入以下語法就可以解決『負號無法顯示』問題<br> 
+    plt.rcParams['axes.unicode_minus'] = False<br> 
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">在colab如何更改目錄</td>
+  <td colspan="4">
+    ☎解決：在colab如何更改目錄的問題<br> 
+    ☎<a href="example/resource/3-chdir.txt" target="_blank">程式碼</a>：<br> 
+    
+    import os<br>
+    os.chdir("/content/drive/MyDrive/Colab Notebooks")<br>
+    !ls<br> 
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">解決簡體字csv造成亂碼</td>
+  <td colspan="4">
+    ☎解決簡體字csv，打開後都是亂碼的問題：<br>
+    <br>
+    第2 種方式：<br>
+    （1）先執行Excel 軟體，新增空白活頁簿，<br>
+    （2）然後在上方功能選項中點選「資料」➜「取得外部資料」➜ 「從文字檔」 → 「選擇csv文件」，<br>
+    選擇你的CSV 檔，<br>
+    在「匯入字串精靈」對話框中選擇檔案原始格式65001:Unicode(UTF-8) 即可。<br>
+    <br>
+    若是utf-8還是有亂碼，再改成<br>
+    在「匯入字串精靈」對話框中選擇檔案原始格式54986:簡體中文(GB18080) 即可。<br>
+    <br>
+    （3）打勾：我的資料有標題<br>
+    （4）分隔符哈：逗號<br>
+<br>    
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">程式模板</td>
+  <td colspan="4">
+    
+    <a href="example/resource/6-excel-plot.txt" class="red" target="_blank">
+      ☎存入excel檔案，並且畫柱狀圖</a>
+      <br>    
+  </td>
+</tr>
+
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">程式模板chp8-6.樞紐分析表的必要指令：展開</td>
+  <td colspan="4">
+    
+    <a href="example/resource/7-excel-manySheet.txt" class="red" target="_blank">
+      ☎輸出excel檔案：建立3個資料表sheet（英文成績，數學成績，中文成績）</a>
+      <br>    
+  </td>
+</tr>
+
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">打開chrome網頁線上英文字典功能</td>
+  <td colspan="4">
+    ☎如何安裝google chrome的網頁線上英文字典工具：<br>
+    ➜google chrome的右上角工具➜更多工具➜擴充功能<br>
+    ➜左上角主選單➜開啟chrome線上應用程式商店<br>
+    ➜勾選：google製作，免費<br>
+    ➜搜尋：google dictionary➜安裝<br>
+    ➜到chrome右上擴充功能➜點按google dictionary的『詳細資料』➜擴充功能選項<br>
+    ➜my language=chinese<br>
+    ➜打勾2個：Pop-up definitions:<br>
+    （1）反白單字翻譯：Display pop-up when I double-click a word<br>
+    （2）ctrl+拖曵整段翻譯： Display pop-up when I select a word or phrase<br>
+    <br>    
+  </td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">上課用excel</td>
+  <td><a href="example/resource/scoreChi.xlsx" target="_blank">學生成績-chinese</a></td>
+  <td><a href="example/resource/scoreChiNAN.xlsx" target="_blank">學生成績-有缺值-chinese</a></td>
+  <td><a href="example/resource/scoreChi-his-phy.xlsx" target="_blank">學生成績-物理歷史-chinese</a></td>
+  <td><a href="example/resource/scoreChi-amy-simon.xlsx" target="_blank">學生成績-amy-simon-chinese</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="example/resource/scoreChi-date.xlsx" target="_blank">學生成績-生日-chinese</a></td>
+  <td><a href="example/resource/scoreChi-group.xlsx" target="_blank">學生成績-分組-chinese</a></td>
+  <td><a href="example/resource/personnel.xlsx" target="_blank">人事資料-chinese</a></td>
+  <td><a href="example/resource/salary-gender.xlsx" target="_blank">男女時薪-chinese</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="example/resource/scoreEng.xlsx" target="_blank">學生成績-english</a></td>
+  <td><a href="example/resource/scoreEngNAN.xlsx" target="_blank">學生成績-有缺值-english</a></td>
+  <td><a href="example/resource/scoreEng-group.xlsx" target="_blank">學生成績-分組-english</a></td>
+  <td><a href="example/resource/books.xlsx" target="_blank">圖書資料-chinese</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">上課用csv</td>
+  <td><a href="example/resource/tips-chi.csv" target="_blank">小費tips-chinese</a></td>
+  <td><a href="example/resource/tips.csv" target="_blank">小費tips-english</a></td>
+  <td><a href="example/resource/scoreChi.csv" target="_blank">學生成績-chinese</a></td>
+  <td><a href="example/resource/scoreEng.csv" target="_blank">學生成績-english</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="example/resource/books.csv" target="_blank">圖書資料-chinese</a></td>
+  <td><a href="example/resource/tips.csv" target="_blank"></a></td>
+  <td><a href="example/resource/scoreChi.csv" target="_blank"></a></td>
+  <td><a href="example/resource/scoreEng.csv" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">上課用其它資料庫</td>
+  <td><a href="example/resource/ch09.rar" target="_blank">mySQL-ch09</a></td>
+  <td><a href="example/resource/student.rar" target="_blank">SQLite-student</a></td>
+  <td><a href="example/resource/score2.json" target="_blank">json-學生成績</a></td>
+  <td><a href="example/resource/personnel.xml" target="_blank">xml-personnel</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">課本商業範例資料庫</td>
+  <td><a href="example/resource/sales.csv" target="_blank">商業銷售分析-sales csv</a></td>
+  <td><a href="example/resource/students.xls" target="_blank">系所生源分析-excel</a></td>
+  <td><a href="example/resource/stock.xlsx" target="_blank">股市分析-台積電聯發科股票線型-excel</a></td>
+  <td><a href="example/resource/ma_res.xlsx" target="_blank">問卷資料分析-excel</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas參考教材</td>
+  <td><a href="https://www.pypandas.cn/docs/getting_started/10min.html#%E7%94%9F%E6%88%90%E5%AF%B9%E8%B1%A1" target="_blank">十分鐘入門 Pandas(英文)</a></td>
+  <td><a href="https://ericfu.me/10-minutes-to-pandas/" target="_blank">十分鐘入門 Pandas(英文)</a></td>
+  <td><a href="https://hackmd.io/@wiimax/10-minutes-to-pandas" target="_blank">10分鐘的Pandas入門-繁中版</a></td>
+  <td><a href="https://github.com/iTenki/10-Minutes-to-pandas" target="_blank">十分鐘入門 Pandas(中文)</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas參考教材</td>
+  <td><a href="https://pandas.liuzaoqi.com/doc/chapter0/10%E5%88%86%E9%92%9F%E5%85%A5%E9%97%A8pandas.html" target="_blank">pandas官網全部章節翻譯</a></td>
+  <td><a href="https://finthon.com/data-processing/pandas/" target="_blank">pandas官網全部章節翻譯</a></td>
+  <td><a href="https://www.gairuo.com/p/pandas-tutorial" target="_blank"></a></td>
+  <td><a href="https://ithelp.ithome.com.tw/articles/10193421" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas參考教材(英文)</td>
+  <td><a href="https://www.kaggle.com/code/residentmario/indexing-selecting-assigning" target="_blank">kaggle pandas教學</a></td>
+  <td><a href="https://www.dataschool.io/python-pandas-tips-and-tricks/?fbclid=IwAR03zbqYE1p5Rqs1R1jMfpS_hrYjwTwi1Cls4HYy4Vqj_W_oLf62JkKbkZ4" target="_blank">100 pandas tricks to save you time and energy</a></td>
+  <td><a href="https://pandas.pydata.org/pandas-docs/version/0.22/10min.html" target="_blank">官網0.22.0:pandas documentation</a></td>
+  <td><a href="https://ithelp.ithome.com.tw/articles/10193421" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas參考教材(中文)</td>
+  <td><a href="https://medium.com/datainpoint/pandas101-369caec9870" target="_blank">Pandas 101：資料分析的基石</a></td>
+  <td><a href="https://leemeng.tw/practical-pandas-tutorial-for-aspiring-data-scientists.html" target="_blank">資料科學家的pandas 實戰手冊：掌握40 個實用</a></td>
+  <td><a href="https://blog.techbridge.cc/2020/09/21/python-pandas-zen-tutorial/" target="_blank">簡明 Python Pandas 入門教學</a></td>
+  <td><a href="https://www.learncodewithmike.com/2020/11/python-pandas-dataframe-tutorial.html" target="_blank">資料分析必懂的Pandas DataFrame處理雙維度資料方法</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas速查手冊</td>
+  <td><a href="https://www.gairuo.com/p/pandas-sheet" target="_blank">pandas 速查手册 - 盖若</a></td>
+  <td><a href="https://zhuanlan.zhihu.com/p/25630700" target="_blank">Pandas速查手冊中文版 - 知乎專欄</a></td>
+  <td><a href="https://cloud.tencent.com/developer/article/1094110" target="_blank">Pandas速查手冊中文版- 騰訊雲開發者社區</a></td>
+  <td><a href="https://www.finlab.tw/pandas-%E9%AD%94%E6%B3%95%E7%AD%86%E8%A8%981-%E5%B8%B8%E7%94%A8%E6%8B%9B%E5%BC%8F%E7%B8%BD%E8%A6%BD/" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">pandas速查手冊</td>
+  <td><a href="https://blog.csdn.net/brucewong0516/article/details/81782312" target="_blank">Pandas中DataFrame基本函數整理（全）</a></td>
+  <td><a href="https://www.finlab.tw/pandas-%E9%AD%94%E6%B3%95%E7%AD%86%E8%A8%981-%E5%B8%B8%E7%94%A8%E6%8B%9B%E5%BC%8F%E7%B8%BD%E8%A6%BD/" target="_blank">Pandas 魔法筆記(1)-常用招式總覽</a></td>
+  <td><a href="https://ithelp.ithome.com.tw/articles/10193421" target="_blank">pandas的df的操作函數</a></td>
+  <td><a href="https://cloud.tencent.com/developer/article/1094110" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">資料集dataset</td>
+  <td><a href="https://raw.githubusercontent.com/pandas-dev/pandas/main/pandas/tests/io/data/csv/tips.csv" target="_blank">小費資料集Tips Dataset(csv)</a></td>
+  <td><a href="https://www.kaggle.com/code/sanjanabasu/tips-dataset" target="_blank">kaggle小費資料集範例A Waiter's Tips example</a></td>
+  <td><a href="https://blog.csdn.net/qq_44173974/article/details/116532127" target="_blank">【視覺化】小費（tips）資料集分析</a></td>
+  <td><a href="https://itw01.com/QFN38EZ.html" target="_blank">小費（tips）資料集提取和檢視相應資料 </a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">SQL語法</td>
+  <td><a href="http://cc.cust.edu.tw/~ccchen/doc/db_06.pdf" target="_blank">SQL語法教程</a></td>
+  <td><a href="https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html" target="_blank">pandas vs SQL</a></td>
+  <td><a href="http://cc.cust.edu.tw/~ccchen/doc/db_06.pdf" target="_blank"></a></td>
+  <td><a href="https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">資料分析4大模組（runoob)</td>
+  <td><a href="https://www.runoob.com/numpy/numpy-tutorial.html" target="_blank">numpy</a></td>
+  <td><a href="https://www.runoob.com/pandas/pandas-tutorial.html" target="_blank">pandas</a></td>
+  <td><a href="https://www.runoob.com/w3cnote/matplotlib-tutorial.html" target="_blank">matplotlib</a></td>
+  <td><a href="https://www.runoob.com/scipy/scipy-tutorial.html" target="_blank">scipy</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+<td bgcolor="#FFFFFF"></td>
+<td><a href="http://www.w3capi.com/cms/content/id/106/cid/27.html" target="_blank">w3c、w3school、w3cschool、runoob、w3capi比較</a></td>
+<td><a href="https://www.similarweb.com/zh/website/runoob.com/#keywords" target="_blank">runoob流量監控儀表板</a></td>
+<td><a href="https://www.w3schools.com/python/" target="_blank"></a></td>
+<td><a href="https://www.w3school.com.cn/python/index.asp" target="_blank"></a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF">w3school vs runoob</td>
+  <td colspan="5">
+    1.w3school中文版是直接google翻譯英文版<br>
+    2.runoob.com翻譯自英文版w3schools，但重新排版<br>
+    3.runoob = run + noob(菜鳥，小白)<br>
+    4.runoob是python，html，javascript中文版最好的教學網<br>
+    
+  </td>
+</tr>
+
+
+  <tr bgcolor="#f0f0f0">
+      <td bgcolor="#FFFFFF">官網</td>
+      <td class="style11"><a href="https://www.python.org/downloads/windows/" target="_blank">python官網</a></td>
+      <td><a href="https://code.visualstudio.com/" target="_blank">vscode官網</a></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>        
+  </tr>
+  <tr bgcolor="#f0f0f0">
+      <td bgcolor="#FFFFFF">python 教學網站</td>
+      <td class="style11"><a href="https://docs.python.org/zh-tw/3/tutorial/index.html" target="_blank">python 3(官網手冊中文)</a></td>
+      <td class="style11"><a href="https://www.twcode01.com/python3/python3-tutorial.html" target="_blank">python 3教學(中文)</a></td>
+      <td class="style11"><a href="https://www.runoob.com/python3/python3-tutorial.html" target="_blank">python 3教學(中文)</a></td>
+      <td class="style11"><a href="https://kopu.chat/%e4%b8%80%e5%b0%8f%e6%99%82python%e5%85%a5%e9%96%80-part-1/" target="_blank">簡易1小時教學</a></td>
+  </tr>
+  <tr bgcolor="#f0f0f0">
+    <td bgcolor="#FFFFFF"></td>
+       <td><a href="https://www.w3schools.com/python/" target="_blank">w3school(英文版)</a></td>
+       <td>&nbsp;</td>  
+       <td>&nbsp;</td>
+       <td>&nbsp;</td>  
+  </tr>
+  <tr bgcolor="#f0f0f0">
+      <td bgcolor="#FFFFFF">線上執行python online</td>
+      <td colspan="5">
+        <p><a href="https://www.python.org/shell/" target="_blank">https://www.python.org/shell/（建議用這個）</a></p>
+        <p><a href="https://repl.it/languages/python3" target="_blank">https://repl.it/languages/python3</a></p>
+<br>
+        <p><a href="https://www.onlinegdb.com/online_python_compiler" target="_blank">https://www.onlinegdb.com/online_python_compiler</a></p>
+        <p><a href="https://www.tutorialspoint.com/execute_python_online.php" target="_blank">https://www.tutorialspoint.com/execute_python_online.php</a></p>
+      </td>
+  </tr>
+
+  <tr bgcolor="#f0f0f0">
+      <td bgcolor="#FFFFFF">用Anacond寫python(*建議使用)</td>
+      <td colspan="5">
+ <p><a href="https://www.anaconda.com/products/individual" target="_blank">到Anacond官網下載安裝</a></p>
+      </td>
+  </tr>
+
+</table>
+
+<p></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+        <td colspan="6" id="chp1-1">&nbsp;</td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td colspan="6">chp1-1.前言</td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="chp0-introduction.pptx" target="_blank">1.課程簡介投影片</a></td>
+  <td><a href="chp0-3programmingMethod.pptx" target="_blank">2.學習程式的3種方法</a></td>
+  <td></td>
+  <td></td>
+</tr> 
+<tr bgcolor="#f0f0f0">
+      <td bgcolor="#FFFFFF"></td>
+      <td><a href="#exp01_1">1.現今企業的數據有哪些</a></td>
+      <td><a href="#exp01_2">2.運用數據三階段</a></td>
+      <td><a href="#exp01_3">3.資料生產的四步驟</a></td>
+      <td><a href="#exp01_4">3.資料最基本的三個概念</a></td>
+</tr> 
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="#exp01_5">5.什麼是大數據Big Data</a></td>
+  <td><a href="#exp01_6">6.大數據分析與傳統商業分析的差異</a></td>
+  <td><a href="#exp01_7">7.大數據的分析步驟</a></td>
+  <td><a href="#exp01_8">8.視覺化常用工具</a></td>
+</tr>
+<tr bgcolor="#f0f0f0">
+  <td bgcolor="#FFFFFF"></td>
+  <td><a href="#exp01_9">9.什麼是大數據Big Data</a></td>
+  <td><a href="#exp01_10">10.大數據分析與傳統商業分析的差異</a></td>
+  <td><a href="#exp01_11">11.大數據的分析步驟</a></td>
+  <td><a href="#exp01_12">12.大數據的類型：結構化、非結構化、半結構化資料</a></td>
+</tr> 
+<tr bgcolor="#f0f0f0" id='exp01_1'>
+  <td><p>1.現今企業的數據有哪些</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+1.現今企業的數據有哪些：<br>
+（1）所謂大數據，即是透過不同來源、渠道取得的海量數據資料，<br>
+現今企業如果想做數據蒐集的方法變得非常多元，包括：<br>
+<br>
+<span class="red"> 
+（2）來自用戶的第一方數據：<br>
+☎傳統的用戶資料建檔、問卷調查，<br>
+☎網頁的瀏覽行為等數據的追蹤，<br>
+☎App應用程式的瀏覽行為等數據的追蹤、<br>
+☎物聯網IoT設備傳遞的數據等，<br>
+</span>
+這些都是可以蒐集到。<br>
+<br>
+還有更多可捕捉用戶站外資訊的非第一方數據也漸漸被重視，<br>
+<span class="red"> 
+（3）透過交換共享得到的第二方數據：<br>
+☎第二方數據 （也稱為第二方或 2P 數據）：是另一個同行公司收集的數據，但可由另一家公司通過購買或協作訪問。<br>
+</span>
+☎營銷人員在希望擴展其營銷資料庫以吸引新的潛在客戶時，通常會購買它。<br>
+☎例如，如果一個為女性製作的服裝品牌決定增加一個男裝系列，並且需要相關的目標來行銷，就可以向外同行公司購買男裝的數據資料庫。<br>
+<br>
+<span class="red"> 
+（4）任何與商業需求有關的第三方數據：<br>
+☎第三方數據 （也稱為第三方或3P數據）：是來自第三方的數據，該第三方已聚合了多個數據源並使其可供購買。<br>
+</span>
+☎第三方數據的缺點：是它可能缺乏準確性和品質，因此重要的是了解數據來自何處以及數據使用年限. <br>
+<br>
+<span class="red"> 
+（5）比較：第一方、第二方和第三方數據之間的差別：<br>
+第一方、第二方和第三方數據之間的主要區別在於：『來源』。<br>
+☎第一方數據：由其『存儲/擁有的公司』收集。<br>
+☎第二方數據：由『同行公司』收集，並由另一家公司購買（或通過合作協定與他們共用）。<br>
+☎第三方數據：是從『多個未知來源』收集的，並由一家公司購買。 <br>
+</span>
+<img src="../pandas/pexample/chp01/p01.png"/><br>
+
+<br>
+（6）參考文獻：<br>
+1.<a href="https://sharethis.com/zh-tw/data-topics/2022/10/0-1-2-3-data-types/" target="_blank">第一方、第二方、第三方和零數據對廣告商意味著什麼</a><br>
+2.<a href="https://www.vpon.com/zh-hant/what-is-big-data/" target="_blank">分析大數據在各領域的應用</a><br>
+
+<br>
+</td>
+</tr>
+<tr bgcolor="#f0f0f0" id='exp01_2'>
+  <td><p>2.運用數據三階段</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+1.市場上的數據需求，主要分為四個階段：<br>
+☎數據蒐集、<br>
+☎數據分析、<br>
+☎數據應用<br>
+<br>
+<span class="red"> 
+（1）數據蒐集：蒐集第一方、第二方和第三方數據<br>   
+</span> 
+<br> 
+☎傳統的用戶資料建檔、問卷調查，<br>
+☎網頁的瀏覽行為等數據的追蹤，<br>
+☎App應用程式的瀏覽行為等數據的追蹤、<br>
+☎物聯網IoT設備傳遞的數據等，<br>
+<br>
+☎第二方數據：向同行公司購買數據。<br>
+<br>
+☎第三方數據：向『其他管道，如：數據收集公司』購買。<br>
+
+<br>
+<br>
+<span class="red"> 
+（2）數據分析：原始數據（raw data）要先處理過<br>   
+</span> 
+<br> 
+☎透過多元渠道獲取大量數據資料往往是原始數據（raw data），無法直接使用，<br>
+☎必須經過一層又一層的處理過程<br>
+<span class="red"> 
+☎處理方法1：數據檢查（data inspecting）<br>
+☎處理方法2：數據清理（data cleansing）<br>
+☎處理方法3：數據轉換（data transforming）<br>
+</span>
+<br>
+<br>
+<span class="red"> 
+(2-1)處理方法2：數據清理（data cleansing）<br>
+</span> 
+A.資料清理是資料前處理的第一步，需要先將資料中的問題處理。<br>
+B.收載資料時一定會遇到各式髒資料，有的資料樣態會導致無法轉入資料庫，而有的資料會在塞入資料庫時，出現錯位、亂碼等各式各樣非預期的情況，此時倉儲資料清理的準則變得極為重要，因將攸關於整個系統資料的統一。<br>
+C.資料清理的準則設定可以從三個角度著手：<br>
+<span class="red"> 
+☎「檔案類型」問題的清理<br>
+☎「欄位型態」問題的清理<br>
+☎「資料邏輯」問題的清理<br>
+</span> 
+D.☎數據清洗：按照一定的規則剔除或者填充不滿足實際需要的業務資料。<br>
+E.☎清洗主要包括三部分的內容：<br>
+第一部分是測試資料、<br>
+第二個是錯誤的資料，<br>
+第三個是缺失的資料。<br>
+錯誤的資料我們可以關注：『資料是否重複』、格式是否『錯誤、欄位描述』的資訊是否錯誤。<br>
+<br>
+<img src="../pandas/example/chp01/p02.png"/><br>
+<img src="../pandas/example/chp01/p03.jpg"/><br>
+<br>
+<br>
+<span class="red"> 
+D.(2-1-a)例如：資料來源檔案類型：純文字檔<br>
+</span> 
+☎資料內容以純文字的方式儲存的特色：<br>
+欄位與欄位之間以特定符號作為分隔，<br>
+例如：逗號、分號或｜等等，<br>
+☎較常被使用的是「逗號」<br>
+<br>
+<span class="red"> 
+☎可能發生的問題：<br>
+然而使用各符號作為分隔時，會遇到其中一種情況是：以逗號為例，如該欄位內容包含逗號，將會造成欄位內容分割時發生錯誤，但此逗號明明屬於資料的內容，卻被誤認為是分隔符號，使得分割完的資料對應到錯誤的欄位<br>
+<br>
+☎解決的辦法：<br>
+將內容值前後都加上雙引號後，再以逗號分隔串連各欄位資料<br>
+</span> 
+<br>
+<br>
+<span class="red"> 
+D.(2-1-a)例如：檔案類型：資料庫<br>
+</span> 
+☎讀取資料庫文字欄位型態的資料時，內容包含換行符號，系統就認為這筆資料已經讀取完，則換行符號後面的資料內容即為下一筆資料的開頭，無法完整的將一筆資料讀取進來。<br>
+☎解決辦法：是移除換行符號，若需要保留換行符號，<br>
+<br>
+<br>
+<span class="red"> 
+D.(2-1-b)例如：欄位型態：日期<br>
+</span> 
+☎格式：同時出現以 斜線分隔(YYYY/MM/DD)、無分隔符號(YYYYMMDD) 或 連接號(YYYY-MM-DD) 的日期格式。<br>
+☎處理方式：透過判斷式將內容使用的符號，或沒有符號的純文字格式，換成資料庫可接受的日期格式。<br>
+<br>
+☎西元年/民國年：同一欄位參雜西元年與民國年的日期。<br>
+☎處理方式：若以西元年格式存入資料庫，年若小於1911，則將 年份+1911 ；年若大於1911，則直接轉入。<br>
+<br>
+☎值異常：例如日期出現2月30日、年份早於1911年等，或是不可為NULL的欄位卻出現NULL值等非正常的日期。<br>
+☎處理方式：異常的日期通常已經無法追溯到正確的值，或來源的日期就是髒資料，可統一為特定日期(如：1911年1月1日)，日後看到即可確定來源的資料因有異常而清理過。<br>
+<br>
+<br>
+<span class="red"> 
+D.(2-1-b)例如：欄位型態：特殊字元<br>
+</span> 
+☎說明：文字是最容易造成轉檔失敗的型態，因為此型態可容許輸入任何類型的字元，例如：特殊字元，但資料庫本身並非接納的了所有字元，較特別的會無法轉入，或需要做其他特殊的轉換才能收載。<br>
+☎處理方式：必須找出那一筆，替換掉『特殊字元』後，再登錄進資料庫。<br>
+<br>
+<br>
+<span class="red"> 
+D.(2-1-c)例如：資料邏輯：縣市代碼<br>
+</span>
+☎台灣曾經經歷過縣市升格為直轄市，有更換過縣市的中文名稱，那麼資料也須跟著配合調整。<br>
+☎處理方式：是做一張新舊對照縣市代碼與名稱的轉換表，日後資料若有縣市資訊需求，即可勾稽此資料表，讓縣市升格前與後的資料，能自由並適當的轉換，得到想要的資訊。<br>
+<br>
+<br>
+<span class="red"> 
+D.(2-1-c)例如：資料邏輯：身分證號的規則判斷<br>
+</span>  
+☎身分證號的編碼有固定的規則，<br>
+第一碼是初次戶籍所在的縣市代碼，<br>
+第二碼是性別(1：男性；2：女性)，<br>
+第三到九碼是流水碼，<br>
+最後一碼第十碼是檢查碼，檢查碼會以第一到第九碼之英數字組合經過權重計算而得。<br>
+☎若要確認身分證是否有效，可依據這些規則去做判斷。<br>
+<br>
+<br>
+<span class="red"> 
+(2-3)處理方法3：數據轉換（data transforming）<br>
+</span> 
+A.☎數據轉化：按照一定的規則、技術手段轉化不同格式，或者顆粒度不同的資料。<br>
+B.（1）例如：格式的轉換，比如說時間格式，在不同的業務系統可能會有不同的時間格式，但是到我們大資料系統，為了方便下游資料的使用，我們會統一轉換成一種資料格式。包括一些欄位編碼也是這樣。<br>
+C.（2）資料顆粒度的轉換：我們在DW層的資料明細層到資料應用層的整個過程，都是顆粒度不斷轉化的一個過程。還包括一些業務規則、商務規則和一些指標。<br>
+<img src="../pandas/example/chp01/p03.jpg"/><br>
+<br>
+☎補充：數據顆粒度：資料顆粒度指數據的細緻程度。<br>
+資料顆粒度越高，細緻程度越高，意味著可以進行更準確的分析。<br>
+然而，需要指出的是，資料顆粒度直接決定資料庫需要的儲存空間。<br>
+高顆粒度的資料需要更多儲存空間；如果資料顆粒度太高，能夠識別出背後的資料，隱私相關挑戰也會加大。
+
+
+<br>
+<br>
+（4）參考文獻：<br>
+1.<a href="https://www.dtstack.com/bbs/article/92" target="_blank">資料指標體系（1）如何理解資料顆粒度、維度以及指標</a><br>
+
+<br>
+</td>
+</tr>
+<tr bgcolor="#f0f0f0" id='exp01_3'>
+  <td><p>3.資料生產的四步驟</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+1.資料生產的四步驟：<br>
+•	資料指標體系搭建<br>
+•	資料獲取<br>
+•	資料存儲<br>
+•	數據清洗<br>
+<br>
+2.建立資料後，即可開始資料分析<br>
+<br>
+</td>
+</tr>
+<tr bgcolor="#f0f0f0" id='exp01_4'>
+  <td><p>4.資料最基本的三個概念</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+1.資料最基本的三個概念：<br>
+☎顆粒度<br>
+☎維度<br>
+☎指標<br>
+<br>
+<span class="red"> 
+（1）顆粒度<br>   
+</span>      
+☎資料的顆粒度是指數據的 “粗細”，也就是我們看資料的視野的大小，或者說格局的大小。<br>
+☎例如：<br>
+一個電商公司，同樣是看GMV（總銷售額），CEO關注的可能是『今年總的GMV』是多少，<br>
+而業務老闆關注的可能是『每月的GMV』如何，<br>
+具體到某個小團隊，關注的點可能就是某些商品，『每天的GMV』如何了。<br>
+<br>
+☎資料顆粒度最常見的劃分是：時間<br>
+<br>
+<br>
+<span class="red"> 
+（2）維度<br>   
+</span>   
+☎資料的維度：是指看待事物不同的角度。<br>
+☎是從不同角度來看一件事，會得到不同的結論。<br>
+☎在做資料分析時也是一樣的。分析一個活動，或者一個策略對用戶的吸引時，如果我們以『新增用戶數』作為分析的指標（也就是展開方式，分析點），<br>
+<br>
+☎可以列為『維度』進行拆分的項目：<br>
+•	時間維度：拆分為早晨、中午、晚上<br>
+•	性別維度：男性、女性、未知<br>
+•	受教育程度：小學、中學、大學、研究生、博士<br>
+☎通過維度的分解，我們可以看到每個部分的變動，和整體的變化趨勢是否相同，是否存在不同，而哪些不同點往往會成為我們接下來分析的重點。<br>
+<br>
+☎顆粒度和維度的『相似性』：例如“時間”這個要素，在兩個部分都出現了<br>
+☎顆粒度和維度的『差異性』：不同在於拆分的方式不同<br>
+•	顆粒度：是一種縱向的聚合，類似於金字塔的形狀，不同的顆粒度都代表著不同的聚合程度<br>
+•	維度：是一種橫向拆分的模式。類似于把鏡子打碎成不同的部分，每個部分都是獨立的，把所有部分合在一起又能拼成完整的整體<br>
+<br>
+
+<br>
+<span class="red"> 
+(2-1)指標<br>
+</span>  
+☎資料指標：是衡量事物發展方式及程度的一種單位或者方法，一般通過對原始資料進行加減乘除等操作生成得到。<br>
+☎例如：長度，是把所有部分加在一起得到的一種衡量外在大小的單位。<br>
+<br>
+☎列舉一些常見網路流量的資料指標：<br>
+•	DAU（daily active user）：每天，“活躍”過的用戶數的加總，count(distinct user_id) group by day<br>
+•	MAU（monthly active user）：每個月，“活躍”過的用戶的加總，count(distinct user_id) group by month<br>
+•	留存率（次日、7日、30日）：今天“活躍”過的用戶的總量，一段時間後的某個時間點，還活躍的比例<br>
+•	轉化率：兩個有遞進的環節之間，從上層到下層用戶轉化的比例，例如：CTR=實際點擊次數/展示量<br>
+<br>
+
+<br>
+<br>
+（4）參考文獻：<br>
+1.<a href="https://www.gss.com.tw/blog/%E5%A4%A7%E6%95%B8%E6%93%9A%E5%89%8D%E7%9A%84%E8%B3%87%E6%96%99%E6%B8%85%E7%90%86" target="_blank">大數據前的資料清理</a><br>
+2.<a href="https://www.vpon.com/zh-hant/what-is-big-data/" target="_blank">分析大數據在各領域的應用</a><br>
+
+<br>
+</td>
+</tr>    
+<tr bgcolor="#f0f0f0" id='exp01_5'>
+  <td><p>5.什麼是大數據Big Data</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+<span class="red"> 
+1.為什麼有大數據的問題<br>   
+</span> 
+現在的企業資料，因為以下的興起，造成大量數據的需求：
+☎網路網路資料（社交網站，交易資料）<br>
+☎物聯網IoT, Internet of Things<br>
+☎感測器sensor<br>
+
+<br>
+<br>
+<span class="red"> 
+2.大資料的來源<br>   
+</span>      
+資料來源主要分為以下三類： <br> 
+（1）社交數據：<br>
+☎顧名思義，社交資料來源於社交媒體評論、發帖、圖片以及與日俱增的視頻檔。隨著全球 4G 和 5G 蜂窩網路的普及，到 2023 年，全球手機視頻使用者將增至 27.2 億。<br>
+☎雖然社交媒體及其使用趨勢瞬息萬變、難以預測，但作為數位資料的主要來源，其穩定增長趨勢是不會改變的。<br>
+<br>
+（2）機器數據：<br>
+☎物聯網設備和機器都配有感測器，能夠發送和接收數位資料。物聯網感測器能夠幫助企業採集和處理來自整個企業的設備、工具和裝置的機器資料。<br>
+☎從天氣和交通感測器到安全監控，全球範圍內的資料生成設備正在迅速增多。<br>
+☎據 IDC 估計，到 2025 年，全球物聯網設備數量將超過 400 億，生成的資料量幾乎占全球數位資料總量的一半。<br>
+<br>
+（3）交易資料：<br>
+☎交易資料是世界上發展速度和增長速度最快的資料。<br>
+☎例如，一家大型國際零售商每小時處理超過 100 萬筆客戶交易，全球那麼多採購和銀行交易，生成的資料量會有多麼驚人。<br>
+☎此外，交易資料越來越多地由『半結構化』資料組成，包括圖片和注釋等，使得管理和處理難度不斷增加。  <br>
+<img src="../pandas/example/chp01/p04.png"/><br>
+<br>
+<br>
+<span class="red"> 
+3.大數據的五大特性：<br>   
+</span> 
+<br>
+<span class="red"> 
+（1）大數據的3V特性：
+☎資料量（Volume）<br>
+☎資料類型（Variety）。<br>
+☎資料傳輸速度（Velocity）<br>
+</span> 
+<img src="../pandas/example/chp01/p05.png"/><br>
+☎Volume（資料量）
+無論是天文學、生物醫療、金融、聯網物間連線、社群互動…每分每秒都正在生成龐大的數據量，如同上述所說的 TB、PB、EB 規模單位。<br>
+<br>
+☎Variety（資料多元性）<br>
+真正困難的問題在於分析多樣化的資料：從文字、位置、語音、影像、圖片、交易數據、類比訊號… 等結構化與非結構化包羅萬象的資料，彼此間能進行交互分析、尋找數據間的關聯性。<br>
+<br>
+☎Velocity（資料即時性）<br>
+大數據亦強調資料的時效性。隨著使用者每秒都在產生大量的數據回饋，過去三五年的資料已毫無用處。<br>
+一旦資料串流到運算伺服器，企業便須立即進行分析、即時得到結果並立即做出反應修正，才能發揮資料的最大價值。<br>
+<br>
+<br>
+（2）大數據的4V特性：<br>
+<span class="red"> 
+☎資料量（Volume）<br>
+☎資料類型（Variety）<br>
+☎資料傳輸速度（Velocity）<br>
+☎資料真實性（Veracity）<br>
+</span> 
+在3V成為大數據的主要定義後，隨著儲存資料的成本下降、取得成本也下降，大數據發展出第四個特性：Veracity，意旨除了資料量，也需要確認資料的真實性，過濾掉造假的數據與異常值後，分析出來的結果才能達到準確預測的目的。
+<img src="../pandas/example/chp01/p05.png"/><br>
+<br>
+<br>
+<br>
+（3）大數據的5V特性：<br>
+<span class="red"> 
+☎資料量（Volume）<br>
+☎資料類型（Variety）<br>
+☎資料傳輸速度（Velocity）<br>
+☎資料真實性（Veracity）<br>
+
+☎價值（Value）<br>
+大量、快速取得，來源多樣的資料，經過真實性考驗之後，擁有一定的價值，是大數據的核心架構<br>
+</span>
+<img src="../pandas/example/chp01/p07.jpg"/><br>
+<img src="../pandas/example/chp01/p08.jpg"/><br>
+<br>
+<br>
+<span class="red"> 
+4.多大的資料量才算大數據Big Data<br>
+</span>  
+☎資料量要多大才能說是大數據？<br>
+根據維基百科的定義，資料大小從幾TB（Terabyte）到幾PB（Petabyte）不等<br>
+<img src="../pandas/example/chp01/p06.png"/><br>
+
+<br>
+
+<br>
+<br>
+5參考文獻：<br>
+(1).<a href="https://www.sap.cn/insights/what-is-big-data.html" target="_blank">什麼是大數據</a><br>
+(2).<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%95%B8%E6%93%9A" target="_blank">巨量資料(wiki)</a><br>
+(3).<a href="https://www.inside.com.tw/feature/ai/9745-big-data" target="_blank">大數據到底是什麼意思？事實上，它是一種精神</a><br>
+(4).<a href="https://www.largitdata.com/blog_detail/20190725" target="_blank">認識大數據定義、分析與工具</a><br>
+(5).<a href="https://www.techbang.com/posts/39331-data-optimize-your-life-in-perspective-not-only-is-a-lot-of-data" target="_blank">大數據，不只是很大的數據</a><br>
+
+<br>
+</td>
+</tr>    
+<tr bgcolor="#f0f0f0" id='exp01_6'>
+  <td><p>6.大數據分析與傳統商業分析的差異</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+<span class="red"> 
+1.大數據分析與傳統商業分析的差異<br>   
+</span> 
+<img src="../pandas/example/chp01/p09.jpg"/><br>
+（1）大數據分析：<br>
+☎分析方法：使用原始資料➜統計分析➜產生視覺化圖表➜產生報表<br>
+☎使用技術：原始資料，大數據，使用程式碼(python/R)進行結構化分析<br>
+☎預測方法：找出數據間的關聯性➜建立預測模型➜完成預測<br>
+
+
+
+<br>
+2.參考文獻：<br>
+(1).<a href="https://www.techbang.com/posts/39331-data-optimize-your-life-in-perspective-not-only-is-a-lot-of-data" target="_blank">大數據，不只是很大的數據</a><br>
+
+<br>
+</td>
+</tr>     
+<tr bgcolor="#f0f0f0" id='exp01_7'>
+  <td><p>7.大數據的分析步驟</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+<span class="red"> 
+1.大數據的分析步驟：取得，儲存，運算，視覺化<br>   
+</span> 
+<img src="../pandas/example/chp01/p10.jpg"/><br>
+☎大數據分析第一步：取得<br>
+數據隨時隨地都在產生，就連你上班時的行走路線，都可以成為商家選擇新店地址的參考資料。若是擁有大量使用者的企業，蒐集使用者的活動紀錄就可達到以數據預測未來的目標；若是較小型的企業，則可主動邀請使用者填寫問卷，逐步累積資訊量。<br>
+<br>
+☎大數據分析第二步：儲存<br>
+由於資料量龐大，突破儲存技術式處理大數據的第一個難關。因此處理大數據時多使用分散式處理系統，透過分割資料與備份儲存，突破記憶體過小的障礙。<br>
+<br>
+☎大數據分析第三步：運算<br>
+為達成預測未來的目的，機器可以透過分類、迴歸分析、排序、關聯分析等方式找出其中規律，並運用決策樹、遺傳演算法、人工神經網路等模型進行計算。<br>
+<br>
+☎大數據分析第四步：視覺化<br>
+經過分析後的數據仍是數字與列表，不易閱讀。因此可搭配視覺化工具，將數據轉化為較容易閱讀與理解的形式。<br>
+
+
+
+<br>
+2.參考文獻：<br>
+(1).<a href="https://www.largitdata.com/blog_detail/20190725" target="_blank">認識大數據定義、分析與工具</a><br>
+
+<br>
+</td>
+</tr>  
+<tr bgcolor="#f0f0f0" id='exp01_8'>
+  <td><p>8.視覺化常用工具</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+<span class="red"> 
+1.三大視覺化工具：Power BI，Tableau，Data Studio<br>  
+功能：都能夠製作Dashboard（互動儀表板，報表平台）<br>
+</span> 
+<img src="../pandas/example/chp01/p11.png"/><br>
+<br>
+（1）Power BI：微軟Microsoft<br>
+（1-1）費用：<br>
+☎免費版：若要編輯或瀏覽 Power BI Dashboard 僅能確保每個使用者都有在桌面下載 Power BI。<br>
+但免費PC版 Power BI 僅能在 Windows 上使用，<br>
+Mac 使用者僅能夠過網頁/付費方式使用<br>
+☎付費版：Power BI 可透過企業全體購買 Pro License（每個月300元），進而能夠做到網頁版共用。<br>
+<br>
+☎付費版：公司內可以購買整個 Office 365 package（已經包含 Power BI Pro License），以利內部資料互通，大家也不用另外在電腦下載應用程式，直接網路編輯與瀏覽即可，Mac 使用者也能進而編輯<br>
+☎付費版：Power BI Premium，每月每個人600元。<br>
+☎<a href="https://powerbi.microsoft.com/zh-tw/pricing/" target="_blank">Power BI定價參考網址</a><br>
+
+<br>
+（1-2）功能：<br>
+Power BI 基本上功能與Tableau大同小異。<br>
+Power BI的操作比較簡單，更直覺化（Tableau操作較複雜）。<br>
+Power BI同時可支援 Python & R 的視覺化工具，<br>
+Power BI 的 DAX 語法相較 Tableau 好懂。<br>
+<br>
+<br>
+<span class="red"> 
+（2）Tableau<br>
+</span>
+（2-1）費用：<br>
+☎Tableau Public 是一個免費的平台<br>
+☎Tableau Prep 免費試用30天<br>
+☎Tableau Desktop 免費試用14天<br>
+☎Tableau Server 免費試用<br>
+☎CRM Analytics（原稱 Tableau CRM）<br>
+<a href="https://www.largitdata.com/blog_detail/20190725" target="_blank">認識大數據定義、分析與工具</a><br>
+☎Tableau 在企業級規模部署時Power BI比較便宜，因為雖然Power BI 隨附於O365中，但若要企業級部署，考慮Power BI Pro與Power BI Premium 間的功能差距，若真的要能做到 Tableau Server 大部分的功能，是一定需要 Premium 的，不然會受到算力、數據量大小、協作功能等的差距影響，很難做到企業級部署。<br>
+而Power BI Premium 在2021/02時所記錄的起始報價為 台幣 150,120。<br>
+Tableau的產品生態：<img src="../pandas/example/chp01/p13.png"/><br>
+<br>
+<br>
+（2-2）功能：<br>
+☎功能強大。<br>
+☎2020/01年時統計，世界500強企業裡面96%是Tableau的客戶。<br>
+<br>
+<br>
+<span class="red"> 
+（3）Data Studio<br>
+</span>
+（3-1）費用：<br>
+☎google雲端軟體，完全免費的平台<br>
+<br>
+（3-2）功能：<br>
+☎優點：因為 Google 產品大多都是可開權限共享，<br>
+所以要結合Google 其他應用程式（Big Query, Google Analytics），就可以直接串接到 Data Studio，因為便利而使用它。<br>
+☎優點：雲端使用，是目前線上最流暢的（因為google產品都是雲端產品），而且可以共同編輯<br>
+☎缺點：功能性而言，現在 Data Studio 在細節調整上還是略輸 Power BI 與 Tableau 一些<br>
+<br>
+<br>
+<span class="red"> 
+2.BI（Business Intelligence,商業智慧）市場分成2類：<br>  
+（1）自助式分析組別：<br>
+組織裡面每個人都有能力利用此組別內的BI工具連接數據與探索數據，發表屬於自己的數據見解<br>
+例如：Power BI，Tableau，Data Studio<br>
+<br>
+（2）報表組別：<br>
+大部份情況之下，因需要撰寫大量函式或需要寫SQL，需要由統一專業部門開發，如IT單位<br>
+例如：Finereport，Microstrategy<br>
+</span> 
+<img src="../pandas/example/chp01/p14.png"/><br>
+<br>
+<br>
+3.參考文獻：<br>
+(1).<a href="https://www.runinbase.com/post/bicomparison" target="_blank">Tableau 與 Power BI 完整比較指南</a><br>
+(4).<a href="https://www.bianalyst-gt.com/post/tableauvs-powerbi%EF%BC%9F%E5%95%86%E7%AE%A1%E5%AD%B8%E7%94%9F%E6%89%BE%E5%88%86%E6%9E%90%E9%A0%98%E5%9F%9F%E5%AF%A6%E7%BF%92%EF%BC%8C%E8%A9%B2%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99" target="_blank">Tableau VS. PowerBI</a><br>
+
+<br>
+</td>
+</tr>  
+<tr bgcolor="#f0f0f0" id='exp01_9'>
+  <td><p>9.大數據的類型：結構化、非結構化、半結構化資料</p></td>
+  <td colspan="5" bgcolor="#FFFFFF">
+<span class="red"> 
+1.大數據的類型：結構化、非結構化、半結構化資料 <br>
+</span> 
+<img src="../pandas/example/chp01/p15.png"/><br>
+<img src="../pandas/example/chp01/p16.png"/><br>
+<img src="../pandas/example/chp01/p17.png"/><br>
+<br>
+（1）結構化資料：這類資料最容易整理和搜索，<br>
+☎主要包括：財務資料、機器日誌、人口統計明細等。<br>
+結構化資料很好理解，類似於 Excel 試算表中預定義的行列佈局。<br>
+這種結構下的資料很容易分門別類，資料庫設計人員和管理員只需要定義簡單的演算法就能實現搜索和分析。<br>
+不過，即使結構化資料數量非常大，也不一定稱得上大資料，因為結構化資料本身比較易於管理，不符合大資料的定義標準。<br>
+一直以來，資料庫都是使用 SQL 程式設計語言管理結構化資料。<br>
+SQL 是由 IBM 在 20 世紀 70 年代開發的。<br>
+<br>
+（2）非結構化資料：<br>
+☎因為web2.0盛行後產生很多非結構資料。<br>
+☎（web 2.0內容：透過網路應用，以使用者為中心，促進網路上人與人間的資訊交換和協同合作）<br>
+☎（web 2.0範例：網路社群、網路應用程式、社群網站、部落格、Wiki）<br>
+☎資料包括：社交媒體內容、音訊檔、圖片、開放式客戶評論等。<br>
+☎這些資料符合大數據定義中：『大而複雜』的要求，也因此這些資料通常很難用標準的行列關係型數據庫捕獲。<br>
+大多數情況下企業若想搜索、管理或分析大量非結構化資料，只能依靠繁瑣的手動流程。<br>
+毫無疑問，分析和理解這類資料能夠為企業帶來價值，但是執行成本往往太過高昂。而且，由於耗時太長。<br>
+但是因為無法存儲在試算表或關係型數據庫中，所以非結構化資料通常存儲在資料湖、資料倉庫和 NoSQL 資料庫中。<br>
+<br>
+（3）半結構化資料：<br>
+☎半結構化資料是結構化資料和非結構化資料的混合體。<br>
+☎例如：電子郵件，<br>
+因為其中的正文：屬於非結構化資料，<br>
+而寄件者、收件人、主題和日期：屬於結構化資料。<br>
+使用地理標記、時間戳記或語義標記的設備也可以同時提供結構化資料和非結構化內容。<br>
+<br>
+
+<br>
+3.參考文獻：<br>
+(1).<a href="https://www.sap.cn/insights/what-is-big-data.html" target="_blank">什麼是大數據</a><br>
+(2).<a href="https://zh.wikipedia.org/zh-tw/Web_2.0" target="_blank">web 2.0</a><br>
+(4).<a href="https://www.bianalyst-gt.com/post/tableauvs-powerbi%EF%BC%9F%E5%95%86%E7%AE%A1%E5%AD%B8%E7%94%9F%E6%89%BE%E5%88%86%E6%9E%90%E9%A0%98%E5%9F%9F%E5%AF%A6%E7%BF%92%EF%BC%8C%E8%A9%B2%E5%A6%82%E4%BD%95%E6%BA%96%E5%82%99" target="_blank">Tableau VS. PowerBI</a><br>
+
+<br>
+</td>
+</tr>  
+<tr bgcolor="#f0f0f0">
+  <td colspan="6">&nbsp;</td>
+</tr>
+</table>
+
+
+
+<p  id="chp1-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              <h2 class="black">範例1-2.數據分析3部曲，與對應的工作職缺</h2>
+
+            <h2 class="red">（1）研究數據分析的3步驟圖：<br>
+            ☎步驟1：學習基礎數據分析1：pandas<br>
+            ☎步驟2：學習基礎數據分析2：SQL<br>
+            ☎步驟3：學習進階數據分析3：人工智慧（機器學習，深度學習） 
+            </h2>
+            <img src="../pandas/pic/scope12.png" /><br>
+            <br>
+            <h2 class="red">（2）數據分析的相關工作職缺（數據分析職位的技能光譜圖）：<br>
+              ☎工作職稱：DA/BA/DS/DE：<br>
+              Business Analyst商業分析師（商業決策建議）<br>
+              Data Engineer數據工程師（基礎第一線數據處理）<br>
+              Data Analyst資料分析師（適用各領域的數據處理工作）<br>
+              Data Scientist資料科學家（建模，人工智慧）
+            </h2>
+            <img src="../pandas/pic/scope3.png" /><br>
+            <br>
+            <br>
+            <h2 class="red">（3）商業分析決策的4步驟圖：<br>
+              ☎1.資料處理<br>
+              ☎2.資料分析<br>
+              ☎3.資料視覺化<br>
+              ☎4.商業分析決策
+            </h2>
+            <img src="../pandas/pic/scope2.png" /><br>
+            <br>
+            <br>
+            <h2 class="red">（4）資料分析常用工具：<br>
+              ☎1.python/pandas<br>
+              ☎2.SQL<br>
+              ☎3.power BI，tableau<br>
+              ☎4.機器學習，深度學習
+            </h2>
+            <img src="../pandas/pic/scope6.png" /><br>
+            <img src="../pandas/pic/scope4.png" /><br>
+
+            </td>
+          </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp1-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              <h2 class="black">範例1-3.數據分析常用工具</h2>
+            <br>
+            <h2 class="red">（1）資料分析常用工具：<br>
+              ☎1.python/pandas<br>
+              ☎2.SQL<br>
+              ☎3.power BI，tableau<br>
+              ☎4.機器學習，深度學習<br>
+            </h2>
+            <img src="../pandas/pic/scope6.png" /><br>
+            <img src="../pandas/pic/scope4.png" />
+            <br>
+            <br>
+            <h2 class="red">（2）數據相關工具的職缺數排行榜2016：<br>
+            </h2>
+            <img src="../pandas/pic/scope8.png" /><br>
+            <img src="../pandas/pic/scope9.png" /><br>
+            <img src="../pandas/pic/scope10.png" />
+            <br>
+            <br>
+            <h2 class="red">（3）數據相關工具的職缺數排行榜2020：<br>
+            </h2>
+            <img src="../pandas/pic/scope11.png" /><br>
+
+
+            </td>
+          </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp1-4"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              <h2 class="black">範例1-4.數據相關的證照</h2>
+            <br>
+            <h2 class="red">（1）資料分析相關的證照：中華企業資源規劃學會『商用數據應用師』證照<br>
+              <a href="https://www.cerps.org.tw/zh-TW/category/2022-03-07%2009:48:08" target="_blank">☎1.中華企業資源規劃學會，大數據分析師</a><br>
+              <a href="https://www.cerps.org.tw/zh-TW/article/2022-03-07%2009:48:08/220307_030044" target="_blank">☎2.商用數據應用師</a><br>
+              
+            </h2>
+            <br>
+            <h2 class="red">（2）資料分析相關的證照：SAS 機器學習國際認證<br>
+              <a href="https://www.sas.com/zh_tw/events/2022/academic22/ML_re.html" target="_blank">☎1.SAS 機器學習國際認證，報名方式</a><br>
+              <a href="https://www.sas.com/zh_tw/events/2022/academic22/ML_23.html" target="_blank">☎2.先上課再考試：認證校園班</a><br>
+              <a href="https://blogs.sas.com/content/sastaiwan/sas-viya/sas-viya-%e6%a0%a1%e5%9c%92%e7%89%88%e4%bb%8b%e7%b4%b9/" target="_blank">☎3.使用軟體工具：SAS Viya Virtual Lab</a><br>
+              
+            </h2>
+            </td>
+          </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+
+<p  id="chp1-5"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              <h2 class="black">範例1-5.數據分析的內容是什麼？</h2>
+            <br>
+            <h3 class="red">
+              <a class="purple">數據分析的內容主要分三種（統計，比較，預測）<br>
+                （統計出現次數，分類比較，預測趨勢）</a></p>
+             <br>
+              <p><a class="font-weight-bold" >【一，基礎數據分析（python/pandas）】</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ZOHq-v0VBzXHQmU0N_UMAUJNcuW9NMTE?usp=share_link" target="_blank">1.查詢資料(1)</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1ABIP_Qf96uvaiIAYQyV1LrbG86k-AGGq?usp=share_link" target="_blank">1.查詢資料(2)</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1Eq4OToauvNLM71yR-VlfWcO2L9TcLFD4?usp=share_link" target="_blank">1.查詢資料(3)</a></p>
+
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1sNzKwCHcogvbk79hI5Y4njUKYUfsBh91?usp=share_link" target="_blank">2.頻數分析，統計數量</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1eYgsVD9YHiQdAsjCUZsbSNyCHFOwl6A4?usp=share_link" target="_blank">3.(分1群)比較分析</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1o34n0eFYiCRk0fUmx92jJOjC48Pf1FyQ?usp=share_link" target="_blank">4.描述性統計分析，直方圖，箱型圖</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1GHBWDV2HEAozPwkfAeng33s5Ilqr34y6?authuser=4" target="_blank">6.(分2群)交叉分析表，樞紐分析表</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1UA-ztAg9e0AMOik3n6jDsW-9D-9Ff8qC?usp=sharing" target="_blank">7.分群分析的5種題型</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1P2xPp88pMrEBoqZK8EMLyW-62t1WeQTp?usp=sharing" target="_blank">8.樞紐分析表，交叉分析圖的花式變化與進階技巧</a></p>
+              <br>
+              <br>
+              <p><a class="font-weight-bold" >【二，進階數據分析（機器學習/深度學習）】</a></p>
+
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1gAsPu9kCFH-tv45TVDvN5DDYSuu63ueo?usp=sharing" target="_blank">11.關聯性分析association</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1LZojOJGEx4KpRPYGEzFWhVbQkeAdPJcg?usp=sharing" target="_blank">12.迴歸預測分析regression</a></p>
+              <p style="text-indent: 60px;"><a href="https://colab.research.google.com/drive/1tGkaWWKK6eyMC8hHxtTATjE2jfE24Kjd?usp=sharing" target="_blank">13.分類預測classification</a></p>
+            
+            </h3>
+
+            </td>
+          </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+   <tr bgcolor="#f0f0f0">
+            <td colspan="6" id="chp1">&nbsp;</td>
+   </tr>
+    <tr bgcolor="#f0f0f0">
+      <td colspan="6">chp1.安裝與使用python的四種方法</td>
+    </tr>
+    <tr bgcolor="#f0f0f0">
+         <td bgcolor="#FFFFFF"></td>
+         <td><a href="#exp1-2a">1.使用python的四種方法</a></td>
+         <td><a href="#exp1-2b">2.Anaconda下載點</a></td>
+         <td><a href="#exp1-2c">3.安裝anaconda</a></td>
+         <td><a href="#exp1-2d">4.Anaconda cmd指令</a></td>
+    </tr> 
+    <tr bgcolor="#f0f0f0">
+         <td bgcolor="#FFFFFF"></td>
+         <td><a href="#exp1-2e">5.建立Anaconda虛擬環境</a></td>
+         <td><a href="#exp1-2f">6.使用Spyter編譯器</a></td>
+         <td><a href="#exp1-2g">7.網頁版python編輯器jupyter notebook</a></td>
+         <td><a href="#exp1-2h">8.其它線上雲端可編譯的python平台</a></td>
+
+    </tr> 
+    <tr id='exp1-2ab'>
+      <td class="table-secondary"><p>1.前言</p></td>
+      <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+Python堪稱是大數據與AI時代的最重要程式語言，在資料處理上有著非常重要的地位。而隨著AI的興起，讓傳統的零售業、金融業、製造業、旅遊業，以及政府都爭相投入，無不希望能運用數據分析與預測來協助決策方向，也讓新興的數據分析師、資料分析師成為熱門職業，因此本課程將講解如何使用網絡爬蟲技術以掌握資料爬取分析、視覺化呈現，以及儲存交換應用的關鍵技術。<br>
+<br>
+Python資料處理的三大技術分別是：擷取分析、視覺化呈現與儲存應用。
+<br>而其應用的範疇包括：網路爬蟲、資料正規化、資料視覺化、資料儲存與讀取(CSV、Excel、Google試算表、SQLite、MySQL)、批次檔案下載、公開資料應用、API建立、驗證碼辨識。
+
+</td> 
+   </tr>
+
+    <tr id="exp1_1">
+      <td class="table-light"><p>Python大數據分析最重要的四個模組</p></td>
+      <td class="table-light" colspan="5" bgcolor="#FFFFFF"><p>
+1.Python大數據分析最重要的四個模組<br>
+Python資料分析最重要的四個模組：pandas、numpy、scipy、matplotlib。<br>
+<br>
+（1）pandas：是基於numpy的資料分析工具，能夠快速的處理結構化資料的大量資料結構和函數。<br>
+pandas模組應該是python用來進行一般日常的大數據分析，最重要的模組了。<br>
+因為pandas的DataFrame資料結構，可以快速的互通於所有的二維結構資料，包括『excel，csv，json，xml，mysql，任何的資料庫，網頁的表格資料，字典dict，二維串列list』<br>
+也就是pandas的DataFrame資料結構，可以與它們之間互相簡易的存取。<br>
+然後再根據DataFrame來進行想要的大數據分析，它提供內建的演算法與資料結構，能夠用一個指令，就可以進行二維資料的『排序，篩選，關鍵字查詢，任意區間範圍查詢，統計學計算，平均值，變異數，標準差，字串檢索，字串取代，欄位樞紐分析、小記、欄位加總，把二維資料任意方式圖形視覺化顯示』<br>
+而建立pandas的DataFrame資料結構，有兩種方式，可以用column的方式來輸入資料，也可以用row的方式來輸入資料。<br>
+所以pandas是大數據分析，非常實用的利器工具，是python資料分析的首選。<br>
+<br>
+（2）Numpy：
+Numpy專門用來處理矩陣，它的運算效率比列表list串列更高效。<br>
+Numpy是Python進行專業的數值計算之重要模組，因為大多數提供科學計算的包都是用numPy的陣列作為構建基礎，因此在進行高等數學計算時，numpy就是大數據分析的最重要工具了，因為高等數學運算，都是以矩陣的方式來進行運算，例如人工智慧，機器學習，深度學習，類神經網路計算等。<br>
+<br>
+（3）sscipy：是基於numpy的科學計算包，包括統計、線性代數等工具。<br>
+<br>
+（4）matplotlib：是最流行的用於繪製資料圖表的 Python 庫<br>
+也可以結合pandas模組來繪圖。<br>
+
+<br  id="exp1_1a">
+        </p></td>
+    </tr>
+    <tr id='exp1-2a'>
+      <td class="table-secondary"><p>2.執行python的四種方法</p></td>
+      <td  class="table-light"colspan="5" bgcolor="#FFFFFF">
+1.要編寫python有三種的方法：<br>
+一、方法1：安裝python單純的python<br>
+缺點：功能陽春，沒有太多的模組，無法馬上寫大數據分析程式。<br>
+安裝網址：<a href="https://www.python.org/downloads/windows/" target="_blank">python官網下載</a><br>
+<br>
+<span class="red">
+二、方法2：安裝Anaconda<br>
+優點：會同時安裝python、1000多種數學繪圖模組、Spyder編輯器，能夠支援大數據分析。<br>
+缺點：會安裝了很多你用不到的模組，浪費硬碟空間。<br id='exp1-2b'>
+安裝網址：<a href="https://www.anaconda.com/products/individual" target="_blank">到Anacond官網下載安裝</a><br>
+</span>
+<br>
+三、方法3：<a href="https://www.python.org/shell/" target="_blank">使用python官網線上shell</a><br>
+<a href="https://repl.it/languages/python3" target="_blank">使用repl線上python</a><br>
+<br>
+<span class="red">
+四、方法4：使用google雲端硬碟的雲端軟體：Cola，colaboratory<br>
+優點：Google 的 Colab 是一個讓你用網頁瀏覽器就能寫 Python 程式、並且執行的平台。<br>
+優點：Colab 提供免費的 GPU 讓你高效運算機器學習與深度學習演算法。<br>
+優點：Google Colab 預先幫你安裝好大家最常用的 Python 套件，幫你解決了一半以上的煩惱，讓 Python 新手可以不用在剛起步就學習環境部署的麻煩事。數據分析常用的 Pandas 與 Numpy、資料視覺化好用的 Seaborn 與 Matplotlib、還有機器學習必備的 xgboost 或 Tensorflow，這些都是 Colab 預先安裝好的套件。<br>
+不需要再自行安裝套件：（Terminal）輸入 pip install<br>
+優點：可以從 Google Drive 取得你要用的檔案、然後透過 Python 程式讀取；<br>
+優點：可以與google其它軟體整合，例如：也可以匯入 Google Sheet 的表格資料，然後用你最愛的視覺化套件（例如 Matplotlib）畫出美麗的圖表。<br>
+優點：Colab 其中一個厲害的地方就是，你除了可以執行 Python、也能執行 Command Line，只要在 Command Line 指令加上驚嘆號就能做到，像是 !mkdir。你可以在 Colab 裡 Python 程式碼寫到一半的時候，突然加進幾行 Command Line 來操作檔案，完成後，再讓 Python 程式碼接著寫下去，Python 與 Command Line 可以無痛切換。<br>
+優點：%%timeit：算出你的程式碼區塊花多少時間執行，分析你的演算法效率時很好用。<br>
+優點：%run my_script.py：執行你的另一個 Python 程式，如果你的程式還需要呼叫另一個程式，就需要使用。<br>
+</span>
+<br id='exp1-2b'>
+<br>
+</td>
+    </tr>
+    <tr >
+      <td class="table-light"><p>3.Anaconda下載點</p></td>
+      <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+        <p><a href="https://www.anaconda.com/products/individual" target="_blank">Anacond官網</a></p><br id='exp1-2c'></td>
+    </tr>
+
+    <tr>
+      <td class="table-secondary">3.安裝anaconda</td>
+      <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+3.安裝anaconda<br>
+功能：原始的python功能太陽春，若下載anaconda，則可以提供300多種的科學數學模組，可以提供大數據資料分析<br>
+（1）Anaconda是一個免費的Python和R語言的發行版本，用於計算科學（資料科學、機器學習、巨量資料處理和預測分析）<br>
+（2）因為Anaconda有很多的數據分析模組，所以大數據分析會使用到的『pandas、Numpy、Scipy』python package套件，在anaconda安裝完成時就已經包含在裡面了。<br>
+（3）Anaconda中文是森蚺（大蟒蛇）。<br>
+1)可以把Anaconda當作是Python的懶人包，除了Python本身(python2, 3) 還包含了Python常用的資料分析、機器學習、視覺化的套件<br>
+2).完全開源和免費<br>
+3).額外的加速、優化是收費的，但對於學術用途可以申請免費的 License<br>
+4).全平台支持：Linux、Windows、Mac<br>
+5).支持 Python 2.6、2.7、3.3、3.4，可自由切換,<br>
+6).內帶spyder 編譯器（還不錯的spyder編譯器）<br>
+7).自帶jupyter notebook 環境 （就是網頁版的python編輯器，副檔名為IPthon）<br>
+<br>
+（4）常用套件：<br>
+<img src="https://miro.medium.com/max/1400/1*bBiVxG81x6DZYPf8R8CuZw.png" width="90%"/><br>
+Numpy: Python做多維陣列（矩陣）運算時的必備套件，比起Python內建的list，Numpy的array有極快的運算速度優勢<br>
+Pandas：有了Pandas可以讓Python很容易做到幾乎所有Excel的功能了，像是樞紐分析表、小記、欄位加總、篩選<br>
+Matplotlib：基本的視覺化工具，可以畫長條圖、折線圖等等…<br>
+Seaborn：另一個知名的視覺化工具，畫起來比matplotlib好看<br>
+SciKit-Learn: Python 關於機器學習的model基本上都在這個套件，像是SVM, Random Forest…<br>
+Notebook(Jupyter notebook): 一個輕量級web-base 寫Python的工具，在資料分析這個領域很熱門，雖然功能沒有比Pycharm, Spyder這些專業的IDE強大，但只要code小於500行，用Jupyter寫非常方便，Jupyter也開始慢慢支援一些Multi cursor的功能了，可以讓你一次改許多的變數名稱<br>
+（5）優點：省時：一鍵安裝完90%會用到的Python套件，剩下的再用pip install個別去安裝即可<br>
+（6）缺點：占空間：包含了一堆用不到的Python的套件(可安裝另一種miniconda)<br>
+<br>
+（7）下載網址：<a href="https://www.anaconda.com/" target="_blank">https://www.anaconda.com/</a><br>
+選擇個人版：indivisual<br>
+<a href="https://www.anaconda.com/products/individual" target="_blank">https://www.anaconda.com/products/individual</a><br>
+→Download<br>
+→Windows <br>
+Python 3.7（會自動幫你安裝Python 3.7）<br>
+64-Bit Graphical Installer (466 MB)<br>
+32-Bit Graphical Installer (423 MB)<br>
+<br>
+（8）安裝過程，要勾選<br>
+不勾選：add the anaconda to the system PATH（但是2020年，ananconda不建議勾選這個，容易發生錯誤）<br>
+勾選：Register anaconda as system Python 3.7<br>
+<br>
+（9）安裝結束<br>
+→在windows開始→anaconda有6個項目，最常用的有3個<br>
+（1）anaconda prompt：可以直接下cmd指令<br>
+（2）Spyter：編譯器（還不錯的spyder編譯器）<br>
+（3）jupyter notebook（網頁版的python編輯器，副檔名為IPthon）<br id='exp1-2d'>
+</td>
+    </tr>
+
+    <tr >
+        <td class="table-light">4.Anaconda prompt：cmd指令</td>
+        <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+4.使用anaconda prompt：直接下cmd指令<br>
+注意：windows 10 必須使用管理員來執行（點選anaconda prompt→滑鼠右鍵→以系統管理員身份進行）<br>
+（1）列出目前已經安裝的anaconda的模組與版本：<br>
+conda list<br>
+<br>
+（2）對某個模組更新安裝<br>
+conda update 模組<br>
+範例：conda update ipython<br>
+<br>
+（3）安裝某個模組<br>
+方法1：conda install 模組<br>
+範例：conda install numpy<br>
+<br>
+# 安裝 NumPy 1.15 以後、 1.16 以前<br>
+conda install 'numpy>=1.15,<1.16'<br>
+<br>
+方法2：pip install 模組<br>
+範例：pip install numpy<br>
+<br>
+（4）解除安裝某個模組<br>
+方法1：conda uninstall 模組<br>
+範例：conda uninstall numpy<br>
+<br>
+方法2：輸入 conda remove PACKAGE_NAME可以從目前的工作環境移除指定套件。<br>
+# 移除 NumPy<br>
+conda remove numpy numpy-base<br>
+<br>
+方法3：pip uninstall 模組<br>
+範例：pip uninstall numpy<br>
+<br>
+（5）在anaconda prompt執行python程式<br>
+方法1：<br>
+先到工作目錄：cd ch1<br>
+執行.py程式：python test1.py<br>
+<br>
+方法2：python c:\chp1\test1.py<br>
+<br>
+（6）常用指令<br>
+conda --version 檢視 conda 版本<br>
+conda update PACKAGE_NAME更新指定套件<br>
+conda --help 檢視 conda 指令說明文件<br>
+conda list --ENVIRONMENT 檢視指定工作環境安裝的套件清單<br>
+conda install PACAKGE_NAME=MAJOR.MINOR.PATCH 在目前的工作環境安裝指定套件<br>
+conda remove PACKAGE_NAME 在目前的工作環境移除指定套件<br>
+conda create --name ENVIRONMENT python=MAIN.MINOR.PATCH 建立新的工作環境且安裝指定 Python 版本<br>
+conda activate ENVIRONMENT 切換至指定工作環境<br>
+conda deactivate 回到 base 工作環境<br>
+conda env export --name ENVIRONMENT --file ENVIRONMENT.yml 將指定工作環境之設定匯出為 .yml 檔藉此複製且重現工作環境<br>
+conda remove --name ENVIRONMENT --all 移除指定工作環境<br>
+使用 conda list | grep numpy 檢查 Python 套件清單中是否還有 NumPy 套件<br>
+輸入 conda search PACKAGE_NAME可以檢視指定套件在 conda 中可安裝的版本列表。<br>
+# 檢視 NumPy 在 conda 中可安裝的版本<br>
+conda search numpy=1.16.3<br id='exp1-2e'>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-secondary">5.用Anaconda prompt來建立虛擬環境</td>
+        <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+5.使用Anaconda prompt來建立虛擬環境<br>
+功能：可以建立多個Anaconda虛擬環境<br>
+例如：目前安裝後預設是python 3.x版本的環境，若要創建一個python 2.x的環境，就可以在Anaconda虛擬環境實現<br>
+（1）# 檢視電腦中可使用與目前所在的工作環境<br>
+conda env list<br>
+<br>
+（2）使用 conda create --name ENVIRONMENT python=MAIN.MINOR.PATCH 指令可以建立出乾淨、極簡且資源隔絕的工作環境。<br>
+指令：conda create -n 虛擬環境名稱 python=版本 anaconda<br>
+<br>
+# 建立一個名稱為 demo 的 Python 2 工作環境<br>
+conda create --name demo python=2<br>
+範例：建立py27env環境<br>
+conda create -n py27env python=2.7 anaconda<br>
+<br>
+（3）輸入 conda activate ENVIRONMENT 可以啟動指定工作環境、<br>
+方法1：conda activate ENVIRONMENT<br>
+方法2：activate ENVIRONMENT<br>
+範例：activate py27env<br>
+<br>
+方法3：到windows→開始→點選Anaconda prompt（py27env）<br>
+<br>
+（4）關閉虛擬目錄，回到原本pytohn環境(base)<br>
+使用 conda deactivate 則是切換回預設的 base 工作環境。<br>
+方法1：conda deactivate<br>
+方法2：deactivate<br>
+<br>
+（5）# 檢視 demo 工作環境中的套件<br>
+conda list -n py27env<br>
+<br>
+（5）範例
+A.建立py27env虛擬環境<br>
+conda create -n py27env python=2.7 anaconda<br>
+B.切換到py27env虛擬環境<br>
+activate py27env<br>
+C.檢視 demo 工作環境中的套件<br>
+conda list -n py27env<br>
+D.# 檢視 Python 版本<br>
+python --version<br>
+E.關閉虛擬目錄，回到原本pytohn環境(base)<br>
+deactivate<br>
+<br>
+（5）複製一個與目前pyhon環境（或是py27env） 完全相同的工作環境<br>
+conda create -n 新虛擬環境名稱 --clone root<br>
+範例：conda create -n py27env2 --clone root<br>
+<br>
+# 檢查明確所有虛擬環境名稱<br>
+conda info -e<br>
+<br>
+（6）移除某個虛擬環境<br>
+conda remove -n 虛擬環境名稱 --all<br>
+範例：conda remove -n py27env --all<br>
+<br>
+（7）常用指令整理<br>
+安裝：conda install<br>
+更新：conda update<br>
+移除：conda remove <br>
+<br>
+在工作環境管理透過 <br>
+創建：conda create<br>
+啟動：conda activate<br>
+停止：conda deactivate<br>
+匯出設定檔：conda env export<br>
+移除：conda remove<br id='exp1-2f'>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-secondary">6.使用Spyter編譯器</td>
+        <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+6.使用Spyter：編譯器<br>
+（1）新增一個py檔案<br>
+File→ New file<br>
+<br>
+print("你好，歡迎光臨")<br>
+print(1+1)<br>
+<br>
+Run➤<br>
+<br>
+（2）開啟已經存在的檔案<br>
+方法1：File→ Open<br>
+方法2：拖曵檔案總管的py檔案到Spyder<br>
+<br>
+（3）在Spyter使用簡易智慧輸入<br>
+方法：按『tab』<br>
+範例：<br>
+先輸入p<br>
+然後按『tab』<br>
+出現list清單，都是p開始的指令<br>
+<br>
+（4）程式除錯<br>
+方法1：若是這一行有指令寫錯，就會在最左邊出現三角形▲警告icon<br>
+方法2：在這個一行最左邊double click，就會出現中斷點（或是這一行按F12）<br id='exp1-2g'>
+        </td>
+    </tr>
+    <tr>
+        <td class="table-secondary">7.jupyter notebook網頁版的python編輯器</td>
+        <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+7.jupyter notebook<br>
+（1）功能：是網頁版的python編輯器，副檔名為IPthon<br>
+會開啟瀏覽器：http://localhost:8888/tree<br>
+對應的硬碟目錄 =  C:\Users\電腦名稱<br>
+（例如： C:\Users\user）<br>
+<br>
+（2）練習線上編輯一個簡單python程式<br>
+A.右方→New→Python3<br>
+在cell裡面輸入In[1]<br>
+a = ("apple","grape","banana")<br>
+print(a[2])<br>
+<br>
+B.Run<br>
+<br>
+C.修改檔案名稱→Untitled→exp1-3<br>
+<br>
+D.查詢雲端檔案放置位置：C:\Users\電腦名稱\exp1-3.ipynb<br>
+<br>
+（3）二種不同的Run方式<br>
+A.Run：會新增一個new cell<br>
+B.Ctrl+Enter：會停留在原本的cell<br>
+<br>
+（4）在jupyter notebook使用簡易智慧輸入<br>
+方法：按『tab』<br>
+範例：<br>
+先輸入p<br>
+然後按『tab』<br>
+出現list清單，都是p開始的指令<br>
+<br>
+（5）在jupyter notebook編輯的檔案無法讓python IDE編譯<br>
+jupyter notebook編輯的檔案是.ipynb<br>
+與python的.py不同<br>
+改善方法：只能把程式碼複製貼上，在兩個平台交流<br id='exp1-2h'>
+        </td>
+    </tr>
+    <tr >
+        <td class="table-secondary">8.其它線上雲端可編譯的python平台</td>
+        <td class="table-light" colspan="5" bgcolor="#FFFFFF">
+8.其它線上雲端可編譯的python平台<br>
+網站：http://rep.it/languages/python3<br>
+        </td>
+    </tr>
+
+    
+    <tr bgcolor="#f0f0f0">
+      <td colspan="6">&nbsp;</td>
+    </tr>
+</table>
+
+
+
+
+<p  id="chp11-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例11-1：看2組數據的關聯性（用定量的關聯係數corrcoef來表示）<br>
+              <span class="red">
+              #題目：已經知道這段期間，美元與黃金的關係數據，請預測美元與黃金數據之間的關聯性大不大?<br>
+              #重點：看2組數據的關聯性，最簡單的方法：<br>
+              #方法：使用numpy模組的一個函數：np.corrcoef(x,y)<br>
+              #功能：可以看出定量的關聯：<br>
+              例如1：若兩筆數據的關聯係數: c1 =0 ➜ 表示2者無關聯，<br>
+              例如1：若兩筆數據的關聯係數: c1 =1 ➜ 表示2者關聯性大<br>
+              # 指令：<br>
+              import numpy as np<br>
+              c1 = np.corrcoef(x, y)<br>
+              （用定量的關聯函數corrcoef()來計算定量關係）<br>
+              <img src="example/chp11/pratice/1-1.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp11/pratice/1-1.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp11/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1gAsPu9kCFH-tv45TVDvN5DDYSuu63ueo?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp11-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例11-2.用numpy建立線性迴歸模型，建立2組數據的數學model(當美元=29.75，預測黃金價位)<br>
+              <span class="red">
+              # 題目：已經知道這段期間，美元與黃金的關係數據，請進行預測：當美元=29.75，黃金的價位=?<br>
+              #重點1：建立2組數據的線性迴歸數學模型，有2種方法<br>
+              （1）用numpy模組：最簡單<br>
+              （2）用sci-kit learn模組<br>         
+              #重點3：用numpy建立線性迴歸數學模型（3步驟）<br>
+              import numpy as np<br>
+              #步驟1：先計算(y=ax+b)多項式的參數(a,b)➜ coef<br>
+              指令：coef = np.polyfit(x, y, 1)<br>
+              #步驟2：再建立數學模型➜ model = np.poly1d(coef)<br>
+              #步驟3：進行預測(當美元=29.75，請問黃金的價位=?) ➜ model(29.75)<br>
+              <img src="example/chp11/pratice/1-2.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp11/pratice/1-2.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp11/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1991H0v8LGzbG1qEpWqEd8HbITIyD342-?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp11-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例11-3.線性迴歸模型的視覺化(當美元=29.75，預測黃金價位)<br>
+              <span class="red">
+              #題目：已經知道這段期間，美元與黃金的關係數據，請進行預測：當美元=29.75，黃金的價位=?<br>
+              #重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+              （1）用numpy模組：最簡單<br>
+              （2）用sylearn模組(sci-kit learn)<br>              
+              #重點3：用numpy建立線性迴歸數學模型（3步驟）<br>
+              import numpy as np<br>
+              #步驟1：先計算(y=ax+b)多項式的參數(a,b)➜ coef<br>
+              指令：coef = np.polyfit(x, y, 1)<br>
+              #步驟2：再建立數學模型➜ model = np.poly1d(coef)<br>
+              #步驟3：進行預測(當美元=29.75，請問黃金的價位=?) ➜ model(29.75)<br>
+              <img src="example/chp11/pratice/1-3.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp11/pratice/1-3.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp11/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1-9kuFUnDLiqcB_XBjGsIQy8dfEfHJAFw?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp11-4"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例11-4.線性迴歸模型的預測與視覺化(當氣溫=26度，預測營業額)<br>
+              <span class="red">
+              #題目：捷運站旁的一家飲料店，有每日氣溫與營業額(千元)的數據，請做預測，當氣溫=26，30度的營業額為多少？<br>
+              #重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+              （1）用numpy模組：最簡單<br>
+              （2）用sylearn模組(sci-kit learn)<br>              
+              #重點3：用numpy建立線性迴歸數學模型（3步驟）<br>
+              import numpy as np<br>
+              #步驟1：先計算(y=ax+b)多項式的參數(a,b)➜ coef<br>
+              指令：coef = np.polyfit(x, y, 1)<br>
+              #步驟2：再建立數學模型➜ model = np.poly1d(coef)<br>
+              #步驟3：進行預測num ➜ model(num)<br>
+              <img src="example/chp11/pratice/1-4.PNG" /><br>
+              <img src="example/chp11/pratice/1-4-2.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp11/pratice/1-4.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp11/pratice/1-4-2.PNG" target="_blank">結果圖</a></td>
+
+          <td><a href="example/chp11/temp-revenue.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1o74QS84HqqGuFswyssvqKZq_CTGcWhae?usp=sharing" target="_blank">程式碼</a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp11-5"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例11-5.線性迴歸模型的預測與視覺化(當身高=150，預測體重)<br>
+              <span class="red">
+              #題目：某高中男同學的身高與體重數據，請做預測，當身高=150，160，170，的體重為多少？<br>
+              #重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+              （1）用numpy模組：最簡單<br>
+              （2）用sylearn模組(sci-kit learn)<br>              
+              #重點3：用numpy建立線性迴歸數學模型（3步驟）<br>
+              import numpy as np<br>
+              #步驟1：先計算(y=ax+b)多項式的參數(a,b)➜ coef<br>
+              指令：coef = np.polyfit(x, y, 1)<br>
+              #步驟2：再建立數學模型➜ model = np.poly1d(coef)<br>
+              #步驟3：進行預測num ➜ model(num)<br>
+              <img src="example/chp11/pratice/1-5.PNG" /><br>
+              <img src="example/chp11/pratice/1-5-2.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp11/pratice/1-5.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp11/pratice/1-5-2.PNG" target="_blank">結果圖</a></td>
+
+          <td><a href="example/chp11/height-weight.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/183cRlsA_5TNgtSahtysV8Rn1d8zTFzqz?usp=sharing" target="_blank">程式碼</a></td>
+
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp12-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例12-1.numpy建立非線性迴歸模型來預測(當美元=29.75，預測黃金價位)<br>
+              <span class="red">
+                # 題目：請做預測，當美元=29.75，黃金的價位=？<br>
+                #重點1：觀念：最簡單的非線性迴歸模型 = 多項式模型<br>
+                #舉例：3次方多項式 y = ax^3 + bx^2 + cx + d<br>
+                #特色：越高次方的多項式，越可以逼近任意的曲線  <br>              
+                #重點2：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+                （1）用numpy模組：最簡單<br>
+                （2）用sylearn模組(sci-kit learn)<br>              
+                #重點3：用numpy建立非線性迴歸數學模型（3步驟）<br>
+                import numpy as np<br>
+                #步驟1：先計算n次方多項式的參數(a,b,c....)=coef<br>
+                指令：coef = np.polyfit(x, y, n)<br>
+                #步驟2：再建立數學模型➜ model = np.poly1d(coef)<br>
+                #步驟3：進行預測(當美元=29.75，請問黃金的價位=?) ➜ model(29.75)<br>
+                <img src="example/chp12/pratice/2-1.PNG" /><br>
+
+              </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp12/pratice/2-1.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp1/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1NvuF4wFYB57vAnZ3lnmMgy9Xht8CUV8S?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp13-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例13-1：線性迴歸模型的預測與視覺化(當氣溫=26度，預測營業額)<br>
+              <span class="red">
+                # 題目：捷運站旁的一家飲料店，有每日氣溫與營業額(千元)的數據，請做預測，當氣溫=26，30度的營業額為多少？<br>
+                #重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+                （1）用numpy模組：最簡單<br>
+                （2）用sylearn模組(sci-kit learn)<br>
+                #重點3：建立線性迴歸的模型sklearn model方法：（3步驟）<br>
+                #步驟1：先建立數學模型<br>
+                #第一種方法：<br>
+                #import sklearn.linear_model as lm<br>
+                #model = lm.LinearRegression()<br>
+                #或第二種方法：<br>
+                #from sklearn.linear_model import LinearRegression<br>
+                #model = LinearRegression()<br>
+                #步驟2：讓模型model學習歷史數據<br>
+                # 學習指令：model.fit(dataframeX, dataframeY)<br>
+                # 範例：model.fit(df['溫度'].to_frame(), df['營業額'].to_frame())<br>
+                # 資料結構：df['溫度'] ➜ series<br>
+                # 資料結構：df['溫度'].to_frame() ➜ dataframe<br>
+                #步驟3：進行預測（當溫度=26，30度的營業額為多少？）<br>
+                # 預測指令：model.predict(dataframe)<br>
+                # 氣溫=26的dataframe =》 [[26]]<br>
+                <img src="example/chp13/pratice/3-1.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp13/pratice/3-1.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp1/temp-revenue.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1h9aFr7csHlte6kqj3GBn1JiVLKmFgSlC?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp13-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例13-2：線性迴歸模型的預測與視覺化(當身高=150，預測體重)<br>
+              <span class="red">
+                # 題目：某高中男同學的身高與體重數據，請做預測，當身高=150，160，170，的體重為多少？<br>
+#重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+#（1）用numpy模組：最簡單<br>
+#（2）用sylearn模組(sci-kit learn)<br>
+#重點3：建立線性迴歸的模型sklearn model方法：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+#import sklearn.linear_model as lm<br>
+#model = lm.LinearRegression()<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY)<br>
+# 範例：model.fit(df['溫度'].to_frame(), df['營業額'].to_frame())<br>
+# 資料結構：df['溫度'] ➜ series<br>
+# 資料結構：df['溫度'].to_frame() ➜ dataframe<br>
+#步驟3：進行預測（當溫度=26，30度的營業額為多少？）<br>
+# 預測指令：model.predict(dataframe)<br>
+# 氣溫=26的dataframe =》 [[26]]<br>
+<img src="example/chp13/pratice/3-2.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp13/pratice/3-2.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp1/height-weight.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1E9K0BVMXoSDODMM3YBLkFhLjSYmMl2St?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp13-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例13-3：線性迴歸模型的預測與視覺化(當美元=29.75，預測黃金價位)<br>
+              <span class="red">
+                #題目：請做預測，當美元=29.75，黃金的價位=？<br>
+#重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+#（1）用numpy模組：最簡單<br>
+#（2）用sylearn模組(sci-kit learn)<br>
+#重點3：建立線性迴歸的模型sklearn model方法：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+#import sklearn.linear_model as lm<br>
+#model = lm.LinearRegression()<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY)<br>
+# 範例：model.fit(df['美元'].to_frame(), df['黃金'].to_frame())<br>
+# 資料結構：df['美元'] ➜ series<br>
+# 資料結構：df['美元'].to_frame() ➜ dataframe<br>
+#步驟3：進行預測（當美元=29.75，黃金的價位=？）<br>
+# 預測指令：model.predict(dataframe)<br>
+# 氣溫=26的dataframe =》 [[29.75]]<br>
+<img src="example/chp13/pratice/3-3.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp13/pratice/3-3.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp1/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/11j9syKx3cCmcNsMV1J1AWxX3cIe28CiW?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp14-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              chp14.sklearn建立非線性迴歸模型來預測（複雜）<br>
+範例14-1.sklearn建立非線性迴歸模型來預測(當美元=29.75，預測黃金價位)<br>
+              <span class="red">
+                # 題目：請做預測，當美元=29.75，黃金的價位=？<br>               
+                #重點1：建立2組數據的非線性迴歸數學模型，有2種方法<br>
+                #（1）用numpy模組：最簡單<br>
+                #（2）用sylearn模組(sci-kit learn)<br>                
+                #重點3：建立非線性迴歸的模型sklearn model方法：（5步驟）<br>
+                #步驟1：先建立數學模型（多項式）<br>
+                import sklearn.preprocessing as prep<br>
+                # 2次方多項式model<br>
+                model = prep.PolynomialFeatures(degree=2)<br>                
+                
+                #步驟2：將變數x(df['美元'])➜轉成多項式的各種特徵變數 ➜ x_poly = [x1, x2, x1x2, x1^2, x2^2]<br>                
+                <a href='https://acupun.site/lecture/predict/example/chp14/pratice/4-1-1.PNG' target="_blank">說明示意圖：</a><br>
+                # x = df['美元'] ➜ 轉換成 x_poly特徵變數<br>
+                x_poly = model.fit_transform(df['美元'].to_frame())<br> 
+                <br>               
+                #步驟3：再建立『線性』數學模型model2 ➜ y = f(x_poly)<br>
+                import sklearn.linear_model as lm<br>
+                model2 = lm.LinearRegression()<br>                
+                #步驟4：讓模型model學習歷史數據(x_poly， df['黃金'])<br>
+                model2.fit(x_poly, df['黃金'].to_frame())<br>
+                <br>
+                #步驟5：進行預測（當美元=29.75，黃金的價位=？）<br>
+                print('當美元=29.75，黃金的價位 = ', model2.predict(model.fit_transform([[29.75]])))<br>
+                <img src="example/chp14/pratice/4-1-2.PNG" /><br>
+              </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp14/pratice/4-1-2.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp1/usd-gold.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1d3btNUTIFIAWBYpyy2Dslsn9L_w7I7H9?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp15-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              chp15.sklearn建立多元線性迴歸模型y=f(x1,x2,x3...)來預測（複雜）<br>
+              範例15-1:由腰圍身高預測體重，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測<br>
+              <span class="red">
+                # 題目：請做預測，當腰圍=66，身高=164，預測學生的體重=？<br>
+
+#重點1：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+#import sklearn.linear_model as lm<br>
+#model = lm.LinearRegression()<br>
+<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY)<br> 
+# 注意重點：若是多個變數(x1,x2...)，則要把多個變數(x1,x2...)合併成1個變數dataframeX（a1)<br>
+# 範例：model.fit(a1, df['體重'].to_frame())<br>
+<br>
+# 合併的語法：pd.concat([df['腰圍'],df['身高']], axis=1)<br>
+# 資料結構：df['腰圍'] ➜ series<br>
+# 資料結構：df['腰圍'].to_frame() ➜ dataframe<br>
+<br>
+#步驟3：進行預測（當腰圍=66，身高=164，預測學生的體重）<br>
+# 預測指令：model.predict(dataframe)<br>
+# 腰圍=66，身高=164的dataframe =》 [[66, 164]]<br>
+# 範例：print('當腰圍=66，身高=164，預測學生的體重=', model.predict([[66, 164]]))<br>
+<img src="example/chp15/pratice/5-1.PNG" /><br>            
+</span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-1.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp15/waistline-height-weight.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1Xix-uDORIG00d71wUuBQtkntXMKYYIXA?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+</div>
+
+
+<p  id="chp15-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-2:由店面面積與距車站距離預測月營業額，建立多元線性迴歸模型y=f(x1,x2,x3...)來預測<br>
+              <span class="red">
+                # 題目：請做預測，當店面面積為10坪，與車站距離100公尺，預測請預測單月營業額(萬)=？<br>               
+                #重點3：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）<br>
+                #步驟1：先建立數學模型<br>
+                import sklearn.linear_model as lm<br>
+                model = lm.LinearRegression()<br>
+                <br>
+                #步驟2：讓模型model學習歷史數據<br>
+                # 學習指令：model.fit(dataframeX, dataframeY) <br>
+                # 注意重點：若是多個變數(x1,x2...)，則要把多個變數(x1,x2...)合併成1個變數dataframeX（a1)<br>
+                a1 = pd.concat([df['面積'], df['距離']], axis=1)<br>
+                範例：model.fit(a1, df['營業額'])<br>
+                <br>
+                #步驟3：進行預測（當店面面積為10坪，與車站距離100公尺，預測請預測單月營業額(萬)=）<br>
+                # 預測指令：model.predict(dataframe)<br>
+                # 當店面面積為10坪，與車站距離100公尺的dataframe =》 [[66, 164]]<br>
+                # 範例：# model.predict([[10,100]]))<br>
+                <img src="example/chp15/pratice/5-2.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-2.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp15/area-distance-income.xlsx" target="_blank">資料庫</a></td>
+          <td><a href="https://colab.research.google.com/drive/1hTYmqo9TeWgBETNVeHsti-S_wOZRJkyb?usp=sharing" target="_blank">程式碼</a></td>
+          <td><a href="" target="_blank"></a></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+</div>
+
+
+<p  id="chp15-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-3:以『dataframe』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）<br>
+              <span class="red">
+                # 題目：波士頓資料集預測房價，請把資料集分成2種：train拿來學習，test拿來測試與預測
+# Boston housing 波士頓，將資料區分為測試和訓練的資料堆，從訓練的資料中定義特徵變數的欄位作為x，房價欄位作為y，找出x和y之間的關係，並把這個關係用測試的資料做驗證，確認我們找出的房子特徵是否能夠準確預測房價。<br>
+#重點1：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+#import sklearn.linear_model as lm<br>
+#model = lm.LinearRegression()<br>
+<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY) <br>
+<br>
+#步驟3：進行預測<br>
+# 預測指令：model.predict(dataframe)<br>
+<br>
+<h2>
+（1）『機器學習，深度學習』處理的數據，以下3種都可以：<br>
+dataframe/series<br>
+array（大多數坊間的AI範例都是使用array矩陣)<br>
+list<br>
+<br>
+（2）推薦使用的格式：<br>
+array矩陣：最常使用**<br>
+dataframe/series：也常使用，但是畫殘差圖時則避免使用df<br>
+list：無法直接取出欄值，所以不建議使用<br>
+</h2>
+<br>
+<br>
+<h2>影響波士頓房價的13種參數：</h2>
+<img src="example/chp15/pratice/5-3-5.PNG" /><br>
+<h2>預測『貧民窟附近房價，豪宅區附近房價』：</h2>
+<img src="example/chp15/pratice/5-3-4.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-3-5.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="example/chp15/pratice/5-3-4.PNG" target="_blank">結果圖3</a></td>
+          <td><a href="https://colab.research.google.com/drive/1LZojOJGEx4KpRPYGEzFWhVbQkeAdPJcg?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp15-4"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-4:以『array矩陣』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）<br>
+              <span class="red">
+<h2>
+（1）『機器學習，深度學習』處理的數據，以下3種都可以：<br>
+dataframe/series<br>
+array（大多數坊間的AI範例都是使用array矩陣)<br>
+list<br>
+<br>
+（2）推薦使用的格式：<br>
+array矩陣：最常使用<br>
+dataframe/series：也常使用，但是畫殘差圖時則避免使用df<br>
+list：無法直接取出欄值，所以不建議使用<br>
+</h2>
+<br>
+<hr>
+# 21.結論：3種資料格式的轉換：<br>
+
+#（1）『dataframe/series』轉成array矩陣：<br>
+import numpy as np<br>
+
+arr_x = np.array(df_x)<br>
+
+取出第6欄位：arr_x[:,5]<br>
+<br>
+#（2）『dataframe/series』轉成list串列：<br>
+錯誤做法：list(df)<br>
+
+若是df有欄位，就不能用list(df)轉換<br>
+
+正確做法：df.values.tolist()<br>
+
+取出第6欄位：list無法直接取出欄位，必須先轉成df/array，<br>
+
+例如：arr_x[:,5]<br>
+<br>
+#（3）『array矩陣』轉成dataframe：<br>
+import pandas as pd<br>
+
+df_x = pd.DataFrame(arr_x)<br>
+
+df_x = pd.DataFrame(arr_x,columns=[欄位])<br>
+
+取出第6欄位：df_x[:][5]<br>
+
+取出第6欄位：df_x["欄位"]<br>
+<br>
+#（4）『array矩陣』轉成list：<br>
+
+list_x = list(arr_x)<br>
+
+取出第6欄位：list無法直接取出欄位，必須先轉成df/array，<br>
+
+例如：arr_x[:,5]<br>
+<br>
+#（5）『list串列』轉成dataframe：<br>
+import pandas as pd<br>
+
+df_x = pd.DataFrame(list_x)<br>
+
+df_x = pd.DataFrame(list_x,columns=[欄位])<br>
+
+取出第6欄位：df_x[:][5]<br>
+
+取出第6欄位：df_x["欄位"]<br>
+<br>
+#（6）『list串列』轉成array矩陣：<br>
+import numpy as np<br>
+
+arr_x = np.array(list_x)<br>
+
+取出第6欄位：arr_x[:,5]<br>
+<br>
+<h2>影響波士頓房價的13種參數：</h2>
+<img src="example/chp15/pratice/5-3-5.PNG" /><br>
+<h2>預測『貧民窟附近房價，豪宅區附近房價』：</h2>
+<img src="example/chp15/pratice/5-3-4.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-3-5.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="example/chp15/pratice/5-3-4.PNG" target="_blank">結果圖3</a></td>
+          <td><a href="https://colab.research.google.com/drive/1Hj9GI4wkhVdPLye9-35YqtdXT4VI7Our?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp15-5"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-5:以『list串列數組』格式進行AI房價學習，建立多元線性迴歸模型y=f(x1,x2,x3...)，做2個預測（貧民窟附近房價預測，豪宅區附近房價預測）<br>
+              <span class="red">
+<h2>
+（1）『機器學習，深度學習』處理的數據，以下3種都可以：<br>
+dataframe/series<br>
+array（大多數坊間的AI範例都是使用array矩陣)<br>
+list<br>
+<br>
+（2）推薦使用的格式：<br>
+array矩陣：最常使用<br>
+dataframe/series：也常使用，但是畫殘差圖時則避免使用df<br>
+list：無法直接取出欄值，所以不建議使用<br>
+</h2>
+<br>
+<h2>影響波士頓房價的13種參數：</h2>
+<img src="example/chp15/pratice/5-3-5.PNG" /><br>
+<h2>預測『貧民窟附近房價，豪宅區附近房價』：</h2>
+<img src="example/chp15/pratice/5-3-4.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-3-5.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="example/chp15/pratice/5-3-4.PNG" target="_blank">結果圖3</a></td>
+          <td><a href="https://colab.research.google.com/drive/1rivbgzY5CXs5-vhd-nFzcenzET18HqRG?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+<p  id="chp15-6"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-6:先學習波士頓資料集，然後看13個變數哪些是影響最大的(但要先標準化/正規化後的評估權重才有意義)<br>
+              <span class="red">
+                <h2>
+              （1）如何觀察13個變數df_x的影響權重，看誰的權重大：<br>
+                權重值就是：w矩陣<br>
+                數學模型：y= wx + b<br>
+                 w權重值 = w13 = model.coef_<br>
+                 <br>
+                **注意：w13是水平佈置的矩陣 ==> 要轉置矩陣 ==> w13.T**<br>
+                <br>
+              （2）如何才能把所有的影響因子都標準化/正規化成0～1 <br>
+              計算標準化後的df_x==> df_x2 <br>
+              import sklearn.preprocessing as prep<br>
+              df_x2 = prep.StandardScaler().fit_transform(df_x)<br>
+              </h2>
+                <br>
+                <h2>還沒有標準化/正規化前的13個影響房價參數數據：</h2>
+                <img src="example/chp15/pratice/5-4-10.PNG" /><br>
+                <h2>還沒有標準化/正規化前的13個影響房價參數的權值值(重要性)：</h2>
+                <img src="example/chp15/pratice/5-4-6.PNG" /><br>
+                <h2>還沒有標準化/正規化前的圖：房間數 vs 房價</h2>
+                <img src="example/chp15/pratice/5-4-11.PNG" /><br>
+                <h2>還沒有標準化/正規化前的圖：一氧化氮濃度 vs 房價</h2>
+                <img src="example/chp15/pratice/5-4-12.PNG" /><br>
+                <br>
+                <h2>經過標準化/正規化前的13個影響房價參數(0~1)：</h2>
+                <img src="example/chp15/pratice/5-4-8.PNG" /><br>
+                <h2>經過標準化/正規化前的的13個影響房價參數的權值值(重要性)(0~1)：</h2>
+                <img src="example/chp15/pratice/5-4-7.PNG" /><br>
+                <h2>經過標準化/正規化前的圖：房間數 vs 房價</h2>
+                <img src="example/chp15/pratice/5-4-11.PNG" /><br>
+                <h2>經過標準化/正規化前的圖：一氧化氮濃度 vs 房價</h2>
+                <img src="example/chp15/pratice/5-4-12.PNG" /><br>
+                <br>
+                <h2>如果想知道影響參數的權重值，必須經過標準化/正規化步驟(5步驟)</h2>
+              </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-4-1.PNG" target="_blank">結果圖1</a></td>
+          <td><a href="example/chp15/pratice/5-4-2.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="example/chp15/pratice/5-4-3.PNG" target="_blank">結果圖3</a></td>
+          <td><a href="example/chp15/pratice/5-4-4.PNG" target="_blank">結果圖4</a></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF"></td>
+          <td><a href="example/chp15/pratice/5-4-5.PNG" target="_blank">結果圖5</a></td>
+          <td><a href="https://colab.research.google.com/drive/1jQVRYE0uQnHLnwr5Zbvcgs_PxMCQ6kfM?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp15-7"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-7:波士頓資料集預測房價，把原始資料集分成2類：train拿來學習，test拿來測試與預測<br>
+              <span class="red">
+                # 題目：波士頓資料集預測房價，請把資料集分成2種：train拿來學習，test拿來測試與預測<br>
+                <br>
+# Boston housing 波士頓，將資料區分為測試和訓練的資料堆，從訓練的資料中定義特徵變數的欄位作為x，房價欄位作為y，找出x和y之間的關係，並把這個關係用測試的資料做驗證，確認我們找出的房子特徵是否能夠準確預測房價。<br>
+#重點1：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+#import sklearn.linear_model as lm<br>
+#model = lm.LinearRegression()<br>
+<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY) <br>
+<br>
+#步驟3：進行預測<br>
+# 預測指令：model.predict(dataframe)<br>
+#-----------------------------<br>
+#boston資料集檔案：<br>
+# import sklearn.datasets as ds<br>
+# df = ds.load_boston().data<br>
+<br>
+<h2>
+# 資料集分為訓練train與測試test，train拿來學習，test拿來測試與預測：<br>
+模組：sklearn.model_selection<br>
+函數：train_test_split()<br>
+分割的格式有2種：<br>
+(1).dataframe分割格式的計算：train_x,test_x, train_y,test_y = ms.train_test_split(df_x, df_y, test_size=0.33)<br>
+<br>
+(2).array格式的分割計算：train_x,test_x, train_y,test_y = ms.train_test_split(wine.data, wine.target, test_size=0.33)<br>
+</h2>
+<br>
+<img src="example/chp15/pratice/5-3-2.PNG" /><br>
+<h2>比較：pred_y預測值 vs test_y測試數據集</h2>
+<img src="example/chp15/pratice/5-5-5.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-5-1.PNG" target="_blank">結果圖1</a></td>
+          <td><a href="example/chp15/pratice/5-5-2.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="example/chp15/pratice/5-5-3.PNG" target="_blank">結果圖3</a></td>
+          <td><a href="example/chp15/pratice/5-5-4.PNG" target="_blank">結果圖4</a></td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF"></td>
+          <td><a href="https://colab.research.google.com/drive/1WkORP1O-aNxRU9LRWrwnzrUSgafUAtZ8?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp15-8"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例15-8:如何定量評估model模型預測的好壞？有3種定量方法：MSE，R-squared，殘差圖（波士頓資料集預測房價）<br>
+              <span class="red">
+                # 題目：波士頓資料集預測房價，先把資料集分成2種：train拿來學習，test拿來測試與預測，然後用3種定量方法來評估預測好壞（MSE，R-squared，殘差圖）<br>
+                #重點1：建立多元線性迴歸模型y=f(x1,x2,x3...)，sklearn：（3步驟）<br>
+#步驟1：先建立數學模型<br>
+import sklearn.linear_model as lm<br>
+model = lm.LinearRegression()<br>
+<br>
+#步驟2：讓模型model學習歷史數據<br>
+# 學習指令：model.fit(dataframeX, dataframeY) <br>
+<br>
+#步驟3：進行預測<br>
+# 預測指令：model.predict(dataframe)<br>
+<br>
+<h2>評估模型預測準不準確的方法1，方法2：R2（越大越好），以及MAE（越小越好）</h2>
+<img src="example/chp15/pratice/5-6-1.PNG" /><br>
+<br>
+<h2>評估模型預測準不準確的方法3，殘差圖（數據越接近y=0紅色線越好）</h2>
+<img src="example/chp15/pratice/5-6-2.PNG" /><br>
+
+<br>
+<h2>結論：本AI預測模型，不是很優</h2>
+<h2>原因1：決定係數R2的值不夠高(0.72)</h2>
+<h2>原因2：MAE平均根誤差值，還是太高3.4（要小於0.05才優）</h2>
+<h2>原因3：殘差圖的數據點，不夠接近y=0紅色線，表示有太多殘差</h2>
+
+<h2>結論：本AI預測模型，不是很優</h2>
+
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp15/pratice/5-6-1.PNG" target="_blank">結果圖1</a></td>
+          <td><a href="example/chp15/pratice/5-6-2.PNG" target="_blank">結果圖2</a></td>
+          <td><a href="https://colab.research.google.com/drive/1pKL_idChx5IvZ2u4vXkolj13oU96Rwxx?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+<p  id="chp16-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              【分類預測】<br>
+chp16.建立邏輯斯模型(logistic regression model)來預測二元分類問題<br>
+範例16-1:用邏輯斯模型(logistic regression model，羅吉斯)預測分類，預測3種意大利紅酒<br>
+              <span class="red">
+                # 題目：預測3種意大利紅酒，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（決定係數R2，MAE，殘差圖）<br>
+                <br>
+                #重點1：邏輯斯模型的應用性：<br>
+                #羅吉斯迴歸現在已經被大量使用，因為它非常有效率，也不需要大量運算資源，所以受到廣泛利用。它很容易解讀，不需要調整輸入特徵，也易於正規化，而且它所提供的輸出結果是經過良好校正的預測機率。<br>
+                #應用1：衛生保健：例如預測受傷患者的死亡率。預測糖尿病和心臟病等疾病的發病率。<br>
+                #應用2：政治:可用於預測選舉。這些預測是根據年齡、性別、居住地、社會地位、過往投票模式等變數，產生投票結果預測。<br>
+                #應用3：產品測試：預測測試中系統或產品的成敗。<br>
+                #應用4：行銷：可用於預測客戶詢價轉化為銷售的機率、訂閱開始或終止的機率，甚至是客戶對新產品系列的潛在興趣。<br>
+                #應用5：金融業：可預測客戶未來遲繳的可能性，可以看出某位客戶是否會「違約」或「不違約」<br>
+                #應用6：電子商務：電子商務公司大量投資於跨媒體廣告和促銷活動，很希望了解哪些活動最有效，以及最可能獲得潛在目標受眾響應的選項。此模型集將客戶分類為「反應者」或「非反應者」，所以此模型稱為「反應傾向模型」。<br>
+                <br>
+                #重點2：邏輯斯模型的預測數字：<br>
+                #結果：0～1<br>
+                #判別：0為否，1為是<br>
+                <br>
+                <h2>預測3種意大利紅酒：</h2>
+                <img src="example/chp16/pratice/6-1-7.PNG" /><br>
+                <h2>影響酒種品質的13種參數：</h2>
+                <img src="example/chp16/pratice/6-1-6.PNG" /><br>
+                #重點3：讀取skylearn的dataset，有2種做法：<br>
+                #（1）方法1：<br>
+                data, target = ds.load_wine(return_X_y=True)<br>
+                import sklearn.model_selection as ms<br>
+                train_x, test_x, train_y, test_y = ms.train_test_split(data, target, test_size=0.2)<br>
+                <br>
+                #（2）方法2：<br>
+                wine = ds.load_wine()<br>
+                import sklearn.model_selection as ms<br>
+                train_x, test_x, train_y, test_y = ms.train_test_split(wine.data, wine.target, test_size=0.2)<br>
+                <br>                
+                #重點4：建立邏輯斯模型（3步驟）<br>
+                #1.步驟1：先建立數學模型<br>
+                import sklearn.linear_model as lm<br>
+                model = lm.LinearRegression()<br>
+                <br>
+                #2.步驟2：讓模型model學習歷史數據<br>
+                model.fit(df_x, df_y)<br>
+                <br>
+                #3.步驟3：讓模型model進行預測:model.predict(dataframe())<br>
+                print("預測這個紅酒A的酒種：")<br>
+                t1 =[[13.53,	3.10,	2.74,	24.5,	96.0,	2.05,	3.76,	0.56,	1.35,	9.20,	0.61,	1.60,	560.0]]<br>
+                model.predict(t1)[0][0]<br>
+                <br>
+                print("預測這個紅酒B的酒種：")<br>
+                t2 =[[13.53,	4.10,	2.74,	24.5,	96.0,	2.05,	0.76,	0.56,	1.35,	9.20,	0.61,	1.60,	560.0]]<br>
+                model.predict(t2)[0][0]<br>
+                <br>
+
+                <img src="example/chp16/pratice/6-1-4.PNG" /><br>
+                <img src="example/chp16/pratice/6-1-5.PNG" /><br>
+                <h2>結論(1)：黃酮類化合物，不是影響酒種的關鍵因素</h2>
+                <h2>結論(2)：脯氨酸，是影響酒種的關鍵因素</h2>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp16/pratice/6-1-4.PNG" target="_blank">結果圖</a></td>
+          <td><a href="example/chp16/pratice/6-1-5.PNG" target="_blank">結果圖</a></td>
+          <td><a href="https://colab.research.google.com/drive/1tGkaWWKK6eyMC8hHxtTATjE2jfE24Kjd?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+<p  id="chp16-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              【分類預測】<br>
+範例16-2:用邏輯斯模型(logistic regression model，羅吉斯)預測分類，評估模型預測的好壞(R2,MAE,殘差圖)<br>
+              <span class="red">
+                # 題目：預測3種意大利紅酒，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（決定係數R2，MAE，殘差圖）<br>
+                <br>
+                #重點1：邏輯斯模型的應用性：<br>
+                #羅吉斯迴歸現在已經被大量使用，因為它非常有效率，也不需要大量運算資源，所以受到廣泛利用。它很容易解讀，不需要調整輸入特徵，也易於正規化，而且它所提供的輸出結果是經過良好校正的預測機率。<br>
+                #應用1：衛生保健：例如預測受傷患者的死亡率。預測糖尿病和心臟病等疾病的發病率。<br>
+                #應用2：政治:可用於預測選舉。這些預測是根據年齡、性別、居住地、社會地位、過往投票模式等變數，產生投票結果預測。<br>
+                #應用3：產品測試：預測測試中系統或產品的成敗。<br>
+                #應用4：行銷：可用於預測客戶詢價轉化為銷售的機率、訂閱開始或終止的機率，甚至是客戶對新產品系列的潛在興趣。<br>
+                #應用5：金融業：可預測客戶未來遲繳的可能性，可以看出某位客戶是否會「違約」或「不違約」<br>
+                #應用6：電子商務：電子商務公司大量投資於跨媒體廣告和促銷活動，很希望了解哪些活動最有效，以及最可能獲得潛在目標受眾響應的選項。此模型集將客戶分類為「反應者」或「非反應者」，所以此模型稱為「反應傾向模型」。<br>
+                <br>
+                #重點2：邏輯斯模型的預測數字：<br>
+                #結果：0～1<br>
+                #判別：0為否，1為是<br> 
+                <br>
+                #重點5：評估模型績效，方法1：決定係數R2<br>
+                model.score(test_x, test_y)<br>
+                # 若r2值越大，就表示模型model越好<br>
+                <br>
+                #重點6：評估模型績效，方法2：MAE,平均絕對誤差(MAE，Mean Absolute Error)<br>
+                import sklearn.metrics as mt<br>
+                mt.mean_absolute_error(test_y, pred_y)<br>
+                # 若MAE值越小，就表示模型model越好（MAE=0，表示誤差接近於0）<br>
+                <br>
+                #重點7：評估模型績效，方法3：MAE,平均絕對誤差(MAE，Mean Absolute Error)<br>
+                # 殘差圖上面的點，越靠近y=0的水平線，就表示模型的預測效果越好（若距離遠的點，表示預測錯誤點）<br>
+                res_y = pred_y - test_y<br>
+                <br>
+                <h2>(1).用決定係數r2來評估模型model的好壞：</h2>
+                <img src="example/chp16/pratice/6-2-4.PNG" /><br>
+                <img src="example/chp16/pratice/6-2-5.PNG" /><br>
+
+                <br>
+                <h2>(2).用MAE平均絕對誤差來評估模型model的好壞：</h2>
+                <img src="example/chp16/pratice/6-2-6.PNG" /><br>
+                <br>
+                <h2>(3).用殘差圖來評估模型model的好壞：</h2>
+                <img src="example/chp16/pratice/6-2-7.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="https://colab.research.google.com/drive/1_bmzM3q3GUlnAI8eXW47K1lTeHGhxpuI?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+<p  id="chp16-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例16-3:使用預測成效報表report的『準確率，精確率，召回率』指標，來評估邏輯斯模型的分類分析效果<br>
+             
+ <span class="red">
+#重點2：分析報告的4個指標：準確率，精確率，召回率<br>
+（1）accuarcy：整體準確率指標<br>
+（2）precision：精確率<br>
+（3）recall：召回率recall<br>
+（4）f1-score：f-score調和平均參數<br>
+</span>
+（2-1）整體的指標：準確率accuracy：1.0（f1-score) ➜ 100%<br>
+舉例：全部36筆資料，預測錯誤8筆，正確28筆，準確率accuracy=28/36 = 0.80<br>
+<br>
+（2-2）看個別類別的指標：➜ 有3種酒品，哪一種的預測最準？ ➜ 看精確率precision，召回率recall<br>
+定義：<br>
+ 你猜對的準確率 ➜ 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）<br>
+ 實際該樣品被猜對的準確率 ➜ 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）<br>
+舉例：<br>
+ 實際第0類Barolo酒有14個(test_y)，但模型預測是Barolo酒有15個，只有13個猜對<br>
+ 精確率precision = 13/15 = 0.8666（你猜有15個，但只對13個）<br>
+ 召回率recall = 13/14 = 0.928（實際的樣品Barolo酒有14個，被猜對有13個）<br>
+ <br>
+ （2-3）看個別類別的指標：➜ f-score調和平均參數 ➜ 複合2個參數(精確率precision，與召回率recall)<br>
+ <br>
+<img src="example/chp16/pratice/6-3-9.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-8.PNG" /><br>
+<br>
+
+<span class="red">
+預測結果：<br>
+預測：[2 0 2 2 2 0 1 1 0 1 1 2 0 1 0 1 2 1 1 2 0 0 1 1 2 1 1 1 2 0 1 0 0 2 1 2]<br>
+實際：[2 0 2 2 2 0 1 1 0 0 1 2 0 1 0 1 2 1 1 2 0 0 1 1 2 1 1 2 2 0 1 0 0 2 1 2]<br>
+測試樣本數=36，發現有2個預測錯誤，準確數34<br>
+(1).整體預測效果：<br>
+(A).準確率 = accuracy = 34/36 = 0.94444<br>
+<br>
+最上面3列（0，1，2）代表預測target對象(紅酒)，有3種（編號0，1，2）<br>
+最右邊support（每類紅酒的樣本數，11，13，12，總共36）<br>
+<br>
+(2).看個別酒種的預測效果<br>
+例如：編號0紅酒的預測效果<br>
+(A).精確率precision = 1 =(你預測是0類紅酒的有10個，你猜中0類紅酒率=1)<br>
+(B).召回率recall = 0.91 =(實際是0類紅酒的有10個，1個被猜錯，被猜中率=9/10=0.9)<br>
+(C).f1-score = 0.95 = 精確率precision，與召回率recall的『調和平均數』<br>
+<br>
+(3).AI模型預測的4種評估準確率：<br>
+(A).準確率accuracy = 全部樣本的『被猜中率』，若為1表示全部被猜中<br>
+(B).精確率precision = 你的猜中率(針對某類紅酒)<br>
+(C).召回率recall = 某類樣本的『被猜中率』，若為1表示某類全部被猜中<br>
+(D).f1-score = 精確率precision，與召回率recall的『調和平均數』<br>
+<br>
+結論：這4個參數，可以看出『主動效果，被動效果』<br>
+#被動效果：『某類被猜中率recall<br>
+#主動效果：『你針對某類的猜中率precision』<br>
+<br>
+<img src="example/chp16/pratice/recall-precision.jpg" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp16/pratice/6-3-1.PNG" target="_blank">結果圖</a></td>
+          <td><a href="https://colab.research.google.com/drive/103lxWWQEtd_58W-GyXyZZ3hnoLyRXmrP?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp16-4"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例16-4：改善預測的準確率的第1種方法：增加迭代次數<br>
+              <span class="red">
+                # 題目：增加迭代次數來改善預測3種意大利紅酒的準確率，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（準確率，精確率，召回率, f-score）<br>
+                <br>
+                #重點1：建立邏輯斯模型，並讓迭代次數增加(計算的比較多次，讓誤差越來越低）<br>
+                #增加迭代次數的方法：max_iter=10000<br>
+                #顯示計算迭代的訊息：verbose=True<br>
+                #指令：model = lm.LogisticRegression(max_iter=10000, verbose=True)<br>
+                </span>
+                import sklearn.linear_model as lm<br>
+                model = lm.LogisticRegression(max_iter=10000, verbose=True)<br>
+ <br>
+ <br>
+<img src="example/chp16/pratice/6-3-1.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-2.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-3.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-4.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-5.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-6.PNG" /><br>
+<br>
+<img src="example/chp16/pratice/6-3-7.PNG" /><br>
+
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="https://colab.research.google.com/drive/1RgoyqG-jTDQPcoDlEU1Mcg2kIM4B8VAM?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp16-5"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例16-5：改善預測的準確率的第2種方法：將資料標準化standardization<br>
+              <span class="red">
+                # 題目：將資料標準化standardization來改善預測3種意大利紅酒的準確率，將資料集分成train,test，先學習再預測，用3種指標來評估預測績效（準確率，精確率，召回率, f-score）<br>
+                <br>
+                #重點1：將wine.data資料標準化standardization ==> data_std<br>
+                # 模組：sklearn.preprocessing<br>
+                # 函數：data_std = prep.StandardScaler().fit_transform(wine.data)<br>
+                # 範例：<br>
+                import sklearn.preprocessing as prep<br>
+data_std = prep.StandardScaler().fit_transform(wine.data)<br>
+                <br>
+                <img src="example/chp16/pratice/6-5-1.PNG" /><br>
+                <br>
+                <img src="example/chp16/pratice/6-5-2.PNG" /><br>
+                <br>
+                <img src="example/chp16/pratice/6-5-3.PNG" /><br>
+                <br>
+                <img src="example/chp16/pratice/6-5-4.PNG" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="https://colab.research.google.com/drive/1rE4dssSikMvw1zn4QvQSWnGpWa6hYNFb?usp=sharing" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp7-1"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              【二，深度學習，Deep Learning】<br>
+【用keras模組預測商業數據】<br>
+chp7.建立類神經網絡模型<br>
+範例7-1：學習線性趨勢線(直線)，預測x=10的y值？<br>
+              <span class="red">
+                1.從一個範例來認識人工智慧（TensorFlow官網的教學範例1）：用1層神經網絡來做迴歸分析<br>
+                  ☎人工智慧的最常見用途：分類，迴歸<br>
+                  ☎目的：從一堆xy對應數據，找出迴歸線（歸納找出趨勢）<br>                  
+                  ☎參考教學影片：<a href='https://www.youtube.com/watch?v=OXNC_sefxi4' target="_blank" >教學影片</a>（中文）</a><br>
+                  <a href='https://www.youtube.com/watch?v=KNAWp2S3w94' target="_blank" >教學影片（英文）</a><br>
+                  （1）如何找出輸入x，與輸出y的關係（迴歸法，分類法，類神經網路法）<br>
+                  <img src="../ai/example/chp5/p5-1-1.png" /><br>
+                  <br>
+                  （2）TensorFlow官網的教學文件1：<br>
+                  ☎<a href='https://developers.google.com/codelabs/tensorflow-1-helloworld#0' target="_blank" >TensorFlow官網的教學範例1：找出數據的趨勢線</a><br>
+                  <br>
+                  <span class="red">
+                  （9-1-1）練習範例（1）：學習線性趨勢線(直線)，預測x=10的y值？<br>
+                  </span>
+                  數據點：<br>
+                  xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]<br>
+                  ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]<br>
+                  ☎題目：找出這堆數據的迴歸（歸納找出趨勢線）：<br>
+                  <img src="../ai/example/chp9/p9-1-2.png" /><br>
+                  ☎執行類神經網路的求解步驟示意圖：<br>
+                  <img src="../ai/example/chp9/p9-0-1.png" /><br>
+                  ☎方法：使用神經網絡模型，單層神經，一個神經元units=1<br>
+                    #建立1層神經網絡<br>
+                    <img src="example/chp7/pratice/7-1-1.png" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp7/pratice/7-1-1.png" target="_blank">結果圖</a></td>
+          <td><a href="example/chp7/pratice/7-1.txt" target="_blank">程式碼</a></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp7-2"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例7-2：學習線性趨勢線(直線)，畫出數據點與預測點<br>
+              <span class="red">
+               練習範例題目：學習線性趨勢線(直線)，畫出數據點與預測點<br>
+              </span>
+              數據點：<br>
+              xs = [-1.0, 0.0, 1.0, 2.0, 3.0, 4.0]<br>
+              ys = [-3.0, -1.0, 1.0, 3.0, 5.0, 7.0]<br>
+              <img src="../ai/example/chp9/p9-1-3.png" /><br>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp7/pratice/7-2.png" target="_blank">結果圖</a></td>
+          <td><a href="example/chp7/pratice/7-2-1.txt" target="_blank">AI的7步驟流程</a></td>
+          <td><a href="example/chp7/pratice/7-2-2.txt" target="_blank">程式碼解答</a></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp7-3"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例7-3：學習非線性趨勢線(雙曲線)，預測x=1.0的y值，畫出數據點與預測點<br>
+              <span class="red">
+             練習範例題目：學習非線性趨勢線(雙曲線)，預測x=1.0的y值，畫出數據點與預測點<br>
+              </span>
+              數據點：<br>
+              xs = [-0.5, -0.44736842, -0.39473684, -0.34210526, -0.28947368, -0.23684211,
+-0.18421053, -0.13157895, -0.07894737, -0.02631579, 0.02631579, 0.07894737,
+0.13157895, 0.18421053, 0.23684211, 0.28947368, 0.34210526, 0.39473684,
+0.44736842,  0.5]<br>
+ys = [0.24595018, 0.19992016, 0.11848622, 0.09924376, 0.08173275, 0.0596075,
+0.02737021, 0.01544445, 0.02764277, 0.00527432,-0.00814974,-0.01725386,
+0.0489, 0.02935983, 0.04428556, 0.08552249, 0.12389014, 0.15113714,
+0.20734122, 0.23009059]<br>
+<br>                
+☎注意：每一層的激勵函數activation="relu"<br>
+☎注意：優化函數optimizer = Adam()<br>
+☎可以成功執行的神經層(6,4,4,4,1)<br>
+☎可以成功執行的神經層(8,4,4,4,1)<br>
+☎可以成功執行的神經層(10,8,8,8,1)<br>
+<img src="../ai/example/chp9/p9-1-4.png" /><br>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp7/pratice/7-3.png" target="_blank">結果圖</a></td>
+          <td><a href="example/chp7/pratice/7-3-1.txt" target="_blank">AI的7步驟流程</a></td>
+          <td><a href="example/chp7/pratice/7-3-2.txt" target="_blank">程式碼解答</a></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+<p  id="chp7-4"></p>
+<p></p>
+<table class="table table-bordered table-condensed"  bordercolor="#dddddd" width="100%">     
+<tr bgcolor="#f0f0f0">
+            <td colspan="6">&nbsp;</td>
+</tr>
+          <tr bgcolor="#f0f0f0">
+            <td colspan="6">
+              範例7-4：非線性趨勢線(拋物線)，預測x=12的y值，畫出數據點與預測點<br>
+              <span class="red">
+              練習範例題目：學習非線性趨勢線(拋物線)，預測x=12的y值，畫出數據點與預測點<br>
+              </span>
+              數據點：<br>
+              xs = [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]<br>
+              ys = [0.105, 0.105, 0.148, 0.210, 0.349, 0.540, 0.840, 1.251, 1.799, 2.483]<br>
+              <br>                
+              ☎注意：每一層的激勵函數activation="relu"<br>
+              ☎注意：優化函數optimizer = Adam()<br>
+              ☎可以成功執行的神經層(6,4,4,4,1)，epochs=1000<br>
+              ☎可以成功執行的神經層(10,8,8,8,1)，epochs=1000<br>
+              ☎可以成功執行的神經層(12,8,8,8,8,8,8,8,1)<br>
+              <img src="../ai/example/chp9/p9-1-5.png" /><br>
+            </span>
+            </td>
+          </tr>
+        <tr bgcolor="#FFFFFF">
+          <td bgcolor="#FFFFFF">上課練習範例</td>
+          <td><a href="example/chp7/pratice/7-4.png" target="_blank">結果圖</a></td>
+          <td><a href="example/chp7/pratice/7-4-1.txt" target="_blank">AI的7步驟流程</a></td>
+          <td><a href="example/chp7/pratice/7-4-2.txt" target="_blank">程式碼解答</a></td>
+          <td></td>
+        </tr>
+
+        <tr bgcolor="#f0f0f0">
+            <td><p></p></td>
+            <td colspan="5" bgcolor="#FFFFFF"><p>
+              </p></td>
+        </tr>  
+</table>
+
+
+
+</div>
+<!-- Back to top button -->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+  </body>
+</html>
